@@ -1,0 +1,270 @@
+{
+  "editor": {
+    "remove": "Supprimer",
+    "replace": "Remplacer",
+    "duplicate": "Dupliquer",
+    "import": "Importer",
+    "copy": "Copier",
+    "words": "Mots",
+    "characters": "Caractères",
+    "default": "Défaut",
+    "recent": "Récemment utilisé",
+    "nofill": "Pas de remplissage",
+    "format": "Format Painter",
+    "draghandle": {
+      "tooltip": "Cliquez et faites glisser"
+    },
+    "importWord": {
+      "tooltip": "Importer Word"
+    },
+    "paper": {
+      "tooltip": "Dessiner"
+    },
+    "details": {
+      "tooltip": "Détails"
+    },
+    "print": {
+      "tooltip": "Imprimer"
+    },
+    "alert": {
+      "tooltip": "Alerte",
+      "note": "Note",
+      "info": "Info",
+      "warning": "Avertissement",
+      "danger": "Erreur",
+      "success": "Succès"
+    },
+    "slash": {
+      "empty": "Aucun résultat",
+      "format": "Format",
+      "insert": "Insérer",
+      "embed": "Services d'intégration",
+      "text": "Appuyez sur '/' pour les commandes"
+    },
+    "content": "Veuillez saisir du contenu",
+    "moremark": "Plus de styles de texte",
+    "size": {
+      "small": {
+        "tooltip": "Petit"
+      },
+      "medium": {
+        "tooltip": "Moyen"
+      },
+      "large": {
+        "tooltip": "Couverture"
+      }
+    },
+    "bold": {
+      "tooltip": "Gras"
+    },
+    "italic": {
+      "tooltip": "Italique"
+    },
+    "underline": {
+      "tooltip": "Souligné"
+    },
+    "strike": {
+      "tooltip": "Barré"
+    },
+    "color": {
+      "tooltip": "Couleur",
+      "more": "Plus de couleurs"
+    },
+    "highlight": {
+      "tooltip": "Surligner"
+    },
+    "lineheight": {
+      "tooltip": "Hauteur de ligne"
+    },
+    "heading": {
+      "tooltip": "Titres",
+      "h1": {
+        "tooltip": "Titre 1"
+      },
+      "h2": {
+        "tooltip": "Titre 2"
+      },
+      "h3": {
+        "tooltip": "Titre 3"
+      },
+      "h4": {
+        "tooltip": "Titre 4"
+      },
+      "h5": {
+        "tooltip": "Titre 5"
+      },
+      "h6": {
+        "tooltip": "Titre 6"
+      }
+    },
+    "paragraph": {
+      "tooltip": "Paragraphe"
+    },
+    "textalign": {
+      "tooltip": "Alignement",
+      "left": {
+        "tooltip": "Gauche"
+      },
+      "center": {
+        "tooltip": "Centre"
+      },
+      "right": {
+        "tooltip": "Droite"
+      },
+      "justify": {
+        "tooltip": "Justifier"
+      }
+    },
+    "indent": {
+      "tooltip": "Indentation",
+      "indent": "Augmenter l'indentation"
+    },
+    "outdent": {
+      "tooltip": "Indentation",
+      "outdent": "Diminuer l'indentation"
+    },
+    "fontFamily": {
+      "tooltip": "Famille de polices"
+    },
+    "fontSize": {
+      "tooltip": "Taille de police",
+      "default": {
+        "tooltip": "Défaut"
+      }
+    },
+    "superscript": {
+      "tooltip": "Exposant"
+    },
+    "subscript": {
+      "tooltip": "Indice"
+    },
+    "bulletlist": {
+      "tooltip": "Liste à puces"
+    },
+    "orderedlist": {
+      "tooltip": "Liste ordonnée"
+    },
+    "tasklist": {
+      "tooltip": "Liste de tâches"
+    },
+    "columns": {
+      "tooltip": "Colonnes"
+    },
+    "link": {
+      "tooltip": "Lien",
+      "unlink": {
+        "tooltip": "Dissocier"
+      },
+      "open": {
+        "tooltip": "Ouvrir le lien"
+      },
+      "edit": {
+        "tooltip": "Modifier le lien"
+      },
+      "dialog": {
+        "title": "Insérer un lien",
+        "link": "Lien",
+        "text": "Texte",
+        "openInNewTab": "Ouvrir dans un nouvel onglet",
+        "link.placeholder": "Adresse du lien",
+        "text.placeholder": "Ajouter une description",
+        "button": {
+          "apply": "Appliquer"
+        }
+      }
+    },
+    "image": {
+      "tooltip": "Image",
+      "dragger": {
+        "tooltip": "Cliquez ou faites glisser l'image dans la zone pour télécharger"
+      },
+      "float": {
+        "left": {
+          "tooltip": "Flotter à gauche"
+        },
+        "none": {
+          "tooltip": "Ne pas flotter"
+        },
+        "right": {
+          "tooltip": "Flotter à droite"
+        }
+      },
+      "dialog": {
+        "title": "Ajouter une image",
+        "placeholder": "URL de l'image",
+        "tab": {
+          "url": "Url",
+          "upload": "Importer"
+        },
+        "uploading": "Téléchargement en cours",
+        "form": {
+          "link": "Lien",
+          "placeholder": "Lien",
+          "alt": "Texte alternatif",
+          "aspectRatio": "Verrouiller le ratio d'aspect original",
+          "file": "Fichier"
+        },
+        "button": {
+          "apply": "Appliquer"
+        }
+      }
+    },
+    "video": {
+      "tooltip": "Vidéo",
+      "dialog": {
+        "tab": {
+          "upload": "Télécharger"
+        },
+        "uploading": "Téléchargement en cours",
+        "title": "Intégrer ou télécharger une vidéo",
+        "link": "Lien",
+        "placeholder": "URL de la vidéo",
+        "button": {
+          "apply": "Appliquer"
+        }
+      }
+    },
+    "table": {
+      "tooltip": "Tableau",
+      "menu": {
+        "insert_table": "Insérer un tableau",
+        "insert_table.with_header_row": "Avec ligne d'en-tête",
+        "add_column_before": "Ajouter une colonne avant",
+        "add_column_after": "Ajouter une colonne après",
+        "delete_column": "Supprimer la colonne",
+        "add_row_before": "Ajouter une ligne avant",
+        "add_row_after": "Ajouter une ligne après",
+        "delete_row": "Supprimer la ligne",
+        "merge_or_split_cells": "Fusionner ou scinder les cellules",
+        "delete_table": "Supprimer le tableau"
+      }
+    },
+    "blockquote": {
+      "tooltip": "Bloc de citation"
+    },
+    "horizontalrule": {
+      "tooltip": "Règle horizontale"
+    },
+    "code": {
+      "tooltip": "Code"
+    },
+    "codeblock": {
+      "tooltip": "Bloc de code"
+    },
+    "clear": {
+      "tooltip": "Effacer le format"
+    },
+    "undo": {
+      "tooltip": "Annuler"
+    },
+    "redo": {
+      "tooltip": "Rétablir"
+    },
+    "fullscreen": {
+      "tooltip": {
+        "fullscreen": "Plein écran",
+        "exit": "Quitter le plein écran"
+      }
+    }
+  }
+}

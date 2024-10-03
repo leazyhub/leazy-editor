@@ -1,0 +1,270 @@
+{
+  "editor": {
+    "remove": "Remove",
+    "replace": "Replace",
+    "duplicate": "Duplicate",
+    "import": "Import",
+    "copy": "Copy",
+    "words": "WORDS",
+    "characters": "CHARACTERS",
+    "default": "Default",
+    "recent": "Recently Used",
+    "nofill": "No Fill",
+    "format": "Format Painter",
+    "draghandle": {
+      "tooltip": "Click And Drag"
+    },
+    "importWord": {
+      "tooltip": "Import Word"
+    },
+    "paper": {
+      "tooltip": "Draw"
+    },
+    "details": {
+      "tooltip": "Details"
+    },
+    "print": {
+      "tooltip": "Print"
+    },
+    "alert": {
+      "tooltip": "Alert",
+      "note": "Note",
+      "info": "Info",
+      "warning": "Warning",
+      "danger": "Error",
+      "success": "Success"
+    },
+    "slash": {
+      "empty": "No Result",
+      "format": "Format",
+      "insert": "Insert",
+      "embed": "Embed Services",
+      "text": "Press '/' for commands"
+    },
+    "content": "Please input content",
+    "moremark": "More Text Styles",
+    "size": {
+      "small": {
+        "tooltip": "Small"
+      },
+      "medium": {
+        "tooltip": "Medium"
+      },
+      "large": {
+        "tooltip": "Cover"
+      }
+    },
+    "bold": {
+      "tooltip": "Bold"
+    },
+    "italic": {
+      "tooltip": "Italic"
+    },
+    "underline": {
+      "tooltip": "Underline"
+    },
+    "strike": {
+      "tooltip": "Strike"
+    },
+    "color": {
+      "tooltip": "Color",
+      "more": "More Colors"
+    },
+    "highlight": {
+      "tooltip": "Highlight"
+    },
+    "lineheight": {
+      "tooltip": "Line Height"
+    },
+    "heading": {
+      "tooltip": "Headings",
+      "h1": {
+        "tooltip": "Heading 1"
+      },
+      "h2": {
+        "tooltip": "Heading 2"
+      },
+      "h3": {
+        "tooltip": "Heading 3"
+      },
+      "h4": {
+        "tooltip": "Heading 4"
+      },
+      "h5": {
+        "tooltip": "Heading 5"
+      },
+      "h6": {
+        "tooltip": "Heading 6"
+      }
+    },
+    "paragraph": {
+      "tooltip": "Paragraph"
+    },
+    "textalign": {
+      "tooltip": "Align",
+      "left": {
+        "tooltip": "Left"
+      },
+      "center": {
+        "tooltip": "Center"
+      },
+      "right": {
+        "tooltip": "Right"
+      },
+      "justify": {
+        "tooltip": "Justify"
+      }
+    },
+    "indent": {
+      "tooltip": "Indent",
+      "indent": "Increase Indent"
+    },
+    "outdent": {
+      "tooltip": "Outdent",
+      "outdent": "Decrease Indent"
+    },
+    "fontFamily": {
+      "tooltip": "Font family"
+    },
+    "fontSize": {
+      "tooltip": "Font size",
+      "default": {
+        "tooltip": "Default"
+      }
+    },
+    "superscript": {
+      "tooltip": "Superscript"
+    },
+    "subscript": {
+      "tooltip": "Subscript"
+    },
+    "bulletlist": {
+      "tooltip": "Bullet List"
+    },
+    "orderedlist": {
+      "tooltip": "Ordered List"
+    },
+    "tasklist": {
+      "tooltip": "Task List"
+    },
+    "columns": {
+      "tooltip": "Columns"
+    },
+    "link": {
+      "tooltip": "Link",
+      "unlink": {
+        "tooltip": "UnLink"
+      },
+      "open": {
+        "tooltip": "Open Link"
+      },
+      "edit": {
+        "tooltip": "Edit Link"
+      },
+      "dialog": {
+        "title": "Insert Link",
+        "link": "Link",
+        "text": "Text",
+        "openInNewTab": "Open In New Tab",
+        "link.placeholder": "Link Address",
+        "text.placeholder": "Add Description",
+        "button": {
+          "apply": "Apply"
+        }
+      }
+    },
+    "image": {
+      "tooltip": "Image",
+      "dragger": {
+        "tooltip": "Click or drag the image to the area to upload"
+      },
+      "float": {
+        "left": {
+          "tooltip": "Float left"
+        },
+        "none": {
+          "tooltip": "Float none"
+        },
+        "right": {
+          "tooltip": "Float right"
+        }
+      },
+      "dialog": {
+        "title": "Add an image",
+        "placeholder": "Paste the image URL here",
+        "tab": {
+          "url": "Url",
+          "upload": "Upload"
+        },
+        "uploading": "Uploading",
+        "form": {
+          "link": "Link",
+          "placeholder": "Link",
+          "alt": "Alt",
+          "aspectRatio": "Lock original aspect ratio",
+          "file": "File"
+        },
+        "button": {
+          "apply": "apply"
+        }
+      }
+    },
+    "video": {
+      "tooltip": "Video",
+      "dialog": {
+        "tab": {
+          "upload": "Upload"
+        },
+        "uploading": "Uploading",
+        "title": "Embed or upload a video",
+        "link": "link",
+        "placeholder": "Paste the video URL here",
+        "button": {
+          "apply": "apply"
+        }
+      }
+    },
+    "table": {
+      "tooltip": "Table",
+      "menu": {
+        "insert_table": "Insert Table",
+        "insert_table.with_header_row": "With header row",
+        "add_column_before": "Add Column Before",
+        "add_column_after": "Add Column After",
+        "delete_column": "Delete Column",
+        "add_row_before": "Add Row Before",
+        "add_row_after": "Add Row After",
+        "delete_row": "Delete Row",
+        "merge_or_split_cells": "Merge Or Split Cells",
+        "delete_table": "Delete Table"
+      }
+    },
+    "blockquote": {
+      "tooltip": "Blockquote"
+    },
+    "horizontalrule": {
+      "tooltip": "Horizontal Rule"
+    },
+    "code": {
+      "tooltip": "Code"
+    },
+    "codeblock": {
+      "tooltip": "Code Block"
+    },
+    "clear": {
+      "tooltip": "Clear Format"
+    },
+    "undo": {
+      "tooltip": "Undo"
+    },
+    "redo": {
+      "tooltip": "Redo"
+    },
+    "fullscreen": {
+      "tooltip": {
+        "fullscreen": "Fullscreen",
+        "exit": "Fullscreen Exit"
+      }
+    }
+  }
+}

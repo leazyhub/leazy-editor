@@ -54,7 +54,9 @@ const props = withDefaults(defineProps<Props>(), {
   maxWidth: undefined,
   minHeight: undefined,
   maxHeight: undefined,
-  extensions: () => [BaseKit],
+  extensions: () => [BaseKit.configure({
+    highlight: false
+  })],
   editorClass: undefined,
   contentClass: undefined,
 })

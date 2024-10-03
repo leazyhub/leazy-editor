@@ -9,7 +9,7 @@ const searchOpened = ref(true)
 const searchTerm = ref('')
 const replaceTerm = ref('')
 const caseSensitive = ref(false)
-const { editor } = withDefaults(defineProps<Props>(), {})
+const { editor } = defineProps<Props>()
 
 const updateSearchReplace = (clearIndex = false) => {
   if (!editor) return

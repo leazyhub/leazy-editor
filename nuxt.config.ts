@@ -29,5 +29,16 @@ export default defineNuxtConfig({
     langDir: 'locales/',
     defaultLocale: 'fr'
   },
+  optimizeDeps: {
+    include: ['highlight.js']
+  },
+  vite: {
+    resolve: {
+      alias: {
+        'highlight.js': 'highlight.js',
+        'evaluatex': 'evaluatex'
+      }
+    }
+  },
   devtools: { enabled: true }
 })

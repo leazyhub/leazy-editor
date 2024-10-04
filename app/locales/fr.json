@@ -41,6 +41,9 @@
       "embed": "Services d'intégration",
       "text": "Appuyez sur '/' pour les commandes"
     },
+    "tableOfContents": {
+      "tooltip": "Table des matières"
+    },
     "content": "Veuillez saisir du contenu",
     "moremark": "Plus de styles de texte",
     "size": {

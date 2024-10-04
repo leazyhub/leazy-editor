@@ -41,6 +41,9 @@
       "embed": "Embed Services",
       "text": "Press '/' for commands"
     },
+    "tableOfContents": {
+      "tooltip": "Table Of Contents"
+    },
     "content": "Please input content",
     "moremark": "More Text Styles",
     "size": {

@@ -54,6 +54,7 @@ import { SpeechSynthesis, type SpeechSynthesisOptions } from './SpeechSynthesis'
 import { Strike, type StrikeOptions } from './Strike'
 import { SubAndSuperScript, type SubAndSuperScriptOptions } from './Subscript'
 import { Table, type TableOptions } from './Table'
+import { TableOfContents } from './TableOfContents'
 import { TaskList, type TaskListOptions } from './TaskList'
 import { Text } from '@tiptap/extension-text'
 import { TextAlign, type TextAlignOptions } from './TextAlign'
@@ -417,6 +418,13 @@ export interface BaseKitOptions {
    * @default true
    */
   table: Partial<TableOptions> | false
+
+  /**
+   * TableOfContents options or false, indicating whether to enable the table of contents
+   *
+   * @default true
+   */
+  tableOfContents: false
 
   /**
    * TaskList options or false, indicating whether to enable task lists
@@ -793,6 +801,10 @@ export const BaseKit = Extension.create<BaseKitOptions>({
 
     if (this.options.table !== false) {
       extensions.push(Table.configure(this.options.table))
+    }
+
+    if (this.options.tableOfContents !== false) {
+      extensions.push(TableOfContents.configure(this.options.tableOfContents))
     }
 
     if (this.options.taskList !== false) {

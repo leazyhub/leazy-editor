@@ -112,6 +112,17 @@ export function renderGroups(editor: Editor) {
           },
         },
         {
+          name: 'tableOfContents',
+          label: 'editor.tableOfContents.tooltip',
+          iconName: 'i-heroicons-bookmark-square',
+          description: 'Insert a table of contents',
+          aliases: ['toc', 'tableofcontents', 'sommaire'],
+          shouldBeHidden: editor => editor.isActive('columns'),
+          action: ({ editor, range }) => {
+            editor.chain().focus().deleteRange(range).setTableOfContents().run()
+          },
+        },
+        {
           name: 'table',
           label: 'editor.table.tooltip',
           iconName: 'i-lucide-table',

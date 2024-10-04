@@ -21,7 +21,6 @@ import type { FormatPainterOptions } from '../extensions/FormatPainter'
 import type { FontSizeOptions } from '../extensions/FontSize'
 import type { FullscreenOptions } from '../extensions/Fullscreen'
 import type { HeadingOptions } from '../extensions/Heading'
-import type { HighlightOptions } from '../extensions/Highlight'
 import type { HistoryOptions } from '../extensions/History'
 import type { HorizontalRuleOptions } from '../extensions/HorizontalRule'
 import type { IframeOptions } from '../extensions/Iframe'
@@ -240,13 +239,6 @@ export interface BaseKitOptions {
    * @default true
    */
   heading: Partial<HeadingOptions> | false
-
-  /**
-   * Highlight options or false, indicating whether to enable highlights
-   *
-   * @default true
-   */
-  highlight: Partial<HighlightOptions> | false
 
   /**
    * History options or false, indicating whether to enable history

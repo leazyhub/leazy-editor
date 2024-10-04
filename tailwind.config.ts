@@ -2,9 +2,13 @@ import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
   content: [
-    './extensions/**/*.{vue,js,ts,mjs}',
-    './components/**/*.{vue,js,ts,mjs}',
-    './features/**/*.{vue,js,ts,mjs}'
+    './app/extensions/**/*.{vue,js,ts,mjs}',
+    './app/components/**/*.{vue,js,ts,mjs}',
+    './app/layouts/**/*.{vue,js,ts,mjs}',
+    './app/pages/**/*.{vue,js,ts,mjs}',
+    './app/features/**/*.{vue,js,ts,mjs}',
+    './app/plugins/**/*.{js,ts,mjs}',
+    './app/nuxt.config.{js,ts,mjs}'
   ],
   theme: {
     extend: {

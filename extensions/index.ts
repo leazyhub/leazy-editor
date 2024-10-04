@@ -27,6 +27,7 @@ import { Fullscreen, type FullscreenOptions } from './Fullscreen'
 import { Gapcursor } from '@tiptap/extension-gapcursor'
 import { HardBreak, type HardBreakOptions } from '@tiptap/extension-hard-break'
 import { Heading, type HeadingOptions } from './Heading'
+import { Highlight, type HighlightOptions } from './Highlight'
 import { History, type HistoryOptions } from './History'
 import { HorizontalRule, type HorizontalRuleOptions } from './HorizontalRule'
 import Iframe, { type IframeOptions } from './Iframe/Iframe'
@@ -227,6 +228,13 @@ export interface BaseKitOptions {
    * @default true
    */
   heading: Partial<HeadingOptions> | false
+
+  /**
+   * Highlight options or false, indicating whether to enable highlights
+   *
+   * @default true
+   */
+  highlight: Partial<HighlightOptions> | false
 
   /**
    * History options or false, indicating whether to enable history
@@ -635,6 +643,10 @@ export const BaseKit = Extension.create<BaseKitOptions>({
         spacer: true,
         ...this.options.heading
       }))
+    }
+
+    if (this.options.highlight !== false) {
+      extensions.push(Highlight.configure(this.options.highlight))
     }
 
     if (this.options.history !== false) {

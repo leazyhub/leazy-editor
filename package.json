@@ -1,7 +1,7 @@
 {
-  "name": "@leazyhub/leazy-editor",
+  "name": "@leazyhub/editor",
   "type": "module",
-  "version": "0.0.9",
+  "version": "0.0.6",
   "main": "./nuxt.config.ts",
   "scripts": {
     "dev": "nuxi dev .playground",

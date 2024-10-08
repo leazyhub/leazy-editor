@@ -147,7 +147,6 @@
   /* Block Quote */
   .blockquote {
     border-left: 4px solid #404040;
-    color: #000000;
     padding: 0.5rem 1rem;
     background-opacity: 0.8;
     border-radius: 0.5rem;
@@ -156,7 +155,6 @@
 
     @media (prefers-color-scheme: dark) {
       border-left-color: #d4d4d4;
-      color: #ffffff;
     }
   }
 

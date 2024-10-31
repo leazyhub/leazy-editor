@@ -34,8 +34,9 @@ interface Props {
 }
 
 interface Emits {
-  (event: 'enter'): void
+  (event: 'enter' | 'blur' | 'destroy'): void
   (event: 'change', value: LeazyEditorOnChange): void
+  (event: 'selectionUpdate', value: Editor): void
   (event: 'update:modelValue', value: Props['modelValue']): void
 }
 
@@ -92,6 +93,9 @@ const editor = useEditor({
     emit('update:modelValue', output)
     emit('change', { editor, output })
   },
+  onBlur: () => emit('blur'),
+  onDestroy: () => emit('destroy'),
+  onSelectionUpdate: ({ editor }) => emit('selectionUpdate', editor),
   extensions: unref(sortExtensions),
   autofocus: false,
   editable: !props.disabled,

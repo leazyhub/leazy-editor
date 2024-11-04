@@ -97,9 +97,7 @@ onMounted(() => {
   const ydoc = new Y.Doc()
 
   // Connect to the sync provider ws server
-  const wsProto = window.location.protocol === 'https:' ? 'wss' : 'ws'
-  const wsUrl = `${wsProto}://${window.location.host}/api/yjs`
-  const provider = new WebsocketProvider(wsUrl, 'leazy_lesson', ydoc)
+  const provider = new WebsocketProvider(useRuntimeConfig().public.WEBSOCKET_URL, 'leazy_lesson', ydoc)
 
   const statusHandler = (event: { status: string }) => {
     console.log('status', event.status)

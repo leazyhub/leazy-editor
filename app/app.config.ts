@@ -1,6 +1,6 @@
 export default defineAppConfig({
   leazyEditor: {
-    name: 'Hello from Nuxt layer'
+    name: 'Hello from Leazy Editor layer'
   },
   ui: {
     variables: {

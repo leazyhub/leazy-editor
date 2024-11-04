@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
 })
 
+const store = useTiptapStore()
 const { t } = useI18n()
 const tippyOptions = reactive<Record<string, unknown>>({
   maxWidth: 'auto',
@@ -65,10 +66,10 @@ const items = computed(() => {
 })
 </script>
 <template>
-  <BubbleMenu v-show="items.length > 0" :editor="editor" :tippy-options="tippyOptions" class="flex items-center flex-nowrap whitespace-nowrap gap-0.5 px-0.5 w-max overflow-hidden focus:outline-none relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
+  <BubbleMenu v-show="items.length > 0 && !store?.state.AIMenu" :editor="editor" :tippy-options="tippyOptions" class="flex items-center flex-nowrap whitespace-nowrap gap-0.5 p-1 w-max overflow-hidden focus:outline-none relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
     <template v-for="(item, key) in items" :key="key">
       <!-- Divider -->
-      <UDivider v-if="item.type === 'divider'" orientation="vertical" class="mx-1.5 h-[16px]" />
+      <UDivider v-if="item.type === 'divider'" orientation="vertical" class="mx-1.5 h-[20px]" :ui="{ border: { base: 'dark:border-gray-500' } }" />
       <!-- Buttons -->
       <component
         :is="item.component"

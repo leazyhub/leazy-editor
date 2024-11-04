@@ -1,71 +1,73 @@
-import { Extension, type AnyExtension } from '@tiptap/core'
-import { defaultBubbleList, generateBubbleTypeMenu, type BubbleOptions } from '../features/bubble'
-import { NODE_TYPE_MENU } from '../constants'
+import {type AnyExtension, Extension} from '@tiptap/core'
+import {type BubbleOptions, defaultBubbleList, generateBubbleTypeMenu} from '../features/bubble'
+import {NODE_TYPE_MENU} from '../constants'
 import OpenAI from 'openai'
-import { createLowlight, common } from 'lowlight'
+import {common, createLowlight} from 'lowlight'
 
-import { AI } from './Ai'
-import { Alert, AlertOptions } from './Alert'
-import { Blockquote, type BlockquoteOptions } from './Blockquote'
-import { Bold, type BoldOptions } from './Bold'
-import { BulletList, type BulletListOptions } from './BulletList'
-import { CharacterCount, type CharacterCountOptions } from '@tiptap/extension-character-count'
-import { Clear, type ClearOptions } from './Clear'
-import { Code, type CodeOptions } from './Code'
-import { CodeBlock, type CodeBlockOptions } from './CodeBlock'
-import { Color, type ColorOptions } from './Color'
-import { Columns, type ColumnsOptions } from './MultiColumn'
-import { Details, type DetailsOptions } from './Details'
-import { Document } from './Document'
-import { Dropcursor, type DropcursorOptions } from '@tiptap/extension-dropcursor'
-import Emoji, { gitHubEmojis, type EmojiOptions } from '@tiptap-pro/extension-emoji'
+import {AI, type AIOptions} from './Ai'
+import {Alert, type AlertOptions} from './Alert'
+import {Blockquote, type BlockquoteOptions} from './Blockquote'
+import {Bold, type BoldOptions} from './Bold'
+import {BulletList, type BulletListOptions} from './BulletList'
+import {CharacterCount, type CharacterCountOptions} from '@tiptap/extension-character-count'
+import {Clear, type ClearOptions} from './Clear'
+import {Code, type CodeOptions} from './Code'
+import {CodeBlock, type CodeBlockOptions} from './CodeBlock'
+import {Collaboration, type CollaborationOptions} from './Collaboration'
+import {CollaborationCursor, type CollaborationCursorOptions} from './CollaborationCursor'
+import {Color, type ColorOptions} from './Color'
+import {Columns, type ColumnsOptions} from './MultiColumn'
+import {Details, type DetailsOptions} from './Details'
+import {Document} from './Document'
+import {Dropcursor, type DropcursorOptions} from '@tiptap/extension-dropcursor'
+import Emoji, {type EmojiOptions, gitHubEmojis} from '@tiptap-pro/extension-emoji'
 import EmojiSuggestion from './Emoji'
-import Focus, { type FocusOptions } from '@tiptap/extension-focus'
-import { FormatPainter, type FormatPainterOptions } from './FormatPainter'
-import { FontSize, type FontSizeOptions } from './FontSize'
-import { Fullscreen, type FullscreenOptions } from './Fullscreen'
-import { Gapcursor } from '@tiptap/extension-gapcursor'
-import { HardBreak, type HardBreakOptions } from '@tiptap/extension-hard-break'
-import { Heading, type HeadingOptions } from './Heading'
-import { Highlight, type HighlightOptions } from './Highlight'
-import { History, type HistoryOptions } from './History'
-import { HorizontalRule, type HorizontalRuleOptions } from './HorizontalRule'
-import Iframe, { type IframeOptions } from './Iframe/Iframe'
-import { Image, type ImageOptions } from './Image'
-import { ImageUpload } from './ImageUpload'
-import { ImportWord, type ImportWordOptions } from './ImportWord'
-import { Indent, type IndentOptions } from './Indent'
-import { Italic, type ItalicOptions } from './Italic'
-import { LineHeight, type LineHeightOptions } from './LineHeight'
-import { Link, type LinkOptions } from './Link'
-import { ListItem, type ListItemOptions } from '@tiptap/extension-list-item'
-import { Math, type MathOptions } from './Math'
-import { MoreMark, type MoreMarkOptions } from './MoreMark'
-import { OrderedList, type OrderedListOptions } from './OrderedList'
-import { Paper } from './Paper'
-import { Paragraph, type ParagraphOptions } from '@tiptap/extension-paragraph'
-import { Placeholder, type PlaceholderOptions } from '@tiptap/extension-placeholder'
-import { Print } from './Print'
-import { SearchAndReplace } from './SearchAndReplace'
-import { Selection } from './Selection'
-import { SlashCommand } from './SlashCommand'
-import { SpeechRecognition, type SpeechRecognitionOptions } from './SpeechRecognition'
-import { SpeechSynthesis, type SpeechSynthesisOptions } from './SpeechSynthesis'
-import { Strike, type StrikeOptions } from './Strike'
-import { SubAndSuperScript, type SubAndSuperScriptOptions } from './Subscript'
-import { Table, type TableOptions } from './Table'
-import { TableOfContents } from './TableOfContents'
-import { TaskList, type TaskListOptions } from './TaskList'
-import { Text } from '@tiptap/extension-text'
-import { TextAlign, type TextAlignOptions } from './TextAlign'
-import { TextBubble, type TextBubbleOptions } from './TextBubble'
-import { TextStyle, type TextStyleOptions } from '@tiptap/extension-text-style'
-import { TrailingNode, type TrailingNodeOptions } from './TrailingNode'
-import { Underline, type UnderlineOptions } from './UnderLine'
-import { UniqueId, type UniqueIdOptions } from './UniqueId'
-import { Video, type VideoOptions } from './Video'
-import { VideoUpload } from './VideoUpload'
-import { Youtube, type YoutubeOptions } from '@tiptap/extension-youtube'
+import Focus, {type FocusOptions} from '@tiptap/extension-focus'
+import {FormatPainter, type FormatPainterOptions} from './FormatPainter'
+import {FontSize, type FontSizeOptions} from './FontSize'
+import {Fullscreen, type FullscreenOptions} from './Fullscreen'
+import {Gapcursor} from '@tiptap/extension-gapcursor'
+import {HardBreak, type HardBreakOptions} from '@tiptap/extension-hard-break'
+import {Heading, type HeadingOptions} from './Heading'
+import {Highlight, type HighlightOptions} from './Highlight'
+import {History, type HistoryOptions} from './History'
+import {HorizontalRule, type HorizontalRuleOptions} from './HorizontalRule'
+import Iframe, {type IframeOptions} from './Iframe/Iframe'
+import {Image, type ImageOptions} from './Image'
+import {ImageUpload} from './ImageUpload'
+import {ImportWord, type ImportWordOptions} from './ImportWord'
+import {Indent, type IndentOptions} from './Indent'
+import {Italic, type ItalicOptions} from './Italic'
+import {LineHeight, type LineHeightOptions} from './LineHeight'
+import {Link, type LinkOptions} from './Link'
+import {ListItem, type ListItemOptions} from '@tiptap/extension-list-item'
+import {Math, type MathOptions} from './Math'
+import {MoreMark, type MoreMarkOptions} from './MoreMark'
+import {OrderedList, type OrderedListOptions} from './OrderedList'
+import {Paper} from './Paper'
+import {Paragraph, type ParagraphOptions} from '@tiptap/extension-paragraph'
+import {Placeholder, type PlaceholderOptions} from '@tiptap/extension-placeholder'
+import {Print} from './Print'
+import {SearchAndReplace} from './SearchAndReplace'
+import {Selection} from './Selection'
+import {SlashCommand} from './SlashCommand'
+import {SpeechRecognition, type SpeechRecognitionOptions} from './SpeechRecognition'
+import {SpeechSynthesis, type SpeechSynthesisOptions} from './SpeechSynthesis'
+import {Strike, type StrikeOptions} from './Strike'
+import {SubAndSuperScript, type SubAndSuperScriptOptions} from './Subscript'
+import {Table, type TableOptions} from './Table'
+import {TableOfContents} from './TableOfContents'
+import {TaskList, type TaskListOptions} from './TaskList'
+import {Text} from '@tiptap/extension-text'
+import {TextAlign, type TextAlignOptions} from './TextAlign'
+import {TextBubble, type TextBubbleOptions} from './TextBubble'
+import {TextStyle, type TextStyleOptions} from '@tiptap/extension-text-style'
+import {TrailingNode, type TrailingNodeOptions} from './TrailingNode'
+import {Underline, type UnderlineOptions} from './UnderLine'
+import {UniqueId, type UniqueIdOptions} from './UniqueId'
+import {Video, type VideoOptions} from './Video'
+import {VideoUpload} from './VideoUpload'
+import {Youtube, type YoutubeOptions} from '@tiptap/extension-youtube'
 
 /**
  * Represents the interface for options in the base toolkit.
@@ -76,7 +78,7 @@ export interface BaseKitOptions {
    *
    * @default true
    */
-  ai: false
+  ai: Partial<AIOptions> | false
 
   /**
    * Alert options or false, indicating whether to enable alerts
@@ -138,6 +140,20 @@ export interface BaseKitOptions {
    * @default true
    */
   codeBlock: Partial<CodeBlockOptions> | false
+
+  /**
+   * Collaboration options or false, indicating whether to enable collaboration
+   *
+   * @default true
+   */
+  collaboration: Partial<CollaborationOptions> | false
+
+  /**
+   * CollaborationCursor options or false, indicating whether to enable collaboration cursors
+   *
+   * @default true
+   */
+  collaborationCursor: Partial<CollaborationCursorOptions> | false
 
   /**
    * Color options or false, indicating whether to enable color
@@ -528,10 +544,141 @@ export const BaseKit = Extension.create<BaseKitOptions>({
   addExtensions() {
     const { t } = useI18n()
     const extensions: AnyExtension[] = []
+    const AIShortcuts = [
+      {
+        label: 'Générer depuis la sélection',
+        children: [
+          {
+            label: 'Améliorer l\'écriture',
+            prompt:
+              'Réécrivez ce contenu sans fautes d\'orthographe, avec une grammaire correcte et un langage plus descriptif, en utilisant les meilleures pratiques d\'écriture sans perdre le sens d\'origine.',
+          },
+          {
+            label: 'Raccourcir',
+            prompt:
+              'Supprimer tout ce qui est répétitif, redondant ou non essentiel dans ce contenu sans en changer le sens ni perdre d\'informations clés.',
+          },
+          {
+            label: 'Faire plus long',
+            prompt:
+              'Développez ce contenu avec un langage descriptif et des explications plus détaillées, afin de faciliter la compréhension du texte et d\'augmenter la longueur du contenu.',
+          },
+          {
+            label: 'Résumez',
+            prompt: 'Fournir les points et les concepts clés de ce contenu dans un résumé succinct.',
+          },
+          {
+            label: 'Continuer',
+            prompt:
+              'Développez et poursuivez ce contenu en conservant le ton et le style d\'origine. Veillez à ce que la suite découle naturellement de l\'écriture existante tout en ajoutant de nouvelles idées, des détails supplémentaires ou en poursuivant la narration ou l\'argumentation de manière cohérente.',
+          },
+        ],
+      },
+
+      {
+        label: 'Changer de ton',
+        children: [
+          {
+            label: 'Professionnel',
+            prompt:
+              'Réécrivez ce contenu en utilisant un langage soigné, formel et respectueux pour transmettre votre expertise et vos compétences professionnelles.',
+          },
+          {
+            label: 'Décontracté',
+            prompt:
+              'Réécrivez ce contenu dans un langage décontracté et informel, afin d\'évoquer une conversation décontractée avec une personne réelle.',
+          },
+          {
+            label: 'Direct',
+            prompt: 'Réécrivez ce contenu dans un langage direct en n\'utilisant que les informations essentielles.',
+          },
+          {
+            label: 'Confiant',
+            prompt: 'Réécrivez ce contenu en utilisant un langage convaincant et optimiste pour transmettre la confiance dans l\'écriture.',
+          },
+          {
+            label: 'Amical',
+            prompt: 'Réécrivez ce contenu en utilisant un langage amical et réconfortant, afin de faire preuve de compréhension et d\'empathie.',
+          },
+        ],
+      },
+      {
+        label: 'Changer le style',
+        children: [
+          {
+            label: 'Business',
+            prompt: 'Réécrivez ce contenu en utilisant un langage formel, comme s\'il s\'agissait d\'un professionnel des affaires.',
+          },
+          {
+            label: 'Juridique',
+            prompt: 'Réécrivez ce contenu en tant que professionnel du droit en utilisant une terminologie juridique valide.',
+          },
+          {
+            label: 'Journalisme',
+            prompt:
+              'Réécrire ce contenu en tant que journaliste en utilisant un langage attrayant pour transmettre l\'importance de l\'information.',
+          },
+          {
+            label: 'Médical',
+            prompt: 'Réécrivez ce contenu en tant que professionnel de la santé en utilisant une terminologie médicale valide.',
+          },
+          {
+            label: 'Poétique',
+            prompt: 'Réécrivez ce contenu sous forme de poème en utilisant des techniques poétiques sans perdre le sens original.',
+          },
+        ],
+      },
+      {
+        label: 'Traduire',
+        children: [
+          {
+            label: 'Anglais',
+            prompt: 'Traduit ce contenu en anglais.',
+          },
+          {
+            label: 'Chinois simplifié',
+            prompt: 'Traduit ce contenu en chinois simplifié.',
+          },
+          {
+            label: 'Espagnol',
+            prompt: 'Traduit ce contenu en espagnol simplifié.',
+          },
+          {
+            label: 'Allemand',
+            prompt: 'Traduit ce contenu en allemand simplifié.',
+          },
+          {
+            label: 'Français',
+            prompt: 'Traduit ce contenu en français simplifié.',
+          },
+          {
+            label: 'Portugais',
+            prompt: 'Traduit ce contenu en portugais simplifié.',
+          },
+          {
+            label: 'Coréen',
+            prompt: 'Traduit ce contenu en coréen simplifié.',
+          },
+          {
+            label: 'Japonais',
+            prompt: 'Traduit ce contenu en japonais simplifié.',
+          },
+          {
+            label: 'Hindi',
+            prompt: 'Traduit ce contenu en hindi simplifié.',
+          },
+          {
+            label: 'Arabe',
+            prompt: 'Traduit ce contenu en arabe simplifié.',
+          }
+        ]
+      }
+    ]
 
     if (this.options.ai !== false) {
       extensions.push(AI.configure({
-        completions: text => AICompletions(text),
+        completions: AICompletions,
+        shortcuts: AIShortcuts
       }))
     }
 
@@ -568,6 +715,14 @@ export const BaseKit = Extension.create<BaseKitOptions>({
         lowlight: createLowlight(common),
         ...this.options.codeBlock
       }))
+    }
+
+    if (this.options.collaboration !== false) {
+      extensions.push(Collaboration.configure(this.options.collaboration))
+    }
+
+    if (this.options.collaborationCursor !== false) {
+      extensions.push(CollaborationCursor.configure(this.options.collaborationCursor))
     }
 
     if (this.options.color !== false) {
@@ -874,35 +1029,42 @@ export const BaseKit = Extension.create<BaseKitOptions>({
   }
 })
 
-async function AICompletions(text?: string) {
-  console.log(text)
+async function AICompletions(prompt: string, context: string) {
   // API Key
-  const apiKey = useRuntimeConfig().public.openaiApiKey
+  const apiKey = useRuntimeConfig().public.OPENAI_API_KEY
   if (!apiKey) {
-    console.error('Please set your OpenAI API key in .env file')
-    return
+    throw new Error('Please set your OpenAI API key in .env file')
   }
   const openai = new OpenAI({
-    apiKey: apiKey,
+    apiKey,
     dangerouslyAllowBrowser: true
   })
-  const stream = await openai.chat.completions.create({
-    messages: [
-      {
-        role: 'system',
-        content: `Vous jouerez le rôle d'un assistant d'écriture, m'aidant à créer, poursuivre, optimiser, etc.`,
-      },
-      {
-        role: 'user',
-        content: `${text}`,
-      },
-    ],
-    temperature: 0.5,
-    max_tokens: 256,
-    top_p: 0.9,
-    model: 'gpt-3.5-turbo',
-    stream: true,
-  })
+  const systemMsg = [
+    'Answer the question based on the context below.',
+    'The response should be in HTML format.',
+    'The response should preserve any HTML formatting, links, and styles in the context.'
+  ]
+  const systemPrompt = systemMsg.map(item => ({ role: 'system', content: item }))
+  const userPrompt = [
+    {
+      role: 'user',
+      content: `Question: ${prompt} Context:${context}`
+    }
+  ]
+  const finalMessage: any = [...systemPrompt, ...userPrompt]
 
-  return stream
+  try {
+    return await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages: finalMessage,
+      temperature: 0.7,
+      stream: true,
+      max_tokens: 2048
+    })
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error in AI Completions:', error.message)
+    }
+    throw error
+  }
 }

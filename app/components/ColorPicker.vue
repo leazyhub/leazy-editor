@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@vueuse/core'
-import { COLORS_LIST, DEFAULT_COLOR } from '../constants'
+import { COLORS_LIST, DEFAULT_COLOR } from '@/constants'
 
 interface Props {
   modelValue?: string
   highlight?: boolean
 }
 
-const { t } = useI18n()
 interface Emits {
   (event: 'update:modelValue', color: string | undefined): void
   (event: 'change', color: string | undefined): void
@@ -66,7 +65,7 @@ const triggerHtml5Color = () => {
     <template #panel>
       <div class="flex flex-col p-2 w-full h-full">
         <!-- Hightlight -->
-        <div v-if="highlight" @click="setColor(undefined)" class="flex items-center p-1 rd-1 cursor-pointer hover:bg-accent">
+        <div v-if="highlight" @click="setColor(undefined)" class="flex items-center p-1 rd-1 cursor-pointer hover:bg-gray-100 hover:dark:bg-gray-700 rounded-md">
           <span class="w-6 h-6 p-0.5 inline-block rounded-sm border cursor-pointer hover:border-border hover:shadow-sm relative after:border-b-2 after:border-b-red-500 after:top-[10px] after:h-0 after:left-0 after:w-6 after:absolute after:block after:rotate-[45deg]">
             <span style="background-color: transparent">
               <svg viewBox="0 0 18 18" style="fill: rgba(0, 0, 0, 0.4); display: none">
@@ -74,7 +73,7 @@ const triggerHtml5Color = () => {
               </svg>
             </span>
           </span>
-          <span class="text-sm ml-1">{{ t('editor.nofill') }}</span>
+          <span class="text-sm ml-1">{{ $t('editor.nofill') }}</span>
         </div>
 
         <!-- Color -->
@@ -86,7 +85,7 @@ const triggerHtml5Color = () => {
               </svg>
             </span>
           </span>
-          <span class="text-sm ml-1">{{ t('editor.default') }}</span>
+          <span class="text-sm ml-1">{{ $t('editor.default') }}</span>
         </div>
 
         <span class="flex p-0 w-full h-auto relative last:pb-2" v-for="(items, index) in chunkedColors" :key="index">
@@ -108,7 +107,7 @@ const triggerHtml5Color = () => {
         </span>
 
         <div>
-          <div class="text-sm my-1">{{ t('editor.recent') }}</div>
+          <div class="text-sm my-1">{{ $t('editor.recent') }}</div>
           <span class="flex p-0 w-full h-auto relative last:pb-2">
             <span
               class="w-6 h-6 p-0.5 inline-block rounded-sm border border-transparent flex-[0 0 auto] cursor-pointer hover:border-border hover:shadow-sm"
@@ -126,8 +125,8 @@ const triggerHtml5Color = () => {
         </div>
 
         <div class="relative">
-          <div class="text-sm hover:cursor-pointer hover:bg-accent py-1.5 px-1.5" @click="triggerHtml5Color">
-            {{ t('editor.color.more') }}...
+          <div class="text-sm hover:cursor-pointer hover:bg-gray-100 hover:dark:bg-gray-700 rounded-md py-1.5 px-1.5" @click="triggerHtml5Color">
+            {{ $t('editor.color.more') }}...
           </div>
           <input
             type="color"

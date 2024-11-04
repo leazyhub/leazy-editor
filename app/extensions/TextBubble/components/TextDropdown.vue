@@ -109,12 +109,8 @@ const activeItem = computed(() => {
 </script>
 
 <template>
-  <UPopover :ui="{ trigger: 'h-full', arrow: { base: 'w-3.5 h-3.5' } }" :popper="{ placement: 'bottom-start' }">
-    <UButton variant="ghost" square color="gray" :icon="activeItem?.iconName" :ui="{ icon: { size: { '2xs': 'h-3.5 w-3.5' } } }">
-      <template #trailing>
-        <UIcon name="i-heroicons-chevron-down-20-solid" class="w-3.5 h-3.5" />
-      </template>
-    </UButton>
+  <UPopover :popper="{ placement: 'bottom-start' }">
+    <UButton variant="ghost" square color="gray" :icon="activeItem?.iconName" size="xs" trailing-icon="i-heroicons-chevron-down-20-solid" />
 
     <template #panel>
       <div class="flex flex-col">
@@ -128,7 +124,7 @@ const activeItem = computed(() => {
             :label="item.label"
         >
           <template #leading>
-            <div class="flex items-center justify-center p-px font-medium border rounded-sm border-stone-200">
+            <div class="flex items-center justify-center p-px font-medium border rounded-sm border-gray-200 dark:border-gray-700">
               <UIcon :name="item.iconName" dynamic class="w-4 h-4" />
             </div>
           </template>

@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import type { AnyExtension, Editor } from '@tiptap/core'
-import { useEditor, EditorContent } from '@tiptap/vue-3'
-import { differenceBy, getCssUnitWithDefault, isEqual } from '@/utils'
+import * as Y from 'yjs'
+import { WebsocketProvider } from 'y-websocket'
+import type { AnyExtension } from '@tiptap/core'
+import { Editor, EditorContent } from '@tiptap/vue-3'
+import { differenceBy, getCssUnitWithDefault, getRandomUser } from '@/utils'
 import BubbleMenu from '@/features/bubble/BubbleMenu.vue'
 import LinkBubbleMenu from '@/features/bubble/LinkBubbleMenu.vue'
+import AIMenu from '@/features/bubble/AIMenu.vue'
 import TableBubbleMenu from '@/extensions/Table/menus/TableBubbleMenu.vue'
 import ContentMenu from '@/features/bubble/ContentMenu.vue'
 import ColumnsMenu from '@/extensions/MultiColumn/menus/ColumnsMenu.vue'
 import AlertMenu from '@/extensions/Alert/menus/AlertMenus.vue'
 import type { LeazyEditorOnChange } from '@/types'
-
 import { BaseKit } from '@/extensions'
 
 // type HandleKeyDown = NonNullable<EditorOptions['editorProps']['handleKeyDown']>
@@ -55,52 +57,20 @@ const props = withDefaults(defineProps<Props>(), {
   maxWidth: undefined,
   minHeight: undefined,
   maxHeight: undefined,
-  extensions: () => [BaseKit],
+  extensions: () => [],
   editorClass: undefined,
   contentClass: undefined,
 })
 
+const editor = ref<Editor | undefined>()
+const status = ref('connecting')
 const emit = defineEmits<Emits>()
 
 const attrs = useAttrs()
 
 const { state, isFullscreen } = useProvideTiptapStore()
 
-const sortExtensions = computed<AnyExtension[]>(() => {
-  const diff = differenceBy(props.extensions, state.extensions, 'name')
-  const exts = state.extensions.map((k, i) => {
-    const find = props.extensions.find(ext => ext.name === k.name)
-    if (!find) return k
-    return k.configure(find.options)
-  })
-  return [...exts, ...diff].map((k, i) => k.configure({ sort: i }))
-})
-
-const editor = useEditor({
-  content: props.modelValue,
-  editorProps: {
-    handleKeyDown: (view, event) => {
-      if (event.key === 'Enter' && attrs.enter && !event.shiftKey) {
-        emit('enter')
-        return true
-      }
-
-      return false
-    },
-  },
-  onUpdate: ({ editor }) => {
-    const output = getOutput(editor, props.output as any)
-    emit('update:modelValue', output)
-    emit('change', { editor, output })
-  },
-  onBlur: () => emit('blur'),
-  onDestroy: () => emit('destroy'),
-  onSelectionUpdate: ({ editor }) => emit('selectionUpdate', editor),
-  extensions: unref(sortExtensions),
-  autofocus: false,
-  editable: !props.disabled,
-  injectCSS: true,
-})
+const currentUser = ref(getRandomUser())
 
 const contentDynamicStyles = computed(() => {
   const maxWidth = getCssUnitWithDefault(props.maxWidth)
@@ -122,33 +92,105 @@ const contentDynamicStyles = computed(() => {
   }
 })
 
-function getOutput(editor: Editor, output: Props['output']) {
-  if (props.removeDefaultWrapper) {
-    if (output === 'html') return editor.isEmpty ? '' : editor.getHTML()
-    if (output === 'json') return editor.isEmpty ? {} : editor.getJSON()
-    if (output === 'text') return editor.isEmpty ? '' : editor.getText()
+onMounted(() => {
+  // Create a new Yjs document
+  const ydoc = new Y.Doc()
+
+  // Connect to the sync provider ws server
+  const wsProto = window.location.protocol === 'https:' ? 'wss' : 'ws'
+  const wsUrl = `${wsProto}://${window.location.host}/api/yjs`
+  const provider = new WebsocketProvider(wsUrl, 'leazy_lesson', ydoc)
+
+  const statusHandler = (event: { status: string }) => {
+    console.log('status', event.status)
+    status.value = event.status;
+  };
+  provider.on("status", statusHandler);
+
+  const sortExtensions = computed<AnyExtension[]>(() => {
+    const baseExtensions = [
+      ...props.extensions,
+      BaseKit.configure({
+        collaboration: {
+          document: ydoc
+        },
+        collaborationCursor: {
+          provider
+        },
+        history: false
+      })
+    ]
+    const diff = differenceBy(baseExtensions, state.extensions, 'name')
+    const exts = state.extensions.map((k, i) => {
+      const find = baseExtensions.find(ext => ext.name === k.name)
+      if (!find) return k
+      return k.configure(find.options)
+    })
+    return [...exts, ...diff].map((k, i) => k.configure({ sort: i }))
+  })
+
+  editor.value = new Editor({
+    content: props.modelValue,
+    editorProps: {
+      handleKeyDown: (view, event) => {
+        if (event.key === 'Enter' && attrs.enter && !event.shiftKey) {
+          emit('enter')
+          return true
+        }
+
+        return false
+      },
+    },
+    onCreate: () => {
+      provider.on("synced", () => {
+        console.log('synced')
+      });
+    },
+    onUpdate: ({ editor }) => {
+      const output = getOutput(editor, props.output as any)
+      emit('update:modelValue', output)
+      emit('change', { editor, output })
+    },
+    onBlur: () => emit('blur'),
+    onDestroy: () => emit('destroy'),
+    onSelectionUpdate: ({ editor }) => emit('selectionUpdate', editor),
+    extensions: unref(sortExtensions),
+    autofocus: false,
+    editable: !props.disabled,
+    injectCSS: true,
+  })
+
+  function getOutput(editor: Editor, output: Props['output']) {
+    if (props.removeDefaultWrapper) {
+      if (output === 'html') return editor.isEmpty ? '' : editor.getHTML()
+      if (output === 'json') return editor.isEmpty ? {} : editor.getJSON()
+      if (output === 'text') return editor.isEmpty ? '' : editor.getText()
+      return ''
+    }
+
+    if (output === 'html') return editor.getHTML()
+    if (output === 'json') return editor.getJSON()
+    if (output === 'text') return editor.getText()
     return ''
   }
 
-  if (output === 'html') return editor.getHTML()
-  if (output === 'json') return editor.getJSON()
-  if (output === 'text') return editor.getText()
-  return ''
-}
+  watch(currentUser, () => {
+    if (editor.value && currentUser.value) {
+      localStorage.setItem("currentUser", JSON.stringify(currentUser.value));
+      editor.value.chain().focus().updateUser(currentUser.value).run()
+    }
+  })
 
-const onValueChange = (val: NonNullable<Props['modelValue']>) => {
-  if (!editor) return
+  editor.value?.chain().focus().updateUser(currentUser.value).run()
 
-  const output = getOutput(editor, props.output as any)
-
-  if (isEqual(output, val)) return
-
-  const { from, to } = editor.state.selection
-  editor.commands.setContent(val, false)
-  editor.commands.setTextSelection({ from, to })
-}
-
-const onDisabledChange = (val: boolean) => editor?.setEditable(!val)
+  onUnmounted(() => {
+    provider.off('status', statusHandler)
+    provider.disconnect()
+    provider.destroy()
+    ydoc.destroy()
+    editor.value?.destroy()
+  })
+})
 
 defineExpose({ editor })
 </script>
@@ -159,6 +201,7 @@ defineExpose({ editor })
     <LinkBubbleMenu :editor="editor" />
     <ColumnsMenu :editor="editor" />
     <AlertMenu :editor="editor" />
+    <AIMenu :editor="editor" />
     <TableBubbleMenu :editor="editor" />
     <BubbleMenu v-if="!hideBubble" :editor="editor" :disabled="disableBubble" />
     <div class="flex flex-col w-full flex-1" :class="[isFullscreen && 'fixed bg-background inset-0 z-[200] w-full h-full m-0 rounded-none']">
@@ -169,5 +212,5 @@ defineExpose({ editor })
 </template>
 
 <style lang="scss">
-@import '../assets/css/index.scss';
+@use '../assets/css/index.scss';
 </style>

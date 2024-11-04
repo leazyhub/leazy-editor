@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { ButtonViewReturnComponentProps } from '../types'
+import type { ButtonViewReturnComponentProps } from '@/types'
 
 interface Props {
   icon?: any
@@ -11,7 +11,8 @@ interface Props {
   action?: ButtonViewReturnComponentProps['action'],
   isActive?: ButtonViewReturnComponentProps['isActive']
 }
-const props = withDefaults(defineProps<Props>(), {
+
+withDefaults(defineProps<Props>(), {
   icon: undefined,
   title: undefined,
   tooltip: undefined,

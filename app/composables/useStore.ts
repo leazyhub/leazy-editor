@@ -35,6 +35,9 @@ interface Instance {
 
   /** Highlight color */
   highlight?: string
+
+  /** AI Menu */
+  AIMenu: boolean
 }
 
 export const [useProvideTiptapStore, useTiptapStore] = createInjectionState(() => {
@@ -46,6 +49,7 @@ export const [useProvideTiptapStore, useTiptapStore] = createInjectionState(() =
     isFullscreen: false,
     color: undefined,
     highlight: undefined,
+    AIMenu: false
   })
 
   const isFullscreen = computed(() => state.isFullscreen)

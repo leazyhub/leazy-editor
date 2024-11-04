@@ -126,7 +126,7 @@ defineExpose({ onKeyDown })
         :key="commandIndex"
         :ref="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex ? 'activeItemRef' : ''"
         :variant="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex ? 'soft' : 'ghost'"
-        :color="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex ? 'primary' : 'gray'"
+        :color="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex ? 'primary' : 'white'"
         :active="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex"
         @click="createCommandClickHandler(groupIndex, commandIndex)"
       >

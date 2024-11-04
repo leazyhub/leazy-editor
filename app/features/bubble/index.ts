@@ -71,7 +71,7 @@ export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
 ]
 
 /**
- * 生成bubble menu
+ * bubble menu
  * @template T
  * @param {NodeTypeMenu} list
  * @param {BubbleMenuItem[]} defaultList

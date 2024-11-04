@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import { Editor } from '@tiptap/core'
-import type { ButtonViewReturn } from '../types'
-import { isFunction } from '../utils'
+import type { Editor } from '@tiptap/core'
+import type { ButtonViewReturn } from '@/types'
+import { isFunction } from '@/utils'
+
 interface Menu {
   button: ButtonViewReturn
   divider: boolean
   spacer: boolean
 }
+
 interface Props {
   editor: Editor
   disabled?: boolean
 }
+
 const { t } = useI18n()
 
 const props = withDefaults(defineProps<Props>(), {

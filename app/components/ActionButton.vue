@@ -13,7 +13,8 @@ interface Props {
   action?: ButtonViewReturnComponentProps['action']
   isActive?: ButtonViewReturnComponentProps['isActive']
 }
-const props = withDefaults(defineProps<Props>(), {
+
+withDefaults(defineProps<Props>(), {
   icon: undefined,
   title: undefined,
   tooltip: undefined,
@@ -29,7 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <UTooltip :text="tooltip" :popper="{ placement: 'bottom' }" :shortcuts="shortcuts">
-    <UButton square :variant="isActive?.() ? 'soft' : 'ghost'" :color="isActive?.() ? 'primary' : 'gray'" @click="action" :class="customClass" :disabled="disabled">
+    <UButton square :variant="isActive?.() ? 'soft' : 'ghost'" :color="isActive?.() ? 'primary' : 'gray'" :label="title" @click="action" :class="customClass" :disabled="disabled">
       <slot />
       <template #leading>
         <div v-if="loading">

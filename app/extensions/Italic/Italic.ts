@@ -1,4 +1,4 @@
-import { type Editor } from '@tiptap/core'
+import type { Editor } from '@tiptap/core'
 import TiptapItalic, { type ItalicOptions as TiptapItalicOptions} from '@tiptap/extension-italic'
 import type { GeneralOptions } from '../../types'
 import ActionButton from '../../components/ActionButton.vue'

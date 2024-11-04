@@ -48,5 +48,16 @@ export default defineNuxtConfig({
       typedOptionsAndMessages: 'default'
     }
   },
+  optimizeDeps: {
+    include: ['highlight.js']
+  },
+  vite: {
+    resolve: {
+      alias: {
+        'highlight.js': 'highlight.js',
+        'evaluatex': 'evaluatex'
+      }
+    }
+  },
   devtools: { enabled: true }
 })

@@ -60,5 +60,10 @@ export default defineNuxtConfig({
       }
     }
   },
+  build: {
+    transpile: [
+      'lodash-es
+    ]
+  },
   devtools: { enabled: true }
 })

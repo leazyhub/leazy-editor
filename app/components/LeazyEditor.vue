@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import * as Y from 'yjs'
-import {WebsocketProvider} from 'y-websocket'
+// import * as Y from 'yjs'
+// import {WebsocketProvider} from 'y-websocket'
 import type { AnyExtension, Editor } from '@tiptap/core'
 import {EditorContent, useEditor} from '@tiptap/vue-3'
-import {differenceBy, getCssUnitWithDefault, getRandomUser} from '@/utils'
+import {differenceBy, getCssUnitWithDefault, /* getRandomUser */} from '@/utils'
 import BubbleMenu from '@/features/bubble/BubbleMenu.vue'
 import LinkBubbleMenu from '@/features/bubble/LinkBubbleMenu.vue'
 import AIMenu from '@/features/bubble/AIMenu.vue'
@@ -60,34 +60,36 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<Emits>()
-const status = ref('connecting')
-const currentUser = ref(getRandomUser())
+// const status = ref('connecting')
+// const currentUser = ref(getRandomUser())
 const attrs = useAttrs()
 const { state, isFullscreen } = useProvideTiptapStore()
 
 // Configuration dynamique des extensions
-let provider
-const ydoc = new Y.Doc()
+// let provider
+// const ydoc = new Y.Doc()
 
-if (process.client) { provider = new WebsocketProvider(useRuntimeConfig().public.WEBSOCKET_URL, 'leazy_lesson', ydoc) }
+// if (process.client) { provider = new WebsocketProvider(useRuntimeConfig().public.WEBSOCKET_URL, 'leazy_lesson', ydoc) }
 
-const statusHandler = (event: { status: string }) => {
-  console.log('status', event.status)
-  status.value = event.status;
-};
-provider?.on("status", statusHandler);
+// const statusHandler = (event: { status: string }) => {
+//   console.log('status', event.status)
+//   status.value = event.status;
+// };
+// provider?.on("status", statusHandler);
 
 const sortExtensions = computed(() => {
   const baseExtensions = [
     ...props.extensions,
     BaseKit.configure({
-      collaboration: {
-        document: ydoc
-      },
-      collaborationCursor: {
-        provider
-      },
-      history: false
+      collaboration: false,
+      collaborationCursor: false,
+      // collaboration: {
+      //   document: ydoc
+      // },
+      // collaborationCursor: {
+      //   provider
+      // },
+      // history: false
     })
   ]
 
@@ -125,13 +127,13 @@ const editor = useEditor({
   injectCSS: true,
 })
 
-watch(currentUser, async () => {
-  await nextTick()
-  if (editor.value && currentUser.value) {
-    localStorage.setItem("currentUser", JSON.stringify(currentUser.value));
-    editor.value.chain().focus().updateUser(currentUser.value).run()
-  }
-}, { immediate: true, deep: true })
+// watch(currentUser, async () => {
+//   await nextTick()
+//   if (editor.value && currentUser.value) {
+//     localStorage.setItem("currentUser", JSON.stringify(currentUser.value));
+//     editor.value.chain().focus().updateUser(currentUser.value).run()
+//   }
+// }, { immediate: true, deep: true })
 
 const contentDynamicStyles = computed(() => {
   const maxWidth = getCssUnitWithDefault(props.maxWidth)
@@ -157,14 +159,14 @@ function getOutput(editor, output) {
   return ''
 }
 
-onUnmounted(() => {
-  if (provider) {
-    provider.off('status', statusHandler)
-    provider.disconnect()
-    provider.destroy()
-  }
-  ydoc?.destroy()
-})
+// onUnmounted(() => {
+//   if (provider) {
+//     provider.off('status', statusHandler)
+//     provider.disconnect()
+//     provider.destroy()
+//   }
+//   ydoc?.destroy()
+// })
 
 defineExpose({ editor })
 </script>

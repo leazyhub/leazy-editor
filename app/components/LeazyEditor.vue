@@ -81,6 +81,7 @@ const sortExtensions = computed(() => {
   const baseExtensions = [
     ...props.extensions,
     BaseKit.configure({
+      ai: false,
       collaboration: false,
       collaborationCursor: false,
       // collaboration: {

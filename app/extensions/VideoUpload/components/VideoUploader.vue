@@ -57,14 +57,10 @@ function handleClick() {
         </div>
         <div v-else class="flex justify-between items-center w-full">
           <div class="flex justify-center items-center gap-3">
-            <Suspense>
-              <UIcon name="i-lucide-video" class="w-6 h-6" />
-            </Suspense>
+            <UIcon name="i-lucide-video" class="w-6 h-6" />
             <span class="text-sm">{{ t('editor.video.dialog.title') }}</span>
           </div>
-          <Suspense>
-            <UIcon name="i-heroicons-trash" class="text-red-500" @click.stop="handleDelete" />
-          </Suspense>
+          <UIcon name="i-heroicons-trash" class="text-red-500" @click.stop="handleDelete" />
         </div>
       </div>
 

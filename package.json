@@ -1,21 +1,26 @@
 {
   "name": "@leazyhub/editor",
   "type": "module",
-  "version": "0.0.93101",
-  "main": "./nuxt.config.ts",
+  "version": "0.0.93102",
+  "license": "MIT",
   "scripts": {
     "dev": "nuxi dev .playground",
     "dev:prepare": "nuxt prepare .playground",
     "build": "nuxt build .playground",
     "generate": "nuxt generate .playground",
     "preview": "nuxt preview .playground",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.23",
+    "@iconify-json/fluent": "^1.2.6",
+    "@iconify-json/heroicons": "^1.2.1",
+    "@iconify-json/lucide": "^1.2.11",
+    "@iconify-json/mdi": "^1.2.1",
+    "@iconify-json/simple-icons": "^1.2.11",
     "@nuxt/icon": "^1.6.1",
     "@nuxt/image": "^1.8.1",
-    "@nuxt/kit": "^3.14.0",
+    "@nuxt/ui": "^2.19.2",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/i18n": "^9.0.0",
     "@tiptap-pro/extension-details": "^2.13.0",
@@ -85,20 +90,13 @@
     "y-crossws": "^0.0.2",
     "y-prosemirror": "^1.2.12",
     "y-websocket": "^2.0.4",
-    "yjs": "^13.6.20"
+    "yjs": "^13.6.20",
+    "nuxt": "^3.14.0"
   },
   "devDependencies": {
-    "@iconify-json/fluent": "^1.2.6",
-    "@iconify-json/heroicons": "^1.2.1",
-    "@iconify-json/lucide": "^1.2.11",
-    "@iconify-json/mdi": "^1.2.1",
-    "@iconify-json/simple-icons": "^1.2.11",
     "@nuxt/eslint": "0.6.1",
-    "@nuxt/ui": "^2.19.2",
     "eslint": "^9.14.0",
-    "nuxt": "^3.14.0",
-    "typescript": "^5.6.3",
-    "vue": "3.5.12"
+    "vue-tsc": "^2.1.10"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "bun@1.1.29"
 }

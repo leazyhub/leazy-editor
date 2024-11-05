@@ -57,7 +57,7 @@ function toggleLightheight(key: string) {
 <template>
   <UPopover>
     <ActionButton custom-class="w-12" icon="i-fluent-text-line-spacing-24-regular" :tooltip="tooltip">
-      <UIcon class="w-3 h-3 text-zinc-500 ml-1" name="i-heroicons-chevron-down-20-solid" />
+      <UIcon name="i-heroicons-chevron-down-20-solid" />
     </ActionButton>
 
     <template #panel>

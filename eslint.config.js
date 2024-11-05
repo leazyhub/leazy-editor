@@ -1,3 +1,8 @@
-import withNuxt from './.playground/.nuxt/eslint.config.mjs'
+// @ts-check
+import withNuxt from './.nuxt/eslint.config.mjs'
 
-export default withNuxt()
+export default withNuxt({
+  rules: {
+    '@typescript-eslint/no-explicit-any': 'off'
+  }
+})

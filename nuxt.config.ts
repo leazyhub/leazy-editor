@@ -23,7 +23,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
   ],
   ui: {
-    icons: ['simple-icons', 'lucide', 'fluent', 'mdi'],
     safelistColors: ['primary', 'red', 'orange', 'green']
   },
   i18n: {

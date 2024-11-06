@@ -132,7 +132,9 @@ defineExpose({ onKeyDown })
       >
         <template v-if="command?.iconName" #leading>
           <div class="flex items-center justify-center p-px font-medium border rounded-sm border-gray-200 dark:border-gray-700">
-            <UIcon :name="command.iconName" dynamic class="w-3.5 h-3.5 text-lg" />
+            <Suspense>
+              <UIcon :name="command.iconName" dynamic class="w-3.5 h-3.5 text-lg" />
+            </Suspense>
           </div>
         </template>
 

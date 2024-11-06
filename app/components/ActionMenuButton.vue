@@ -30,10 +30,14 @@ withDefaults(defineProps<Props>(), {
       <slot />
       <template #leading>
         <div v-if="loading">
-          <UIcon class="animate-spin" name="i-lucide-loader-circle" />
+          <Suspense>
+            <UIcon class="animate-spin" name="i-lucide-loader-circle" />
+          </Suspense>
         </div>
         <div v-else class="flex gap-1 items-center">
-          <UIcon v-if="icon" :name="icon" dynamic />
+          <Suspense>
+            <UIcon v-if="icon" :name="icon" dynamic />
+          </Suspense>
           <slot name="icon" />
         </div>
       </template>

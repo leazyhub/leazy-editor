@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useFullscreen } from '@vueuse/core'
 import ActionButton from '../../../components/ActionButton.vue'
 import { useTiptapStore } from '../../../composables/useStore'
@@ -23,12 +23,12 @@ interface Props {
 }
 
 watch(
-  () => isFullscreen.value,
-  (val, oldVal) => {
-    if (val !== oldVal) {
-      toggleFullscreen()
+    () => isFullscreen.value,
+    (val, oldVal) => {
+      if (val !== oldVal) {
+        toggleFullscreen()
+      }
     }
-  }
 )
 
 const text = computed(() => {
@@ -48,5 +48,5 @@ function onAction(_useWindow: boolean = false) {
 </script>
 
 <template>
-  <ActionButton :icon="icon" :tooltip="text" :action="onAction" />
+  <ActionButton :action="onAction" :icon="icon" :tooltip="text"/>
 </template>

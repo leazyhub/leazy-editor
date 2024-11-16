@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Editor } from '@tiptap/vue-3'
-import CreateTablePopover from './CreateTablePopover.vue'
 import type { CreateTablePayload } from './CreateTablePopover.vue'
+import CreateTablePopover from './CreateTablePopover.vue'
 import ActionButton from '../../../components/ActionButton.vue'
 import type { ButtonViewReturnComponentProps } from '../../../types'
 
@@ -36,14 +36,14 @@ function createTable(options: CreateTablePayload) {
 </script>
 
 <template>
-  <CreateTablePopover @create-table="createTable" :disabled="disabled">
+  <CreateTablePopover :disabled="disabled" @create-table="createTable">
     <template #trigger>
       <ActionButton
-        :icon="icon"
-        :tooltip="tooltip"
-        :disabled="disabled"
         :action="action"
+        :disabled="disabled"
+        :icon="icon"
         :is-active="isActive"
+        :tooltip="tooltip"
       >
       </ActionButton>
     </template>

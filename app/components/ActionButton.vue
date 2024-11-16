@@ -29,15 +29,22 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <UTooltip :text="tooltip" :popper="{ placement: 'bottom' }" :shortcuts="shortcuts">
-    <UButton square :variant="isActive?.() ? 'soft' : 'ghost'" :color="isActive?.() ? 'primary' : 'white'" @click="action" :class="customClass" :disabled="disabled">
+  <UTooltip :popper="{ placement: 'bottom' }" :shortcuts="shortcuts" :text="tooltip">
+    <UButton
+      :class="customClass" :color="isActive?.() ? 'primary' : 'white'" :disabled="disabled" :variant="isActive?.() ? 'soft' : 'ghost'"
+      square @click="action"
+    >
       <slot />
       <template #leading>
         <div v-if="loading">
-          <UIcon class="animate-spin" name="i-lucide-loader-circle" />
+          <Suspense>
+            <UIcon class="animate-spin" name="i-lucide-loader-circle" />
+          </Suspense>
         </div>
-        <div class="flex gap-1 items-center" v-else>
-          <UIcon v-if="icon" :name="icon" dynamic />
+        <div v-else class="flex gap-1 items-center">
+          <Suspense>
+            <UIcon v-if="icon" :name="icon" dynamic />
+          </Suspense>
           <slot name="icon" />
         </div>
       </template>

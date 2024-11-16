@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { BubbleMenu, type Editor } from '@tiptap/vue-3'
 import { Editor as CoreEditor } from '@tiptap/core'
 import { EditorState, type NodeSelection } from '@tiptap/pm/state'
@@ -11,6 +11,7 @@ import HighlightActionButton from '../../../Highlight/components/HighlightAction
 interface Props {
   editor: Editor
 }
+
 export interface ShouldShowProps {
   editor?: CoreEditor
   view: EditorView
@@ -24,9 +25,12 @@ const props = withDefaults(defineProps<Props>(), {})
 
 export interface Emits {
   (event: 'onMergeCell'): void
+  
   (event: 'onSplitCell'): void
+  
   (event: 'setCellBackground', value: string): void
 }
+
 const emits = defineEmits<Emits>()
 
 const shouldShow = ({ view, state, from }: ShouldShowProps) => {
@@ -68,8 +72,6 @@ function onDeleteColumn() {
 <template>
   <BubbleMenu
     :editor="editor"
-    pluginKey="tableColumnMenu"
-    :updateDelay="150"
     :should-show="shouldShow"
     :tippy-options="{
       appendTo: 'parent',
@@ -78,60 +80,62 @@ function onDeleteColumn() {
         modifiers: [{ name: 'flip', enabled: true }],
       },
     }"
+    :updateDelay="150"
+    pluginKey="tableColumnMenu"
   >
     <div
       class="min-w-32 flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-border border-gray-200 dark:border-gray-700"
     >
       <ActionButton
-        icon="i-lucide-between-horizontal-end"
         :action="onAddColumnBefore"
+        :tooltip-options="{
+          sideOffset: 15,
+        }"
+        icon="i-lucide-between-horizontal-end"
         tooltip="Insert Column Before"
-        :tooltip-options="{
-          sideOffset: 15,
-        }"
       />
       <ActionButton
-        icon="i-lucide-between-horizontal-start"
         :action="onAddColumnAfter"
+        :tooltip-options="{
+          sideOffset: 15,
+        }"
+        icon="i-lucide-between-horizontal-start"
         tooltip="Insert Column After"
-        :tooltip-options="{
-          sideOffset: 15,
-        }"
       />
-
+      
       <ActionButton
-        icon="i-heroicons-trash"
         :action="onDeleteColumn"
-        tooltip="Delete Column"
         :tooltip-options="{
           sideOffset: 15,
         }"
+        icon="i-heroicons-trash"
+        tooltip="Delete Column"
       />
       <ActionButton
         v-if="Selection?.cellCount! > 1"
-        icon="i-lucide-table-cells-merge"
         :action="() => emits('onMergeCell')"
-        tooltip="Merge Cells"
         :tooltip-options="{
           sideOffset: 15,
         }"
+        icon="i-lucide-table-cells-merge"
+        tooltip="Merge Cells"
       />
       <ActionButton
         v-if="Selection?.mergedCellCount! > 0"
-        icon="i-lucide-table-cells-split"
         :action="() => emits('onSplitCell')"
-        tooltip="Split Cell"
         :tooltip-options="{
           sideOffset: 15,
         }"
+        icon="i-lucide-table-cells-split"
+        tooltip="Split Cell"
       />
       <HighlightActionButton
-        :editor="editor"
-        tooltip="Set Cell Background"
         :action="color => emits('setCellBackground', color as string)"
+        :editor="editor"
         :tooltip-options="{
           sideOffset: 15,
         }"
+        tooltip="Set Cell Background"
       />
     </div>
   </BubbleMenu>

@@ -17,7 +17,7 @@ const selectedLanguage = computed({
 
 <template>
   <NodeViewWrapper class="code-block relative">
-    <USelect class="absolute bottom-[calc(100%_+_10px)] right-0" v-model="selectedLanguage" :options="languages" />
-    <pre><code><NodeViewContent /></code></pre>
+    <USelect v-model="selectedLanguage" :options="languages" class="absolute bottom-[calc(100%_+_10px)] right-0"/>
+    <pre><code><NodeViewContent/></code></pre>
   </NodeViewWrapper>
 </template>

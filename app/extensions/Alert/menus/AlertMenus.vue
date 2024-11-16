@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { sticky } from 'tippy.js'
-import { BubbleMenu, isActive, type Editor } from '@tiptap/vue-3'
+import { BubbleMenu, type Editor, isActive } from '@tiptap/vue-3'
 import ActionButton from '../../../components/ActionButton.vue'
 import { getRenderContainer } from '../../../utils/get-render-container'
 
@@ -28,11 +28,9 @@ const getReferenceClientRect = () => {
 
 <template>
   <BubbleMenu
-    :editor="editor"
-    pluginKey="alert"
-    :shouldShow="shouldShow"
-    :updateDelay="0"
-    :tippy-options="{
+      :editor="editor"
+      :shouldShow="shouldShow"
+      :tippy-options="{
       offset: [0, 8],
       popperOptions: {
         modifiers: [{ name: 'flip', enabled: false }],
@@ -41,54 +39,56 @@ const getReferenceClientRect = () => {
       plugins: [sticky],
       sticky: 'popper',
     }"
+      :updateDelay="0"
+      pluginKey="alert"
   >
     <div class="bg-white rounded-lg dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700">
       <div class="flex gap-1 items-center">
         <ActionButton
-          title="Note"
-          :tooltip="$t('editor.alert.note')"
-          icon="i-fluent-note-24-regular"
-          @click="editor.chain().focus().setAlertType('note').run()"
-          :isActive="() => editor.isActive('alert', { type: 'note' })"
+            :isActive="() => editor.isActive('alert', { type: 'note' })"
+            :tooltip="$t('editor.alert.note')"
+            icon="i-fluent-note-24-regular"
+            title="Note"
+            @click="editor.chain().focus().setAlertType('note').run()"
         />
         <ActionButton
-          title="Info"
-          :tooltip="$t('editor.alert.info')"
-          icon="i-heroicons-information-circle"
-          @click="editor.chain().focus().setAlertType('info').run()"
-          :isActive="() => editor.isActive('alert', { type: 'info' })"
+            :isActive="() => editor.isActive('alert', { type: 'info' })"
+            :tooltip="$t('editor.alert.info')"
+            icon="i-heroicons-information-circle"
+            title="Info"
+            @click="editor.chain().focus().setAlertType('info').run()"
         />
         <ActionButton
-          title="Warning"
-          :tooltip="$t('editor.alert.warning')"
-          icon="i-heroicons-exclamation-triangle"
-          @click="editor.chain().focus().setAlertType('warning').run()"
-          :isActive="() => editor.isActive('alert', { type: 'warning' })"
+            :isActive="() => editor.isActive('alert', { type: 'warning' })"
+            :tooltip="$t('editor.alert.warning')"
+            icon="i-heroicons-exclamation-triangle"
+            title="Warning"
+            @click="editor.chain().focus().setAlertType('warning').run()"
         />
         <ActionButton
-          title="Danger"
-          :tooltip="$t('editor.alert.danger')"
-          icon="i-heroicons-x-circle"
-          @click="editor.chain().focus().setAlertType('danger').run()"
-          :isActive="() => editor.isActive('alert', { type: 'danger' })"
+            :isActive="() => editor.isActive('alert', { type: 'danger' })"
+            :tooltip="$t('editor.alert.danger')"
+            icon="i-heroicons-x-circle"
+            title="Danger"
+            @click="editor.chain().focus().setAlertType('danger').run()"
         />
         <ActionButton
-          title="Success"
-          :tooltip="$t('editor.alert.success')"
-          icon="i-heroicons-check-circle"
-          @click="editor.chain().focus().setAlertType('success').run()"
-          :isActive="() => editor.isActive('alert', { type: 'success' })"
+            :isActive="() => editor.isActive('alert', { type: 'success' })"
+            :tooltip="$t('editor.alert.success')"
+            icon="i-heroicons-check-circle"
+            title="Success"
+            @click="editor.chain().focus().setAlertType('success').run()"
         />
-        <UTooltip :text="$t('editor.remove')" :popper="{ placement: 'bottom' }">
+        <UTooltip :popper="{ placement: 'bottom' }" :text="$t('editor.remove')">
           <UButton
-            title="Remove"
-            :tooltip="$t('editor.alert.remove')"
-            icon="i-heroicons-trash"
-            variant="ghost"
-            size="xs"
-            color="red"
-            @click="editor.chain().focus().deleteNode('alert').run()"
-            :active="() => editor.isActive('alert')"
+              :active="() => editor.isActive('alert')"
+              :tooltip="$t('editor.alert.remove')"
+              color="red"
+              icon="i-heroicons-trash"
+              size="xs"
+              title="Remove"
+              variant="ghost"
+              @click="editor.chain().focus().deleteNode('alert').run()"
           />
         </UTooltip>
       </div>

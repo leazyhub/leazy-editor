@@ -62,5 +62,5 @@ const handleOpen = () => {
 </script>
 
 <template>
-  <ActionButton :action="handleOpen" title="AI" :disabled="disabled" :icon="icon" :tooltip="tooltip" />
+  <ActionButton :action="handleOpen" :disabled="disabled" :icon="icon" :tooltip="tooltip" title="AI"/>
 </template>

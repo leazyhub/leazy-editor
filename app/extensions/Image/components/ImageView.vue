@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
 import type { ImageAttrsOptions } from '../types'
 import { IMAGE_MAX_SIZE, IMAGE_MIN_SIZE, IMAGE_THROTTLE_WAIT_TIME } from '../../../constants'
@@ -201,35 +201,35 @@ watchEffect(effect => {
 
 <template>
   <NodeViewWrapper
-    as="span"
-    :class="imageViewClass"
-    :style="{ imageMaxStyle, textAlign: node.attrs.textAlign, width: '100%' }"
+      :class="imageViewClass"
+      :style="{ imageMaxStyle, textAlign: node.attrs.textAlign, width: '100%' }"
+      as="span"
   >
     <div
-      draggable="true"
-      data-drag-handle
-      :class="{
+        :class="{
         'image-view__body--focused': selected,
         'image-view__body--resizing': resizing,
       }"
-      class="image-view__body"
-      :style="imageMaxStyle"
+        :style="imageMaxStyle"
+        class="image-view__body"
+        data-drag-handle
+        draggable="true"
     >
       <img
-        :src="imgAttrs.src"
-        :alt="imgAttrs.alt"
-        :style="imgAttrs.style"
-        class="image-view__body__image"
-        @load="onImageLoad"
-        @click="selectImage"
+          :alt="imgAttrs.alt"
+          :src="imgAttrs.src"
+          :style="imgAttrs.style"
+          class="image-view__body__image"
+          @click="selectImage"
+          @load="onImageLoad"
       />
       <div v-if="editor.view.editable" v-show="selected || resizing" class="image-resizer">
         <span
-          v-for="direction in resizeDirections"
-          :key="direction"
-          :class="`image-resizer__handler--${direction}`"
-          class="image-resizer__handler"
-          @mousedown="onMouseDown($event, direction)"
+            v-for="direction in resizeDirections"
+            :key="direction"
+            :class="`image-resizer__handler--${direction}`"
+            class="image-resizer__handler"
+            @mousedown="onMouseDown($event, direction)"
         ></span>
       </div>
     </div>

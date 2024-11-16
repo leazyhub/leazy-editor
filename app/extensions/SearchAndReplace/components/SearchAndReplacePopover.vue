@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Editor } from '@tiptap/vue-3'
 import { ActionButton } from '#components'
 import SearchAndReplaceBlock from './SearchAndReplaceBlock'
@@ -28,8 +28,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <UPopover>
-    <ActionButton :icon="icon" :tooltip="tooltip" :is-active="isActive" :disabled="disabled" />
-
+    <ActionButton :disabled="disabled" :icon="icon" :is-active="isActive" :tooltip="tooltip" />
+    
     <template #panel>
       <SearchAndReplaceBlock :editor="editor" />
     </template>

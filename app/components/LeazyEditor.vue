@@ -1,9 +1,9 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 // import * as Y from 'yjs'
 // import {WebsocketProvider} from 'y-websocket'
 import type { AnyExtension, Editor } from '@tiptap/core'
-import {EditorContent, useEditor} from '@tiptap/vue-3'
-import {differenceBy, getCssUnitWithDefault, /* getRandomUser */} from '@/utils'
+import { EditorContent, useEditor } from '@tiptap/vue-3'
+import { differenceBy, getCssUnitWithDefault, } from '@/utils'
 import BubbleMenu from '@/features/bubble/BubbleMenu.vue'
 import LinkBubbleMenu from '@/features/bubble/LinkBubbleMenu.vue'
 import AIMenu from '@/features/bubble/AIMenu.vue'
@@ -11,8 +11,8 @@ import TableBubbleMenu from '@/extensions/Table/menus/TableBubbleMenu.vue'
 import ContentMenu from '@/features/bubble/ContentMenu.vue'
 import ColumnsMenu from '@/extensions/MultiColumn/menus/ColumnsMenu.vue'
 import AlertMenu from '@/extensions/Alert/menus/AlertMenus.vue'
-import {BaseKit} from '@/extensions'
-import type {LeazyEditorOnChange} from '@/types'
+import { BaseKit } from '@/extensions'
+import type { LeazyEditorOnChange } from '@/types'
 
 interface Props {
   modelValue?: string | object
@@ -34,11 +34,11 @@ interface Props {
 
 interface Emits {
   (event: 'enter' | 'blur' | 'destroy'): void
-
+  
   (event: 'change', value: LeazyEditorOnChange): void
-
+  
   (event: 'selectionUpdate', value: Editor): void
-
+  
   (event: 'update:modelValue', value: Props['modelValue']): void
 }
 
@@ -93,7 +93,7 @@ const sortExtensions = computed(() => {
       // history: false
     })
   ]
-
+  
   const diff = differenceBy(baseExtensions, state.extensions, 'name')
   const exts = state.extensions.map(k => {
     const find = baseExtensions.find(ext => ext.name === k.name)
@@ -115,12 +115,12 @@ const editor = useEditor({
       return false
     },
   },
-  onUpdate: ({editor}) => {
+  onUpdate: ({ editor }) => {
     const output = getOutput(editor, props.output as any)
     emit('update:modelValue', output)
-    emit('change', {editor, output})
+    emit('change', { editor, output })
   },
-  onSelectionUpdate: ({editor}) => emit('selectionUpdate', editor),
+  onSelectionUpdate: ({ editor }) => emit('selectionUpdate', editor),
   onBlur: () => emit('blur'),
   onDestroy: () => emit('destroy'),
   autofocus: false,
@@ -153,7 +153,7 @@ function getOutput(editor, output) {
     if (output === 'text') return editor.isEmpty ? '' : editor.getText()
     return ''
   }
-
+  
   if (output === 'html') return editor.getHTML()
   if (output === 'json') return editor.getJSON()
   if (output === 'text') return editor.getText()
@@ -173,21 +173,30 @@ defineExpose({ editor })
 </script>
 
 <template>
-  <div v-if="editor" class="leazy-editor flex flex-col z-0" :class="[editorClass, dense ? 'dense' : '']">
+  <div v-if="editor" :class="[editorClass, dense ? 'dense' : '']" class="leazy-editor flex flex-col z-0">
     <ContentMenu :editor="editor" />
     <LinkBubbleMenu :editor="editor" />
     <ColumnsMenu :editor="editor" />
     <AlertMenu :editor="editor" />
     <AIMenu :editor="editor" />
     <TableBubbleMenu :editor="editor" />
-    <BubbleMenu v-if="!hideBubble" :editor="editor" :disabled="disableBubble" />
-    <div class="flex flex-col w-full flex-1" :class="[isFullscreen && 'fixed bg-background inset-0 z-[200] w-full h-full m-0 rounded-none']">
-      <Toolbar v-if="!hideToolbar && !disabled" :editor="editor" :style="contentDynamicStyles" class="z-10 px-[25px] sticky top-4 left-0" />
-      <EditorContent :editor="editor" class="flex-1 w-full" :class="contentClass" :style="contentDynamicStyles" suppressContentEditableWarning />
+    <BubbleMenu v-if="!hideBubble" :disabled="disableBubble" :editor="editor" />
+    <div
+      :class="[isFullscreen && 'fixed bg-background inset-0 z-[200] w-full h-full m-0 rounded-none']"
+      class="flex flex-col w-full flex-1"
+    >
+      <Toolbar
+        v-if="!hideToolbar && !disabled" :editor="editor" :style="contentDynamicStyles"
+        class="z-10 px-[25px] sticky top-4 left-0"
+      />
+      <EditorContent
+        :class="contentClass" :editor="editor" :style="contentDynamicStyles" class="flex-1 w-full"
+        suppressContentEditableWarning
+      />
     </div>
   </div>
 </template>
 
 <style lang="scss">
-  @use '../assets/css/index';
+@use '../assets/css/index';
 </style>

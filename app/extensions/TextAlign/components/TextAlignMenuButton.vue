@@ -14,6 +14,7 @@ export interface Item {
   divider?: boolean
   default?: boolean
 }
+
 interface Props {
   editor: Editor
   disabled?: boolean
@@ -46,7 +47,7 @@ const active = computed(() => {
     icon: props.icon,
     isActive: () => false,
   }
-
+  
   return item
 })
 const showPopover = ref(false)
@@ -63,16 +64,22 @@ function togglePop() {
 
 <template>
   <UPopover :popper="{ placement: 'bottom' }">
-    <ActionButton enable-tooltip :icon="icon" dropdown :tooltip="tooltip">
+    <ActionButton :icon="icon" :tooltip="tooltip" dropdown enable-tooltip>
       <template #icon>
-        <UIcon name="i-heroicons-chevron-down-20-solid" />
+        <Suspense>
+          <UIcon name="i-heroicons-chevron-down-20-solid" />
+        </Suspense>
       </template>
     </ActionButton>
-
+    
     <template #panel>
       <div class="flex items-center">
-        <UTooltip v-for="(item, index) in props.items" :key="index" :text="item.title" :shortcuts="item.shortcuts">
-          <UButton size="xs" :disabled="item.disabled" :style="item.style" :icon="item.icon" :variant="active.title === item.title ? 'soft' : 'ghost'" :color="active.title === item.title ? 'primary' : 'gray'" @click="item.action" />
+        <UTooltip v-for="(item, index) in props.items" :key="index" :shortcuts="item.shortcuts" :text="item.title">
+          <UButton
+            :color="active.title === item.title ? 'primary' : 'gray'" :disabled="item.disabled" :icon="item.icon" :style="item.style"
+            :variant="active.title === item.title ? 'soft' : 'ghost'"
+            size="xs" @click="item.action"
+          />
         </UTooltip>
       </div>
     </template>

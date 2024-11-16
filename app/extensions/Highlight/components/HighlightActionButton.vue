@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Editor } from '@tiptap/vue-3'
 import ActionButton from '../../../components/ActionButton.vue'
 import ColorPicker from '../../../components/ColorPicker.vue'
@@ -41,17 +41,17 @@ watchEffect(() => {
 
 <template>
   <div class="flex items-center">
-    <ColorPicker v-model="selectedColor" @change="onChange" highlight>
-      <ActionButton :tooltip="tooltip" :disabled="disabled" :action="toggleColor" :tooltip-options="tooltipOptions">
+    <ColorPicker v-model="selectedColor" highlight @change="onChange">
+      <ActionButton :action="toggleColor" :disabled="disabled" :tooltip="tooltip" :tooltip-options="tooltipOptions">
         <template #icon>
         <span class="text-xs flex items-center justify-center"
-        ><svg width="12px" height="12px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <g id="icon/color" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        ><svg height="12px" version="1.1" viewBox="0 0 256 256" width="12px" xmlns="http://www.w3.org/2000/svg">
+            <g id="icon/color" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
               <g id="icon/highlight">
                 <g id="group" fill="currentColor">
                   <g
-                      transform="translate(119.502295, 137.878331) rotate(-135.000000) translate(-119.502295, -137.878331) translate(48.002295, 31.757731)"
                       id="rectangle"
+                      transform="translate(119.502295, 137.878331) rotate(-135.000000) translate(-119.502295, -137.878331) translate(48.002295, 31.757731)"
                   >
                     <path
                         d="M100.946943,60.8084699 L43.7469427,60.8084699 C37.2852111,60.8084699 32.0469427,66.0467383 32.0469427,72.5084699 L32.0469427,118.70847 C32.0469427,125.170201 37.2852111,130.40847 43.7469427,130.40847 L100.946943,130.40847 C107.408674,130.40847 112.646943,125.170201 112.646943,118.70847 L112.646943,72.5084699 C112.646943,66.0467383 107.408674,60.8084699 100.946943,60.8084699 Z M93.646,79.808 L93.646,111.408 L51.046,111.408 L51.046,79.808 L93.646,79.808 Z"
@@ -68,9 +68,9 @@ watchEffect(() => {
                   </g>
                 </g>
                 <path
-                    d="M51,218 L205,218 C211.075132,218 216,222.924868 216,229 C216,235.075132 211.075132,240 205,240 L51,240 C44.9248678,240 40,235.075132 40,229 C40,222.924868 44.9248678,218 51,218 Z"
                     id="rectangles"
                     :fill="selectedColor || '#FBDE28'"
+                    d="M51,218 L205,218 C211.075132,218 216,222.924868 216,229 C216,235.075132 211.075132,240 205,240 L51,240 C44.9248678,240 40,235.075132 40,229 C40,222.924868 44.9248678,218 51,218 Z"
                 ></path>
               </g>
             </g></svg

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { Editor } from '@tiptap/vue-3'
 import type { ButtonViewReturnComponentProps } from '../../../types'
 
@@ -9,6 +9,7 @@ interface ContentTypeMenu {
   action?: ButtonViewReturnComponentProps['action']
   isActive: NonNullable<ButtonViewReturnComponentProps['isActive']>
 }
+
 interface Props {
   editor: Editor
   disabled?: boolean
@@ -110,22 +111,29 @@ const activeItem = computed(() => {
 
 <template>
   <UPopover :popper="{ placement: 'bottom-start' }">
-    <UButton variant="ghost" square color="gray" :icon="activeItem?.iconName" size="xs" trailing-icon="i-heroicons-chevron-down-20-solid" />
-
+    <UButton
+      :icon="activeItem?.iconName" color="gray" size="xs" square trailing-icon="i-heroicons-chevron-down-20-solid"
+      variant="ghost"
+    />
+    
     <template #panel>
       <div class="flex flex-col">
         <UButton
-            size="2xs"
-            v-for="(item, index) in menus"
-            :key="index"
-            @click="item.action"
-            :variant="item.isActive?.() ? 'soft' : 'ghost'"
-            :color="item.isActive?.() ? 'primary' : 'gray'"
-            :label="item.label"
+          v-for="(item, index) in menus"
+          :key="index"
+          :color="item.isActive?.() ? 'primary' : 'gray'"
+          :label="item.label"
+          :variant="item.isActive?.() ? 'soft' : 'ghost'"
+          size="2xs"
+          @click="item.action"
         >
           <template #leading>
-            <div class="flex items-center justify-center p-px font-medium border rounded-sm border-gray-200 dark:border-gray-700">
-              <UIcon :name="item.iconName" dynamic class="w-4 h-4" />
+            <div
+              class="flex items-center justify-center p-px font-medium border rounded-sm border-gray-200 dark:border-gray-700"
+            >
+              <Suspense>
+                <UIcon :name="item.iconName" class="w-4 h-4" dynamic />
+              </Suspense>
             </div>
           </template>
         </UButton>

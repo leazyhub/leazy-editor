@@ -10,12 +10,13 @@ export interface Item {
   level?: number
   isActive: NonNullable<ButtonViewReturnComponentProps['isActive']>
   action?: ButtonViewReturnComponentProps['action']
-  style?: StyleValue
+  style?: CSSStyleValue
   shortcuts?: string[]
   disabled?: boolean
   divider?: boolean
   default?: boolean
 }
+
 interface Props {
   editor: Editor
   disabled?: boolean
@@ -53,13 +54,15 @@ const active = computed(() => {
 
 <template>
   <UPopover>
-    <ActionMenuButton :title="active.title" :tooltip="tooltip" />
+    <ActionMenuButton :title="active.title" :tooltip="tooltip"/>
 
     <template #panel>
       <div class="flex flex-col">
-        <UButton v-for="(item, index) in props.items" :key="index" :variant="active.title === item.title ? 'soft' : 'ghost'" :color="active.title === item.title ? 'primary' : 'gray'" @click="item.action">
-          <div class="ml-1 h-full" :class="`heading-` + item.level">{{ item.title }}</div>
-          <UKbd class="ml-auto" :value="item.shortcuts?.map(item => getShortcutKey(item)).join(' ')" />
+        <UButton v-for="(item, index) in props.items" :key="index"
+                 :color="active.title === item.title ? 'primary' : 'gray'"
+                 :variant="active.title === item.title ? 'soft' : 'ghost'" @click="item.action">
+          <div :class="`heading-` + item.level" class="ml-1 h-full">{{ item.title }}</div>
+          <UKbd :value="item.shortcuts?.map(item => getShortcutKey(item)).join(' ')" class="ml-auto"/>
         </UButton>
       </div>
     </template>

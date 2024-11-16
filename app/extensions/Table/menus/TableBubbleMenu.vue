@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Editor } from '@tiptap/vue-3'
 import type { CellSelection } from '@tiptap/pm/tables'
 import TableCellMenu from './TableCell'
@@ -8,6 +8,7 @@ import TableColumnMenu from './TableColumn'
 interface Props {
   editor: Editor
 }
+
 const props = withDefaults(defineProps<Props>(), {})
 
 function onDeleteTable() {
@@ -17,9 +18,11 @@ function onDeleteTable() {
 function onSetCellBackground(color: string) {
   props.editor.chain().focus().setTableCellBackground(color).run()
 }
+
 function onMergeCell() {
   props.editor.chain().focus().mergeCells().run()
 }
+
 function onSplitCell() {
   const posQueue: Array<number> = []
   ;(props.editor.state.selection as CellSelection).forEachCell((cell, pos) => {

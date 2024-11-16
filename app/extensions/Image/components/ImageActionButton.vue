@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Editor } from '@tiptap/vue-3'
 import type { ImageTab, ImageTabKey } from '../types'
 import ActionButton from '../../../components/ActionButton.vue'
@@ -46,18 +46,19 @@ async function handleFileChange(event) {
     images: attributesForImages,
   })
 }
+
 function onAction() {
   fileInput.value?.click()
 }
 </script>
 <template>
   <ActionButton
-    :icon="icon"
-    :tooltip="tooltip"
-    :disabled="disabled"
-    :color="color"
-    :is-active="isActive"
-    :action="onAction"
+      :action="onAction"
+      :color="color"
+      :disabled="disabled"
+      :icon="icon"
+      :is-active="isActive"
+      :tooltip="tooltip"
   />
-  <input type="file" accept="image/*" ref="fileInput" multiple style="display: none" @change="handleFileChange" />
+  <input ref="fileInput" accept="image/*" multiple style="display: none" type="file" @change="handleFileChange"/>
 </template>

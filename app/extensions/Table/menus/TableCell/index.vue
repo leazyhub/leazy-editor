@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { BubbleMenu, type Editor } from '@tiptap/vue-3'
 import { Editor as CoreEditor } from '@tiptap/core'
 import { EditorState, type NodeSelection } from '@tiptap/pm/state'
@@ -11,6 +11,7 @@ import HighlightActionButton from '../../../Highlight/components/HighlightAction
 interface Props {
   editor: Editor
 }
+
 export interface ShouldShowProps {
   editor?: CoreEditor
   view: EditorView
@@ -19,12 +20,17 @@ export interface ShouldShowProps {
   from?: number
   to?: number
 }
+
 export interface Emits {
   (event: 'onDeleteTable'): void
+  
   (event: 'onMergeCell'): void
+  
   (event: 'onSplitCell'): void
+  
   (event: 'setCellBackground', value: string): void
 }
+
 const emits = defineEmits<Emits>()
 const props = withDefaults(defineProps<Props>(), {})
 
@@ -55,8 +61,6 @@ const Selection = computed(() => {
 <template>
   <BubbleMenu
     :editor="editor"
-    pluginKey="tableCellMenu"
-    :updateDelay="0"
     :should-show="shouldShow"
     :tippy-options="{
       appendTo: 'parent',
@@ -65,44 +69,48 @@ const Selection = computed(() => {
         modifiers: [{ name: 'flip', enabled: false }],
       },
     }"
+    :updateDelay="0"
+    pluginKey="tableCellMenu"
   >
-    <div class="flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-border border-gray-200 dark:border-gray-700">
+    <div
+      class="flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-border border-gray-200 dark:border-gray-700"
+    >
       <ActionButton
         v-if="Selection?.cellCount! > 1"
-        tooltip="Merge Cells"
-        icon="i-lucide-table-cells-merge"
         :action="() => emits('onMergeCell')"
         :tooltip-options="{
           sideOffset: 15,
         }"
+        icon="i-lucide-table-cells-merge"
+        tooltip="Merge Cells"
       />
-
+      
       <ActionButton
         v-if="Selection?.mergedCellCount! > 0"
-        tooltip="Split Cell"
-        icon="i-lucide-table-cells-split"
         :action="() => emits('onSplitCell')"
         :tooltip-options="{
           sideOffset: 15,
         }"
+        icon="i-lucide-table-cells-split"
+        tooltip="Split Cell"
       />
       <ActionButton
         v-if="isTableSelected(props.editor.state.selection)"
-        tooltip="Delete Table"
-        icon="i-heroicons-trash"
         :action="() => emits('onDeleteTable')"
         :tooltip-options="{
           sideOffset: 15,
         }"
+        icon="i-heroicons-trash"
+        tooltip="Delete Table"
       />
-
+      
       <HighlightActionButton
-        :editor="editor"
-        tooltip="Set Cell Background"
         :action="color => emits('setCellBackground', color as string)"
+        :editor="editor"
         :tooltip-options="{
           sideOffset: 15,
         }"
+        tooltip="Set Cell Background"
       />
     </div>
   </BubbleMenu>

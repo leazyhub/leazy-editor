@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { BubbleMenu, type Editor } from '@tiptap/vue-3'
 import LinkEditBlock from '../../extensions/Link/components/LinkEditBlock'
 import LinkViewBlock from '../../extensions/Link/components/LinkViewBlock'
@@ -44,6 +44,7 @@ function onSetLink(url: string, text?: string, openInNewTab?: boolean) {
     .run()
   showEdit.value = false
 }
+
 function unSetLink() {
   props.editor.chain().extendMarkRange('link').unsetLink().focus().run()
   showEdit.value = false
@@ -52,8 +53,8 @@ function unSetLink() {
 
 <template>
   <BubbleMenu
-    :editor="editor"
     v-show="shouldShow"
+    :editor="editor"
     :tippy-options="{
       popperOptions: {
         modifiers: [{ name: 'flip', enabled: false }],
@@ -66,7 +67,7 @@ function unSetLink() {
       },
     }"
   >
-    <LinkEditBlock @onSetLink="onSetLink" :editor="editor" v-if="showEdit" />
-    <LinkViewBlock :editor="editor" @clear="unSetLink" @edit="showEdit = true" :link="link" v-else />
+    <LinkEditBlock v-if="showEdit" :editor="editor" @onSetLink="onSetLink" />
+    <LinkViewBlock v-else :editor="editor" :link="link" @clear="unSetLink" @edit="showEdit = true" />
   </BubbleMenu>
 </template>

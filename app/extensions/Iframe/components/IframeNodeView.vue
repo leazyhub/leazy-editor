@@ -14,6 +14,7 @@ const src = computed({
     props.updateAttributes({ src: value })
   },
 })
+
 function handleConfirm() {
   let result = getServiceSrc(props.node.attrs.service, originalLink.value)
   // Vérifier si le lien est valide
@@ -23,6 +24,7 @@ function handleConfirm() {
     console.log('Non pris en charge pour le moment')
   }
 }
+
 function handleExmaple() {
   const url = getExampleUrl(props.node.attrs.service)
   if (url) {
@@ -30,6 +32,7 @@ function handleExmaple() {
     src.value = result.src
   }
 }
+
 onMounted(() => {
   originalLink.value = props.node.attrs.src
 })
@@ -37,13 +40,13 @@ onMounted(() => {
 
 <template>
   <NodeViewWrapper as="section">
-    <div class="flex flex-row relative items-center gap-2" v-if="!src">
-      <UInput v-model:model-value="originalLink" type="url" class="flex-1" autofocus placeholder="Saisir le lien" />
+    <div v-if="!src" class="flex flex-row relative items-center gap-2">
+      <UInput v-model:model-value="originalLink" autofocus class="flex-1" placeholder="Saisir le lien" type="url"/>
       <div class="flex gap-2">
-        <UButton @click="handleExmaple" variant="outline">Exemple</UButton>
+        <UButton variant="outline" @click="handleExmaple">Exemple</UButton>
         <UButton @click="handleConfirm">Confirmer</UButton>
       </div>
     </div>
-    <iframe v-if="src" :src="src" frameborder="0" :allowfullscreen="true"></iframe>
+    <iframe v-if="src" :allowfullscreen="true" :src="src" frameborder="0"></iframe>
   </NodeViewWrapper>
 </template>

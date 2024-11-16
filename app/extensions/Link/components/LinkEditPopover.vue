@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Editor } from '@tiptap/vue-3'
 import ActionButton from '../../../components/ActionButton.vue'
 import LinkEditBlock from './LinkEditBlock.vue'
@@ -14,6 +14,7 @@ interface Props {
   action?: ButtonViewReturnComponentProps['action']
   isActive?: ButtonViewReturnComponentProps['isActive']
 }
+
 const props = withDefaults(defineProps<Props>(), {
   icon: undefined,
   title: undefined,
@@ -33,8 +34,8 @@ function onSetLink(link: string, text?: string, openInNewTab?: boolean) {
 
 <template>
   <UPopover>
-    <ActionButton :icon="icon" :tooltip="tooltip" :is-active="isActive" :disabled="disabled" />
-
+    <ActionButton :disabled="disabled" :icon="icon" :is-active="isActive" :tooltip="tooltip" />
+    
     <template #panel>
       <LinkEditBlock :editor="editor" @onSetLink="onSetLink" />
     </template>

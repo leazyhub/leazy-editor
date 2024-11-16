@@ -93,7 +93,9 @@ const tabs = [
           <UTabs :items="tabs" :ui="{ wrapper: 'px-1', list: { tab: { size: 'text-xs' } } }">
             <template #default="{ item, index, selected }">
               <div @click="item.click()" class="flex items-center gap-2 relative truncate">
-                <UIcon :name="item.icon" class="w-4 h-4 flex-shrink-0" />
+                <Suspense>
+                  <UIcon :name="item.icon" class="w-4 h-4 flex-shrink-0" />
+                </Suspense>
 
                 <span class="truncate">{{ item.label }}</span>
 
@@ -105,10 +107,14 @@ const tabs = [
           <div class="flex-1 p-1 max-h-full flex flex-col overflow-hidden">
             <UInput :loading="loading" v-model="searchQuery" placeholder="Rechercher un média" size="xs">
               <template #leading>
-                <UIcon name="i-heroicons-magnifying-glass" class="w-3.5 h-3.5 opacity-75" />
+                <Suspense>
+                  <UIcon name="i-heroicons-magnifying-glass" class="w-3.5 h-3.5 opacity-75" />
+                </Suspense>
               </template>
               <template v-if="searchQuery !== ''" #trailing>
-                <UIcon class="cursor-pointer pointer-events-auto" name="i-heroicons-x-mark" @click="searchQuery = ''" />
+                <Suspense>
+                  <UIcon class="cursor-pointer pointer-events-auto" name="i-heroicons-x-mark" @click="searchQuery = ''" />
+                </Suspense>
               </template>
             </UInput>
 

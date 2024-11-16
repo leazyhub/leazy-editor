@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Editor } from '@tiptap/vue-3'
 import { truncate } from '../../../utils'
 import ActionButton from '../../../components/ActionButton.vue'
@@ -7,6 +7,7 @@ interface Props {
   editor: Editor
   link: string
 }
+
 withDefaults(defineProps<Props>(), {
   link: undefined,
 })
@@ -16,6 +17,7 @@ const emits = defineEmits(['clear', 'edit'])
 function onClear() {
   emits('clear')
 }
+
 function onEdit() {
   emits('edit')
 }
@@ -25,7 +27,7 @@ function onEdit() {
   <div
     class="flex items-center gap-2 p-2 bg-white rounded-lg dark:bg-black shadow-sm border border-neutral-200 dark:border-neutral-800"
   >
-    <a :href="link" target="_blank" rel="noopener noreferrer" class="text-sm underline break-all">
+    <a :href="link" class="text-sm underline break-all" rel="noopener noreferrer" target="_blank">
       {{
         truncate(link, {
           length: 50,
@@ -33,19 +35,19 @@ function onEdit() {
         })
       }}
     </a>
-    <UDivider v-if="link" orientation="vertical" class="h-4" />
+    <UDivider v-if="link" class="h-4" orientation="vertical" />
     <div class="flex flex-nowrap">
       <ActionButton
-        icon="i-lucide-pencil"
-        :tooltip="t('editor.link.edit.tooltip')"
         :action="onEdit"
+        :tooltip="t('editor.link.edit.tooltip')"
         :tooltip-options="{ sideOffset: 15 }"
+        icon="i-lucide-pencil"
       />
       <ActionButton
-        icon="i-lucide-unlink"
-        :tooltip="t('editor.link.unlink.tooltip')"
         :action="onClear"
+        :tooltip="t('editor.link.unlink.tooltip')"
         :tooltip-options="{ sideOffset: 15 }"
+        icon="i-lucide-unlink"
       />
     </div>
   </div>

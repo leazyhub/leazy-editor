@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { Node } from '@tiptap/pm/model'
 import { Editor } from '@tiptap/vue-3'
 import type { NodeSelection, Plugin } from '@tiptap/pm/state'
@@ -53,7 +53,7 @@ onMounted(() => {
       },
       onNodeChange: handleNodeChange,
     })
-
+    
     props.editor.registerPlugin(pluginRef.value)
   }
 })
@@ -72,11 +72,13 @@ function resetTextFormatting() {
   }
   chain.run()
 }
+
 function copyNodeToClipboard() {
   props.editor.chain().focus().setNodeSelection(currentNodePos.value).run()
   // TODO copy node to clipboard
   document.execCommand('copy')
 }
+
 function duplicateNode() {
   props.editor.commands.setNodeSelection(currentNodePos.value)
   const { $anchor } = props.editor.state.selection
@@ -97,7 +99,7 @@ function handleNodeChange(e) {
     currentNode.value = e.node
   }
   currentNodePos.value = e.pos
-
+  
   canMoveUp.value = canMoveNodeUp()
   canMoveDown.value = canMoveNodeDown()
 }
@@ -133,28 +135,27 @@ function handleAdd() {
         if (dispatch) {
           if (currentNodeIsEmptyParagraph) {
             tr.insertText('/', currentNodePos.value, currentNodePos.value + 1)
-          }
-          else {
+          } else {
             tr.insert(insertPos, state.schema.nodes.paragraph.create(null, [state.schema.text('/')]))
           }
-
+          
           return dispatch(tr)
         }
-
+        
         return true
       })
       .focus(focusPos)
       .run()
   }
 }
+
 watch(
   () => menuOpen.value,
   (val) => {
     if (val) {
       // Lock the drag handle when the menu is open
       props.editor.commands.setMeta('lockDragHandle', true)
-    }
-    else {
+    } else {
       props.editor.commands.setMeta('lockDragHandle', false)
     }
   },
@@ -183,87 +184,87 @@ watch(
       style="transition-property: top, left; transition-timing-function: ease-in-out; transition-duration: 0.2s"
     >
       <UButton
-        variant="ghost"
         color="gray"
-        size="2xs"
         icon="i-heroicons-plus"
+        size="2xs"
+        variant="ghost"
         @click="handleAdd"
       />
-
+      
       <UPopover
         v-model:open="menuOpen"
         :popper="{ placement: 'top-start' }"
         :ui="{ base: 'p-1' }"
       >
         <UButton
-          variant="ghost"
           color="gray"
-          size="2xs"
           icon="i-lucide-grip-vertical"
+          size="2xs"
+          variant="ghost"
         />
-
+        
         <template #panel>
           <div class="w-max flex flex-col">
             <UButton
-              variant="ghost"
-              size="xs"
+              :disabled="!canMoveUp"
               color="gray"
               icon="i-heroicons-chevron-up"
               label="Remonter"
-              :disabled="!canMoveUp"
+              size="xs"
+              variant="ghost"
               @click="moveNode('UP')"
             />
             <UButton
-              variant="ghost"
-              size="xs"
+              :disabled="!canMoveDown"
               color="gray"
               icon="i-heroicons-chevron-down"
               label="Descendre"
-              :disabled="!canMoveDown"
+              size="xs"
+              variant="ghost"
               @click="moveNode('DOWN')"
             />
-
+            
             <UDivider
-              orientation="horizontal"
               class="my-1"
+              orientation="horizontal"
             />
-
+            
             <UButton
-              variant="ghost"
-              size="xs"
+              :label="$t('editor.clear.tooltip')"
               color="gray"
               icon="i-lucide-paint-roller"
-              :label="$t('editor.clear.tooltip')"
+              size="xs"
+              variant="ghost"
               @click="resetTextFormatting"
             />
             <UButton
-              variant="ghost"
-              size="xs"
+              :label="$t('editor.copy')"
               color="gray"
               icon="i-heroicons-clipboard"
-              :label="$t('editor.copy')"
+              size="xs"
+              variant="ghost"
               @click="copyNodeToClipboard"
             />
             <UButton
-              variant="ghost"
-              size="xs"
+              :label="$t('editor.duplicate')"
               color="gray"
               icon="i-lucide-copy"
-              :label="$t('editor.duplicate')"
+              size="xs"
+              variant="ghost"
               @click="duplicateNode"
             />
-
+            
             <UDivider
-              orientation="horizontal"
               class="my-1"
+              orientation="horizontal"
             />
-
+            
             <UButton
-              variant="soft"
-              size="xs"
+              :label="$t('editor.remove')"
               color="red"
               icon="i-heroicons-trash"
-              :label="$t('editor.remove')"
+              size="xs"
+              variant="soft"
               @click="deleteNode"
             />
           </div>

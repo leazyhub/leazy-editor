@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { NodeViewWrapper, NodeViewContent } from '@tiptap/vue-3'
+<script lang="ts" setup>
+import { NodeViewContent, NodeViewWrapper } from '@tiptap/vue-3'
 
 const props = defineProps(['node', 'editor', 'selected', 'updateAttributes'])
 
@@ -36,21 +36,23 @@ const currentAlert = computed(() => types.value.find(type => type.name === props
 
 <template>
   <NodeViewWrapper
-    data-type="alert"
-    class="alert"
+      class="alert"
+      data-type="alert"
   >
     <UAlert
-      :icon="currentAlert.icon"
-      :color="currentAlert.color"
-      variant="subtle"
+        :color="currentAlert.color"
+        :icon="currentAlert.icon"
+        variant="subtle"
     >
       <template #icon>
-        <UIcon :name="currentAlert.icon" dynamic />
+        <Suspense>
+          <UIcon :name="currentAlert.icon" dynamic/>
+        </Suspense>
       </template>
       <template #description>
         <NodeViewContent
-          class="text-sm font-medium"
-          as="p"
+            as="p"
+            class="text-sm font-medium"
         />
       </template>
     </UAlert>

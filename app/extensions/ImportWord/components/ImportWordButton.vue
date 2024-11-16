@@ -16,6 +16,7 @@ interface Props {
   action?: ButtonViewReturnComponentProps['action']
   isActive?: ButtonViewReturnComponentProps['isActive']
 }
+
 const props = withDefaults(defineProps<Props>(), {
   icon: undefined,
   title: undefined,
@@ -31,15 +32,18 @@ const toast = useToast()
 const loading = ref(false)
 const file = ref()
 const fileInput = ref()
+
 function triggerFileInput() {
   fileInput.value.click()
 }
+
 function handleFileChange(event) {
   file.value = event.target.files[0]
   if (file.value) {
     importWord()
   }
 }
+
 function base64ToBlob(base64, mimeType) {
   const byteCharacters = atob(base64.split(',')[1])
   const byteNumbers = new Array(byteCharacters.length)
@@ -49,10 +53,12 @@ function base64ToBlob(base64, mimeType) {
   const byteArray = new Uint8Array(byteNumbers)
   return new Blob([byteArray], { type: mimeType })
 }
+
 // Convert the blob to a File object
 function blobToFile(blob, fileName) {
   return new File([blob], fileName, { type: blob.type })
 }
+
 async function filerImage(html: string) {
   const parser = new DOMParser()
   const doc = parser.parseFromString(html, 'text/html')
@@ -63,7 +69,7 @@ async function filerImage(html: string) {
   const hasImage = hasExtension(props.editor, 'image')
   if (hasImage) {
     const uploadOptions = props.editor.extensionManager.extensions.find(
-      extension => extension.name === 'importWord'
+        extension => extension.name === 'importWord'
     )?.options
     if (uploadOptions && typeof uploadOptions.upload === 'function') {
       const files: File[] = []
@@ -90,6 +96,7 @@ async function filerImage(html: string) {
     return doc.body.innerHTML
   }
 }
+
 async function importWord() {
   if (props.convert) {
     const result = await props.convert(file.value)
@@ -116,17 +123,18 @@ async function importWord() {
       method: 'POST',
       body: formData,
     })
-      .then(response => response.json())
-      .then(async data => {
-        handleResult(data.html)
-      })
-      .catch(error => {
-        toast.add({ icon: 'i-heroicons-x-circle', title: 'Erreur lors de l\'importation', color: 'red' })
-        console.error('Error:', error)
-        loading.value = false
-      })
+        .then(response => response.json())
+        .then(async data => {
+          handleResult(data.html)
+        })
+        .catch(error => {
+          toast.add({ icon: 'i-heroicons-x-circle', title: 'Erreur lors de l\'importation', color: 'red' })
+          console.error('Error:', error)
+          loading.value = false
+        })
   }
 }
+
 async function handleResult(htmlResult: string) {
   const html = await filerImage(htmlResult)
   console.log(html)
@@ -138,7 +146,7 @@ async function handleResult(htmlResult: string) {
 
 <template>
   <div>
-    <ActionButton :loading="loading" :disabled="disabled" :icon="icon" :tooltip="tooltip" :action="triggerFileInput" />
-    <input type="file" accept=".docx" ref="fileInput" style="display: none" @change="handleFileChange" />
+    <ActionButton :action="triggerFileInput" :disabled="disabled" :icon="icon" :loading="loading" :tooltip="tooltip"/>
+    <input ref="fileInput" accept=".docx" style="display: none" type="file" @change="handleFileChange"/>
   </div>
 </template>

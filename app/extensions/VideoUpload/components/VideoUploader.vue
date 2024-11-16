@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
 
 const props = defineProps({
@@ -28,6 +28,7 @@ function handleFile(event) {
     loading.value = false
   })
 }
+
 function handleLink() {
   props.editor
     .chain()
@@ -39,9 +40,11 @@ function handleLink() {
     .focus()
     .run()
 }
+
 function handleDelete() {
   props.deleteNode()
 }
+
 function handleClick() {
   fileInput.value?.click()
 }
@@ -50,26 +53,37 @@ function handleClick() {
 <template>
   <NodeViewWrapper class="p-0 m-0" data-drag-handle>
     <UPopover :ui="{ base: 'flex flex-col gap-2 p-1' }">
-      <div class="flex items-center w-full p-3 my-3 hover:bg-gray-100 dark:hover:bg-gray-700 border border-border border-gray-200 dark:border-gray-700 cursor-pointer rounded-lg transition-all">
-        <div class="flex justify-center items-center gap-3 text-s" v-if="loading">
-          <UIcon class="animate-spin w-6 h-6" name="i-lucide-loader-circle" />
+      <div
+        class="flex items-center w-full p-3 my-3 hover:bg-gray-100 dark:hover:bg-gray-700 border border-border border-gray-200 dark:border-gray-700 cursor-pointer rounded-lg transition-all"
+      >
+        <div v-if="loading" class="flex justify-center items-center gap-3 text-s">
+          <Suspense>
+            <UIcon class="animate-spin w-6 h-6" name="i-lucide-loader-circle" />
+          </Suspense>
           <span>{{ t('editor.video.dialog.uploading') }}...</span>
         </div>
         <div v-else class="flex justify-between items-center w-full">
           <div class="flex justify-center items-center gap-3">
-            <UIcon name="i-lucide-video" class="w-6 h-6" />
+            <Suspense>
+              <UIcon class="w-6 h-6" name="i-lucide-video" />
+            </Suspense>
             <span class="text-sm">{{ t('editor.video.dialog.title') }}</span>
           </div>
-          <UIcon name="i-heroicons-trash" class="text-red-500" @click.stop="handleDelete" />
+          <Suspense>
+            <UIcon class="text-red-500" name="i-heroicons-trash" @click.stop="handleDelete" />
+          </Suspense>
         </div>
       </div>
-
+      
       <template #panel>
         <div>
-          <UButton block size="xs" @click="handleClick" icon="i-heroicons-arrow-up-tray" :label="t('editor.video.dialog.tab.upload')" />
-          <input type="file" accept="video/*" ref="fileInput" multiple style="display: none" @change="handleFile" />
+          <UButton
+            :label="t('editor.video.dialog.tab.upload')" block icon="i-heroicons-arrow-up-tray" size="xs"
+            @click="handleClick"
+          />
+          <input ref="fileInput" accept="video/*" multiple style="display: none" type="file" @change="handleFile" />
         </div>
-
+        
         <div class="flex items-center align-center text-center w-full flex-row">
           <div class="flex border-gray-200 dark:border-gray-800 w-full border-t border-solid" />
           <div class="font-medium text-gray-700 dark:text-gray-200 flex mx-3 whitespace-nowrap">
@@ -77,17 +91,17 @@ function handleClick() {
           </div>
           <div class="flex border-gray-200 dark:border-gray-800 w-full border-t border-solid" />
         </div>
-
+        
         <UForm class="flex items-center gap-1" @submit="handleLink">
           <UInput
-              type="url"
-              autofocus
-              required
-              v-model="link"
-              size="xs"
-              :placeholder="t('editor.video.dialog.placeholder')"
+            v-model="link"
+            :placeholder="t('editor.video.dialog.placeholder')"
+            autofocus
+            required
+            size="xs"
+            type="url"
           />
-          <UButton type="submit" size="xs" :label="t('editor.video.dialog.button.apply')" />
+          <UButton :label="t('editor.video.dialog.button.apply')" size="xs" type="submit" />
         </UForm>
       </template>
     </UPopover>

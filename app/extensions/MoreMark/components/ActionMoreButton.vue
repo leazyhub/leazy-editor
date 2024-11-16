@@ -15,6 +15,7 @@ export interface Item {
   divider?: boolean
   default?: boolean
 }
+
 interface Props {
   editor: Editor
   disabled?: boolean
@@ -47,7 +48,7 @@ const active = computed(() => {
     icon: props.icon,
     isActive: () => false,
   }
-
+  
   return item
 })
 </script>
@@ -56,16 +57,24 @@ const active = computed(() => {
   <UPopover :popper="{ placement: 'bottom' }">
     <ActionButton :icon="icon" :tooltip="tooltip">
       <template #icon>
-        <UIcon name="i-heroicons-chevron-down-20-solid" />
+        <Suspense>
+          <UIcon name="i-heroicons-chevron-down-20-solid" />
+        </Suspense>
       </template>
     </ActionButton>
-
+    
     <template #panel>
-      <UButton v-for="(item, index) in props.items" size="xs" :key="index" :disabled="disabled" @click="item.action" :variant="active.title === item.title ? 'soft' : 'ghost'" :color="active.title === item.title ? 'primary' : 'gray'">
+      <UButton
+        v-for="(item, index) in props.items" :key="index" :color="active.title === item.title ? 'primary' : 'gray'" :disabled="disabled" :variant="active.title === item.title ? 'soft' : 'ghost'"
+        size="xs"
+        @click="item.action"
+      >
         <div class="flex items-center justify-between gap-2">
-          <UIcon v-if="item.icon" :name="item.icon" dynamic />
+          <Suspense>
+            <UIcon v-if="item.icon" :name="item.icon" dynamic />
+          </Suspense>
           <template v-if="item.shortcuts">
-            <UKbd size="2xs" v-for="shortcut in getShortcutKeys(item.shortcuts)" :value="shortcut" />
+            <UKbd v-for="shortcut in getShortcutKeys(item.shortcuts)" :value="shortcut" size="xs" />
           </template>
         </div>
       </UButton>

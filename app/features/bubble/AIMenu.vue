@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { BubbleMenu, type Editor } from '@tiptap/vue-3'
-import { useFocus, useDebounceFn } from '@vueuse/core'
+import { useDebounceFn, useFocus } from '@vueuse/core'
 import AiCompletion from './AiCompletion.vue'
 import Menu from './Menu.vue'
 
@@ -136,61 +136,65 @@ const shortcutMenus = computed(() => {
 </script>
 
 <template>
-  <div class="absolute left-0 right-0 top-0 bottom-0 z-[98]" v-show="shouldShow" @click="handleOverlayClick">
-    <BubbleMenu plugin-key="AIMenu" :update-delay="0" v-show="shouldShow" :editor="editor" :tippy-options="tippyOptions">
-      <div class="relative w-[450px] z-[99]" :class="{ 'shake-animation': isShaking }">
+  <div v-show="shouldShow" class="absolute left-0 right-0 top-0 bottom-0 z-[98]" @click="handleOverlayClick">
+    <BubbleMenu
+      v-show="shouldShow" :editor="editor" :tippy-options="tippyOptions" :update-delay="0" plugin-key="AIMenu"
+    >
+      <div :class="{ 'shake-animation': isShaking }" class="relative w-[450px] z-[99]">
         <div
-          class="shadow-md rounded-md border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700"
           v-show="(status === 'generating' || status === 'completed') && result"
+          class="shadow-md rounded-md border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700"
         >
           <div ref="resultContainer" class="p-4 line-height-none block overflow-y-auto" style="max-height: 270px;">
             <div class="text-sm text-foreground line-height-snug" v-html="result" />
           </div>
         </div>
         <form
-          @submit="handleGenerate"
           class="relative w-full items-center flex mt-3 shadow-md rounded-md border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700"
+          @submit="handleGenerate"
         >
           <UInput
-            v-model="prompt"
             ref="inputRef"
-            placeholder="Demandez à l'IA..."
-            variant="none"
-            icon="i-heroicons-sparkles"
+            v-model="prompt"
             :loading="status === 'generating'"
-            size="md"
             class="w-full"
+            icon="i-heroicons-sparkles"
+            placeholder="Demandez à l'IA..."
+            size="md"
+            variant="none"
           >
             <template #trailing>
               <UButton
                 v-if="status === 'generating'"
-                @click="handleClose"
                 size="xs"
                 square
+                @click="handleClose"
               >
                 Stop
               </UButton>
               <UButton
-                :disabled="!prompt"
                 v-else
-                @click="handleGenerate"
+                :disabled="!prompt"
                 size="xs"
                 square
+                @click="handleGenerate"
               >
-                <UIcon name="i-heroicons-chevron-right" />
+                <Suspense>
+                  <UIcon name="i-heroicons-chevron-right" />
+                </Suspense>
               </UButton>
             </template>
           </UInput>
         </form>
-        <div class="mt-3 max-w-56" v-show="status === 'init' && shortcutMenus.length && !prompt">
+        <div v-show="status === 'init' && shortcutMenus.length && !prompt" class="mt-3 max-w-56">
           <Menu :items="shortcutMenus" @item-click="shortcutClick" />
         </div>
         <AiCompletion
+          v-if="status === 'completed' && prompt === ''"
+          :completion="result"
+          :editor="editor"
           @close="handleClose"
           @generate="handleReGenerate"
-          v-if="status === 'completed' && prompt === ''"
-          :editor="editor"
-          :completion="result"
         />
       </div>
     </BubbleMenu>
@@ -215,6 +219,7 @@ const shortcutMenus = computed(() => {
   margin-left: 8px;
   animation: text-loading 2s infinite;
 }
+
 .shake-animation {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
@@ -227,18 +232,18 @@ const shortcutMenus = computed(() => {
   90% {
     transform: translate3d(-1px, 0, 0);
   }
-
+  
   20%,
   80% {
     transform: translate3d(2px, 0, 0);
   }
-
+  
   30%,
   50%,
   70% {
     transform: translate3d(-4px, 0, 0);
   }
-
+  
   40%,
   60% {
     transform: translate3d(4px, 0, 0);

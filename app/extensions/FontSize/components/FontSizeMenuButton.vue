@@ -12,6 +12,7 @@ export interface Item {
   divider?: boolean
   default?: boolean
 }
+
 interface Props {
   editor: Editor
   disabled?: boolean
@@ -48,12 +49,13 @@ const active = computed(() => {
 
 <template>
   <UPopover>
-    <ActionMenuButton :title="active.title" :tooltip="tooltip" />
+    <ActionMenuButton :title="active.title" :tooltip="tooltip"/>
 
     <template #panel>
       <div class="flex flex-col overflow-y-auto max-h-96">
         <template v-for="(item, index) in props.items" :key="index">
-          <UButton @click="item.action" :label="item.title" :variant="active.title === item.title ? 'soft' : 'ghost'" :color="active.title === item.title ? 'primary' : 'gray'" />
+          <UButton :color="active.title === item.title ? 'primary' : 'gray'" :label="item.title" :variant="active.title === item.title ? 'soft' : 'ghost'"
+                   @click="item.action"/>
         </template>
       </div>
     </template>

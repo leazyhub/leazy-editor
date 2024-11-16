@@ -3,17 +3,18 @@
       v-if="items.length"
       class="items z-50 flex flex-col h-auto max-h-[330px] w-28 overflow-y-auto rounded-md border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 p-1 gap-1 shadow-md transition-all">
     <UButton
-        size="xs"
         v-for="(item, index) in items"
-        :variant="index === selectedIndex ? 'soft' : 'ghost'"
-        :color="index === selectedIndex ? 'primary' : 'gray'"
-        :active="index === selectedIndex"
         :key="index"
+        :active="index === selectedIndex"
+        :color="index === selectedIndex ? 'primary' : 'gray'"
+        :variant="index === selectedIndex ? 'soft' : 'ghost'"
+        size="xs"
         @click="selectItem(index)"
     >
       <template #leading>
-        <div class="flex items-center justify-center p-px font-medium border rounded-sm border-gray-200 dark:border-gray-700">
-          <img v-if="item.fallbackImage" class="w-4" :src="item.fallbackImage" align="absmiddle" :alt="item.name">
+        <div
+            class="flex items-center justify-center p-px font-medium border rounded-sm border-gray-200 dark:border-gray-700">
+          <img v-if="item.fallbackImage" :alt="item.name" :src="item.fallbackImage" align="absmiddle" class="w-4">
         </div>
       </template>
 

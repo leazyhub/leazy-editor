@@ -16,6 +16,7 @@ import type { CodeOptions } from '../extensions/Code'
 import type { CodeBlockOptions } from '../extensions/CodeBlock'
 import type { ColorOptions } from '../extensions/Color'
 import type { ColumnsOptions } from '../extensions/MultiColumn'
+import type { CommentOptions } from '../extensions/Comment'
 import type { DetailsOptions } from '../extensions/Details'
 import type { FormatPainterOptions } from '../extensions/FormatPainter'
 import type { FontSizeOptions } from '../extensions/FontSize'
@@ -163,6 +164,13 @@ export interface BaseKitOptions {
    * @default true
    */
   columns: Partial<ColumnsOptions> | false
+
+  /**
+   * Comment options or false, indicating whether to enable comments
+   *
+   * @default true
+   */
+  comment: Partial<CommentOptions> | false
 
   /**
    * Details options or false, indicating whether to enable details

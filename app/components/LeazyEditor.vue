@@ -40,6 +40,14 @@ interface Emits {
   (event: 'selectionUpdate', value: Editor): void
   
   (event: 'update:modelValue', value: Props['modelValue']): void
+  
+  (event: 'comment:added', value: object): void
+  
+  (event: 'comment:deleted', value: number): void
+  
+  (event: 'comment:updated', value: object): void
+  
+  (event: 'comment:replied', value: object): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -114,6 +122,12 @@ const editor = useEditor({
       }
       return false
     },
+  },
+  onBeforeCreate: ({ editor }) => {
+    editor.on('comment:added', (comment) => emit('comment:added', comment))
+    editor.on('comment:deleted', (commentId) => emit('comment:deleted', commentId))
+    editor.on('comment:updated', (comment) => emit('comment:updated', comment))
+    editor.on('comment:replied', (comment) => emit('comment:replied', comment))
   },
   onUpdate: ({ editor }) => {
     const output = getOutput(editor, props.output as any)

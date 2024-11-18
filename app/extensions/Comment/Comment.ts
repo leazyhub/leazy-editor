@@ -10,11 +10,11 @@ declare module '@tiptap/core' {
       /**
        * Set a comment (add)
        */
-      setComment: (comment_id: string) => ReturnType,
+      setComment: (comment_id: string, author: object) => ReturnType,
       /**
        * Unset a comment (remove)
        */
-      unsetComment: (comment_id: string) => ReturnType,
+      unsetComment: (comment_id: string) => ReturnType
     }
   }
 }
@@ -51,9 +51,16 @@ export const Comment = Mark.create<CommentOptions, CommentStorage>({
               id: `a${uuid()}a`,
               content: '',
               replies: [],
-              createdAt: new Date()
+              validated: false,
+              edit_mode: false,
+              resolved: false,
+              createdAt: new Date(),
+              author: {
+                id: null,
+                name: null
+              }
             }
-            editor.commands.setComment(newComment.id)
+            editor.commands.setComment(newComment.id, newComment.author)
           },
           isActive: () => !!editor.storage.activeCommentId,
           icon: 'i-lucide-message-square-plus',
@@ -109,11 +116,11 @@ export const Comment = Mark.create<CommentOptions, CommentStorage>({
   },
   addCommands() {
     return {
-      setComment: (comment_id) => ({ commands }) => {
+      setComment: (comment_id, author: object) => ({ commands }) => {
         if (!comment_id) return false
 
         if (!this.storage.comments.some(comment => comment.id === comment_id)) {
-          this.storage.comments.push({
+          const newComment = {
             id: comment_id,
             content: '',
             replies: [],
@@ -122,22 +129,26 @@ export const Comment = Mark.create<CommentOptions, CommentStorage>({
             resolved: false,
             createdAt: new Date(),
             author: {
-              id: uuid(),
-              name: 'John Doe'
+              id: author?.id,
+              name: author?.name
             }
-          })
+          }
+          this.storage.comments.push(newComment)
+
+          this.editor.emit('comment:added', newComment)
         }
 
         commands.setMark('comment', { comment_id })
       },
       updateComment: (comment_id, comment_content) => ({ commands }) => {
-        console.log(comment_content)
         if (!comment_id) return false
 
         const comment = this.storage.comments.find(comment => comment.id === comment_id)
         if (!comment) return false
 
         Object.assign(comment, comment_content)
+
+        this.editor.emit('comment:updated', comment)
 
         return commands.setMark('comment', { comment_id })
       },
@@ -170,9 +181,11 @@ export const Comment = Mark.create<CommentOptions, CommentStorage>({
 
         this.storage.comments = this.storage.comments.filter(comment => comment.id !== comment_id)
 
+        this.editor.emit('comment:removed', comment_id)
+
         return dispatch?.(tr)
       },
-      setReply: (comment_id, reply_content) => () => {
+      setReply: (comment_id, reply_content, author) => () => {
         if (!comment_id || !reply_content) return false
 
         const comment = this.storage.comments.find(comment => comment.id === comment_id)
@@ -185,12 +198,14 @@ export const Comment = Mark.create<CommentOptions, CommentStorage>({
           edit_mode: reply_content.edit_mode,
           createdAt: new Date(),
           author: {
-            id: uuid(),
-            name: 'John Doe'
+            id: author?.id,
+            name: author?.name
           }
         }
 
         comment.replies.push(reply)
+
+        this.editor.emit('comment:replied', reply)
 
         return true
       }

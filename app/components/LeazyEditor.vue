@@ -13,6 +13,7 @@ import ColumnsMenu from '@/extensions/MultiColumn/menus/ColumnsMenu.vue'
 import AlertMenu from '@/extensions/Alert/menus/AlertMenus.vue'
 import { BaseKit } from '@/extensions'
 import type { LeazyEditorOnChange } from '@/types'
+import { useDebounceFn } from '@vueuse/core'
 
 interface Props {
   modelValue?: string | object
@@ -28,6 +29,8 @@ interface Props {
   minHeight?: string | number
   maxHeight?: string | number
   extensions?: AnyExtension[]
+  debounce?: boolean
+  debounceDelay?: number
   editorClass?: string | string[] | Record<string, any>
   contentClass?: string | string[] | Record<string, any>
 }
@@ -62,6 +65,8 @@ const props = withDefaults(defineProps<Props>(), {
   maxWidth: undefined,
   minHeight: undefined,
   maxHeight: undefined,
+  debounce: true,
+  debounceDelay: 5000,
   extensions: () => [],
   editorClass: undefined,
   contentClass: undefined,
@@ -110,6 +115,13 @@ const sortExtensions = computed(() => {
   return [...exts, ...diff]
 })
 
+const debouncedOnUpdate = useDebounceFn(({ editor }) => {
+  console.log('debouncedOnUpdate')
+  const output = getOutput(editor, props.output as any)
+  emit('update:modelValue', output)
+  emit('change', { editor, output })
+}, props.debounce ? props.debounceDelay : 0)
+
 // Utilisation de `useEditor` pour initialiser l'éditeur
 const editor = useEditor({
   content: props.modelValue,
@@ -129,11 +141,7 @@ const editor = useEditor({
     editor.on('comment:updated', (comment) => emit('comment:updated', comment))
     editor.on('comment:replied', (comment) => emit('comment:replied', comment))
   },
-  onUpdate: ({ editor }) => {
-    const output = getOutput(editor, props.output as any)
-    emit('update:modelValue', output)
-    emit('change', { editor, output })
-  },
+  onUpdate: ({ editor }) => debouncedOnUpdate({ editor }),
   onSelectionUpdate: ({ editor }) => emit('selectionUpdate', editor),
   onBlur: () => emit('blur'),
   onDestroy: () => emit('destroy'),

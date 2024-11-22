@@ -116,13 +116,17 @@ export const Comment = Mark.create<CommentOptions, CommentStorage>({
   },
   addCommands() {
     return {
-      setComment: (comment_id, author: object) => ({ commands }) => {
+      setComment: (comment_id, author: object) => ({ commands, state }) => {
         if (!comment_id) return false
+
+        const { from, to } = state.selection
+        const target = state.doc.textBetween(from, to)
 
         if (!this.storage.comments.some(comment => comment.id === comment_id)) {
           const newComment = {
             id: comment_id,
             content: '',
+            target,
             replies: [],
             validated: false,
             edit_mode: false,

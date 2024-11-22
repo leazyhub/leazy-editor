@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const content = ref({})
+const editor = useTemplateRef('editor')
 </script>
 
 <template>

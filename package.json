@@ -76,7 +76,7 @@
     "@tiptap/pm": "^2.9.1",
     "@tiptap/suggestion": "^2.9.1",
     "@tiptap/vue-3": "^2.9.1",
-    "@vueuse/core": "11.1.0",
+    "@vueuse/core": "11.3.0",
     "d3": "^7.9.0",
     "evaluatex": "^2.2.0",
     "highlight.js": "^11.10.0",

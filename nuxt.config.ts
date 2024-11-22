@@ -14,7 +14,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       WEBSOCKET_URL: process.env.NUXT_WEBSOCKET_URL,
-      OPENAI_API_KEY: process.env.NUXT_OPENAI_API_KEY
+      OPENAI_API_KEY: process.env.NUXT_OPENAI_API_KEY,
+      CONVERT_APP_ID: process.env.NUXT_CONVERT_APP_ID,
+      JWT_CONVERT_TOKEN: process.env.NUXT_JWT_CONVERT_TOKEN
     }
   },
   modules: [

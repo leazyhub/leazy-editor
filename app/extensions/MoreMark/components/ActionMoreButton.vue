@@ -64,20 +64,22 @@ const active = computed(() => {
     </ActionButton>
     
     <template #panel>
-      <UButton
-        v-for="(item, index) in props.items" :key="index" :color="active.title === item.title ? 'primary' : 'gray'" :disabled="disabled" :variant="active.title === item.title ? 'soft' : 'ghost'"
-        size="xs"
-        @click="item.action"
-      >
-        <div class="flex items-center justify-between gap-2">
-          <Suspense>
-            <UIcon v-if="item.icon" :name="item.icon" dynamic />
-          </Suspense>
-          <template v-if="item.shortcuts">
-            <UKbd v-for="shortcut in getShortcutKeys(item.shortcuts)" :value="shortcut" size="xs" />
-          </template>
-        </div>
-      </UButton>
+      <div class="flex flex-col min-w-24">
+        <UButton
+          v-for="(item, index) in props.items" :key="index" :color="active.title === item.title ? 'primary' : 'gray'" :disabled="disabled" :variant="active.title === item.title ? 'soft' : 'ghost'"
+          size="xs"
+          @click="item.action"
+        >
+          <div class="flex items-center justify-between gap-2">
+            <Suspense>
+              <UIcon v-if="item.icon" :name="item.icon" dynamic />
+            </Suspense>
+            <template v-if="item.shortcuts">
+              <UKbd v-for="shortcut in getShortcutKeys(item.shortcuts)" :value="shortcut" size="xs" />
+            </template>
+          </div>
+        </UButton>
+      </div>
     </template>
   </UPopover>
 </template>

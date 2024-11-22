@@ -23,6 +23,7 @@ import { Document } from './Document'
 import { Dropcursor, type DropcursorOptions } from '@tiptap/extension-dropcursor'
 import Emoji, { type EmojiOptions, gitHubEmojis } from '@tiptap-pro/extension-emoji'
 import EmojiSuggestion from './Emoji'
+import { Export, type ExportOptions } from './Export'
 import Focus, { type FocusOptions } from '@tiptap/extension-focus'
 import { FormatPainter, type FormatPainterOptions } from './FormatPainter'
 import { FontSize, type FontSizeOptions } from './FontSize'
@@ -36,6 +37,7 @@ import { HorizontalRule, type HorizontalRuleOptions } from './HorizontalRule'
 import Iframe, { type IframeOptions } from './Iframe/Iframe'
 import { Image, type ImageOptions } from './Image'
 import { ImageUpload } from './ImageUpload'
+import { Import, type ImportOptions } from './Import'
 import { ImportWord, type ImportWordOptions } from './ImportWord'
 import { Indent, type IndentOptions } from './Indent'
 import { Italic, type ItalicOptions } from './Italic'
@@ -206,6 +208,13 @@ export interface BaseKitOptions {
   emoji: Partial<EmojiOptions> | false
 
   /**
+   * Export options or false, indicating whether to enable exports
+   *
+   * @default true
+   */
+  export: Partial<ExportOptions> | false
+
+  /**
    * Focus options or false, indicating whether to enable focus functionality
    *
    * @default true
@@ -295,6 +304,13 @@ export interface BaseKitOptions {
    * @default true
    */
   imageUpload: false
+
+  /**
+   * Import options or false, indicating whether to enable imports
+   *
+   * @default true
+   */
+  import: Partial<ImportOptions> | false
 
   /**
    * ImportWord options or false, indicating whether to enable word imports
@@ -781,6 +797,14 @@ export const BaseKit = Extension.create<BaseKitOptions>({
       }))
     }
 
+    if (this.options.export !== false) {
+      extensions.push(Export.configure({
+        appId: useRuntimeConfig().public.CONVERT_APP_ID,
+        token: useRuntimeConfig().public.JWT_CONVERT_TOKEN,
+        ...this.options.export
+      }))
+    }
+
     if (this.options.focus !== false) {
       extensions.push(
         Focus.configure({
@@ -850,6 +874,14 @@ export const BaseKit = Extension.create<BaseKitOptions>({
           return Promise.resolve(f)
         },
         ...this.options.imageUpload
+      }))
+    }
+
+    if (this.options.import !== false) {
+      extensions.push(Import.configure({
+        appId: useRuntimeConfig().public.CONVERT_APP_ID,
+        token: useRuntimeConfig().public.JWT_CONVERT_TOKEN,
+        ...this.options.import
       }))
     }
 

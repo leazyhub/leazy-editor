@@ -1,6 +1,7 @@
 import type { CharacterCountOptions } from '@tiptap/extension-character-count'
 import type { DropcursorOptions } from '@tiptap/extension-dropcursor'
 import type { EmojiOptions } from '@tiptap-pro/extension-emoji'
+import type { ExportOptions } from '../extensions/Export'
 import type { FocusOptions } from '@tiptap/extension-focus'
 import type { HardBreakOptions } from '@tiptap/extension-hard-break'
 import type { ListItemOptions } from '@tiptap/extension-list-item'
@@ -27,6 +28,7 @@ import type { HistoryOptions } from '../extensions/History'
 import type { HorizontalRuleOptions } from '../extensions/HorizontalRule'
 import type { IframeOptions } from '../extensions/Iframe'
 import type { ImageOptions } from '../extensions/Image'
+import type { ImportOptions } from '../extensions/Import'
 import type { ImportWordOptions } from '../extensions/ImportWord'
 import type { IndentOptions } from '../extensions/Indent'
 import type { ItalicOptions } from '../extensions/Italic'
@@ -201,6 +203,13 @@ export interface BaseKitOptions {
   emoji: Partial<EmojiOptions> | false
 
   /**
+   * Export options or false, indicating whether to enable exports
+   *
+   * @default true
+   */
+  export: Partial<ExportOptions> | false
+
+  /**
    * Focus options or false, indicating whether to enable focus functionality
    *
    * @default true
@@ -292,6 +301,13 @@ export interface BaseKitOptions {
   imageUpload: false
 
   /**
+   * Import options or false, indicating whether to enable imports
+   *
+   * @default true
+   */
+  import: Partial<ImportOptions> | false
+
+  /**
    * ImportWord options or false, indicating whether to enable word imports
    *
    * @default true
@@ -311,20 +327,6 @@ export interface BaseKitOptions {
    * @default true
    */
   italic: Partial<ItalicOptions> | false
-
-  /**
-   * Lesson options or false, indicating whether to enable lessons
-   *
-   * @default true
-   */
-  lesson: Partial<LessonOptions> | false
-
-  /**
-   * LessonUpload options or false, indicating whether to enable lesson uploads
-   *
-   * @default true
-   */
-  lessonUpload: Partial<LessonUploadOptions> | false
 
   /**
    * LineHeight options or false, indicating whether to enable line height
@@ -493,20 +495,6 @@ export interface BaseKitOptions {
    * @default true
    */
   trailingNode: Partial<TrailingNodeOptions> | false
-
-  /**
-   * Twitter options or false, indicating whether to enable twitter
-   *
-   * @default true
-   */
-  twitter: Partial<TwitterOptions> | false
-
-  /**
-   * TwitterUpload options or false, indicating whether to enable twitter uploads
-   *
-   * @default true
-   */
-  twitterUpload: Partial<TwitterUploadOptions> | false
 
   /**
    * Underline options or false, indicating whether to enable underline

@@ -39,6 +39,9 @@ export type ExtensionNameKeys =
   | 'clear'
   | 'history'
   | 'fullscreen'
+  | 'export'
+  | 'importWord'
+  | 'import'
 
 /**
  * Represents the general options for Tiptap extensions.

@@ -12,22 +12,22 @@ const types = ref([
   {
     name: 'info',
     icon: 'i-heroicons-information-circle',
-    color: 'gray',
+    color: 'info',
   },
   {
     name: 'warning',
     icon: 'i-heroicons-exclamation-triangle',
-    color: 'orange',
+    color: 'warning',
   },
   {
     name: 'danger',
     icon: 'i-heroicons-x-circle',
-    color: 'red',
+    color: 'error',
   },
   {
     name: 'success',
     icon: 'i-heroicons-check-circle',
-    color: 'green',
+    color: 'success',
   },
 ])
 
@@ -36,23 +36,23 @@ const currentAlert = computed(() => types.value.find(type => type.name === props
 
 <template>
   <NodeViewWrapper
-      class="alert"
-      data-type="alert"
+    class="alert"
+    data-type="alert"
   >
     <UAlert
-        :color="currentAlert.color"
-        :icon="currentAlert.icon"
-        variant="subtle"
+      :color="currentAlert.color"
+      :icon="currentAlert.icon"
+      variant="subtle"
     >
       <template #icon>
         <Suspense>
-          <UIcon :name="currentAlert.icon" dynamic/>
+          <UIcon :name="currentAlert.icon" dynamic />
         </Suspense>
       </template>
       <template #description>
         <NodeViewContent
-            as="p"
-            class="text-sm font-medium"
+          as="p"
+          class="text-sm font-medium"
         />
       </template>
     </UAlert>

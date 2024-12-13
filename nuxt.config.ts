@@ -24,9 +24,6 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/image',
   ],
-  ui: {
-    safelistColors: ['primary', 'red', 'orange', 'green']
-  },
   i18n: {
     legacy: false,
     locales: [

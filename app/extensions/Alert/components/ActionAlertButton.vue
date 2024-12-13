@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
       </template>
     </ActionButton>
 
-    <template #panel>
+    <template #content>
       <ActionButton
           :isActive="() => editor.isActive('alert', { type: 'note' })"
           :tooltip="$t('editor.alert.note')"

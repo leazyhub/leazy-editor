@@ -42,7 +42,7 @@ const getReferenceClientRect = () => {
       :updateDelay="0"
       pluginKey="alert"
   >
-    <div class="bg-white rounded-lg dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700">
+    <div class="bg-white rounded-lg dark:bg-neutral-800 shadow-sm border border-neutral-200 dark:border-neutral-700">
       <div class="flex gap-1 items-center">
         <ActionButton
             :isActive="() => editor.isActive('alert', { type: 'note' })"
@@ -83,7 +83,7 @@ const getReferenceClientRect = () => {
           <UButton
               :active="() => editor.isActive('alert')"
               :tooltip="$t('editor.alert.remove')"
-              color="red"
+              color="error"
               icon="i-heroicons-trash"
               size="xs"
               title="Remove"

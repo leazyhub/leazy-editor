@@ -3,13 +3,15 @@ export default defineAppConfig({
     name: 'Hello from Leazy Editor layer'
   },
   ui: {
+    colors: {
+      primary: 'indigo',
+      neutral: 'zinc',
+    },
     variables: {
       header: {
         height: '3rem'
       }
     },
-    primary: 'indigo',
-    gray: 'stone',
     tooltip: {
       default: {
         openDelay: 250

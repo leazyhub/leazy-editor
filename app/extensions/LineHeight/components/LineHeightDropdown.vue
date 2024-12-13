@@ -64,13 +64,13 @@ function toggleLightheight(key: string) {
       </Suspense>
     </ActionButton>
     
-    <template #panel>
+    <template #content>
       <div class="flex flex-col min-w-24">
         <UButton
           v-for="(item, index) in LineHeights"
           :key="index"
           :class="{ 'bg-zinc-100': item.value === value }"
-          :color="item.value === value ? 'primary' : 'gray'"
+          :color="item.value === value ? 'primary' : 'neutral'"
           :label="item.label"
           :variant="item.value === value ? 'soft' : 'ghost'"
           @click="toggleLightheight(item.value)"

@@ -4,7 +4,25 @@ const editor = useTemplateRef('editor')
 </script>
 
 <template>
-  <div>
-    <LeazyEditor ref="editor" v-model="content" @comment:added="() => console.log(editor.editor.storage.comment.comments)" class="flex-1" max-width="800" />
-  </div>
+  <UApp>
+    <div>
+      <UPopover>
+        <UButton label="Open" color="neutral" variant="subtle" />
+        
+        <template #content>
+          <div class="size-48 m-4 inline-flex bg-white" />
+        </template>
+      </UPopover>
+      <LeazyEditor ref="editor" v-model="content" @comment:added="() => console.log(editor.editor.storage.comment.comments)" class="flex-1" max-width="800" />
+    </div>
+  </UApp>
 </template>
+
+<style>
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+.dark {
+  --ui-bg: var(--color-neutral-800);
+}
+</style>

@@ -54,7 +54,7 @@ const onColumnTwo = () => {
     :updateDelay="0"
     pluginKey="columns"
   >
-    <div class="bg-white rounded-lg dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700">
+    <div class="bg-white rounded-lg dark:bg-neutral-800 shadow-sm border border-neutral-200 dark:border-neutral-700">
       <div class="flex gap-1 items-center">
         <ActionButton
           :action="onColumnLeft"

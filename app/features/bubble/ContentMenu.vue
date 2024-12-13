@@ -184,7 +184,7 @@ watch(
       style="transition-property: top, left; transition-timing-function: ease-in-out; transition-duration: 0.2s"
     >
       <UButton
-        color="gray"
+        color="neutral"
         icon="i-heroicons-plus"
         size="2xs"
         variant="ghost"
@@ -197,17 +197,17 @@ watch(
         :ui="{ base: 'p-1' }"
       >
         <UButton
-          color="gray"
+          color="neutral"
           icon="i-lucide-grip-vertical"
           size="2xs"
           variant="ghost"
         />
         
-        <template #panel>
+        <template #content>
           <div class="w-max flex flex-col">
             <UButton
               :disabled="!canMoveUp"
-              color="gray"
+              color="neutral"
               icon="i-heroicons-chevron-up"
               label="Remonter"
               size="xs"
@@ -216,7 +216,7 @@ watch(
             />
             <UButton
               :disabled="!canMoveDown"
-              color="gray"
+              color="neutral"
               icon="i-heroicons-chevron-down"
               label="Descendre"
               size="xs"
@@ -224,14 +224,14 @@ watch(
               @click="moveNode('DOWN')"
             />
             
-            <UDivider
+            <USeparator
               class="my-1"
               orientation="horizontal"
             />
             
             <UButton
               :label="$t('editor.clear.tooltip')"
-              color="gray"
+              color="neutral"
               icon="i-lucide-paint-roller"
               size="xs"
               variant="ghost"
@@ -239,7 +239,7 @@ watch(
             />
             <UButton
               :label="$t('editor.copy')"
-              color="gray"
+              color="neutral"
               icon="i-heroicons-clipboard"
               size="xs"
               variant="ghost"
@@ -247,21 +247,21 @@ watch(
             />
             <UButton
               :label="$t('editor.duplicate')"
-              color="gray"
+              color="neutral"
               icon="i-lucide-copy"
               size="xs"
               variant="ghost"
               @click="duplicateNode"
             />
             
-            <UDivider
+            <USeparator
               class="my-1"
               orientation="horizontal"
             />
             
             <UButton
               :label="$t('editor.remove')"
-              color="red"
+              color="error"
               icon="i-heroicons-trash"
               size="xs"
               variant="soft"

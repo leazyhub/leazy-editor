@@ -117,7 +117,7 @@ defineExpose({ onKeyDown })
   <div
     v-if="items?.length"
     ref="commandListContainer"
-    class="flex flex-col z-50 h-full max-h-[330px] w-60 overflow-y-auto rounded-md border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 p-1 gap-1 shadow-md transition-all"
+    class="flex flex-col z-50 h-full max-h-[330px] w-60 overflow-y-auto rounded-md border border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700 p-1 gap-1 shadow-md transition-all"
   >
     <div v-for="(group, groupIndex) in items" :key="group.title" class="flex flex-col">
       <div
@@ -129,13 +129,13 @@ defineExpose({ onKeyDown })
         :key="commandIndex"
         :ref="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex ? 'activeItemRef' : ''"
         :active="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex"
-        :color="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex ? 'primary' : 'white'"
+        :color="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex ? 'primary' : 'neutral'"
         :variant="selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex ? 'soft' : 'ghost'"
         @click="createCommandClickHandler(groupIndex, commandIndex)"
       >
         <template v-if="command?.iconName" #leading>
           <div
-            class="flex items-center justify-center p-px font-medium border rounded-sm border-gray-200 dark:border-gray-700"
+            class="flex items-center justify-center p-px font-medium border rounded-sm border-neutral-200 dark:border-neutral-700"
           >
             <Suspense>
               <UIcon :name="command.iconName" class="w-3.5 h-3.5 text-lg" dynamic />

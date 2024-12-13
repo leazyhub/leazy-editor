@@ -72,11 +72,11 @@ function togglePop() {
       </template>
     </ActionButton>
     
-    <template #panel>
+    <template #content>
       <div class="flex items-center">
         <UTooltip v-for="(item, index) in props.items" :key="index" :shortcuts="item.shortcuts" :text="item.title">
           <UButton
-            :color="active.title === item.title ? 'primary' : 'gray'" :disabled="item.disabled" :icon="item.icon" :style="item.style"
+            :color="active.title === item.title ? 'primary' : 'neutral'" :disabled="item.disabled" :icon="item.icon" :style="item.style"
             :variant="active.title === item.title ? 'soft' : 'ghost'"
             size="xs" @click="item.action"
           />

@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
   <UPopover>
     <ActionButton :disabled="disabled" :icon="icon" :is-active="isActive" :tooltip="tooltip" />
     
-    <template #panel>
+    <template #content>
       <SearchAndReplaceBlock :editor="editor" />
     </template>
   </UPopover>

@@ -36,7 +36,7 @@ function onSetLink(link: string, text?: string, openInNewTab?: boolean) {
   <UPopover>
     <ActionButton :disabled="disabled" :icon="icon" :is-active="isActive" :tooltip="tooltip" />
     
-    <template #panel>
+    <template #content>
       <LinkEditBlock :editor="editor" @onSetLink="onSetLink" />
     </template>
   </UPopover>

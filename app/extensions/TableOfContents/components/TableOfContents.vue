@@ -1,18 +1,18 @@
 <template>
   <NodeViewWrapper>
     <UAccordion
-      :default-open="true" :items="[{ label: 'Table des matières' }]" :ui="{ wrapper: 'lg:px-[calc((100%_-_(750px))_/_2)] mt-6 mb-2 px-4', item: { base: 'flex flex-col rounded-md ring-1 ring-inset ring-gray-300 dark:ring-gray-700', padding: ' py-2 px-3.5' } }" color="white"
+      :default-open="true" :items="[{ label: 'Table des matières' }]" :ui="{ wrapper: 'lg:px-[calc((100%_-_(750px))_/_2)] mt-6 mb-2 px-4', item: { base: 'flex flex-col rounded-md ring-1 ring-inset ring-neutral-300 dark:ring-neutral-700', padding: ' py-2 px-3.5' } }" color="neutral"
       variant="solid"
     >
       <template v-if="headings.length" #item>
         <a
           v-for="(heading, index) in headings" :key="index" :class="`toc-item-${heading.level - 1}`"
           :href="`#${heading.id}`"
-          class="inline truncate text-sm/6 text-gray-500 dark:text-gray-400 hover:text-primary hover:dark:text-primary"
+          class="inline truncate text-sm/6 text-neutral-500 dark:text-neutral-400 hover:text-primary hover:dark:text-primary"
         >{{ heading.number }} - {{ heading.text }}</a>
       </template>
       <template v-else #item>
-        <p class="text-xs text-gray-500 dark:text-gray-400">Aucune table des matières</p>
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">Aucune table des matières</p>
       </template>
     </UAccordion>
   </NodeViewWrapper>

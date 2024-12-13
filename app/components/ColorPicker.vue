@@ -65,11 +65,11 @@ const triggerHtml5Color = () => {
   <UPopover :popper="{ placement: 'bottom-start' }" :ui="{ container: 'z-100' }">
     <slot />
     
-    <template #panel>
+    <template #content>
       <div class="flex flex-col p-2 w-full h-full">
         <!-- Hightlight -->
         <div
-          v-if="highlight" class="flex items-center p-1 rd-1 cursor-pointer hover:bg-gray-100 hover:dark:bg-gray-700 rounded-md"
+          v-if="highlight" class="flex items-center p-1 rd-1 cursor-pointer hover:bg-neutral-100 hover:dark:bg-neutral-700 rounded-md"
           @click="setColor(undefined)"
         >
           <span
@@ -146,7 +146,7 @@ const triggerHtml5Color = () => {
         
         <div class="relative">
           <div
-            class="text-sm hover:cursor-pointer hover:bg-gray-100 hover:dark:bg-gray-700 rounded-md py-1.5 px-1.5"
+            class="text-sm hover:cursor-pointer hover:bg-neutral-100 hover:dark:bg-neutral-700 rounded-md py-1.5 px-1.5"
             @click="triggerHtml5Color"
           >
             {{ $t('editor.color.more') }}...

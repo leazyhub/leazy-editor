@@ -88,17 +88,17 @@ watch(
 <template>
   <div class="p-2">
     <div class="flex gap-2">
-      <UFormGroup label="Chercher" size="2xs">
+      <UFormField label="Chercher" size="2xs">
         <UInput
           v-model="searchTerm" padded placeholder="Chercher..." variant="outline"
           @keydown.enter.prevent="updateSearchReplace"
         />
-      </UFormGroup>
-      <UFormGroup label="Remplacer par" size="2xs">
+      </UFormField>
+      <UFormField label="Remplacer par" size="2xs">
         <UInput
           v-model="replaceTerm" padded placeholder="Remplacer par..." variant="outline" @keydown.enter.prevent="replace"
         />
-      </UFormGroup>
+      </UFormField>
     </div>
     
     <UCheckbox v-model="caseSensitive" :ui="{ base: 'w-3 h-3', inner: 'ms-2' }" class="my-2">

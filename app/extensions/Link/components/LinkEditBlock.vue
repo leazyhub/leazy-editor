@@ -33,17 +33,17 @@ function handleSubmit() {
 
 <template>
   <UForm class="flex flex-col gap-2 p-2" @submit="handleSubmit">
-    <UFormGroup :label="t('editor.link.dialog.text')">
+    <UFormField :label="t('editor.link.dialog.text')">
       <UInput v-model="form.text" :placeholder="t('editor.link.dialog.text')" required size="2xs" type="text" />
-    </UFormGroup>
+    </UFormField>
     
-    <UFormGroup :label="t('editor.link.dialog.link')">
+    <UFormField :label="t('editor.link.dialog.link')">
       <UInput v-model="form.link" icon="i-heroicons-link" required size="2xs" type="url" />
-    </UFormGroup>
+    </UFormField>
     
-    <UFormGroup>
+    <UFormField>
       <UCheckbox v-model="openInNewTab" :label="t('editor.link.dialog.openInNewTab')" name="target" />
-    </UFormGroup>
+    </UFormField>
     <UButton :label="t('editor.link.dialog.button.apply')" block class="mt-2" size="xs" type="submit" />
   </UForm>
 </template>

@@ -70,7 +70,7 @@ const handleCompletion = async (context: string, prompt_: string) => {
   } catch (error: any) {
     toast.add({
       title: error.message,
-      color: 'red',
+      color: 'error',
     })
     handleClose()
   }

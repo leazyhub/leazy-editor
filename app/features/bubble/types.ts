@@ -1,7 +1,7 @@
 import type { ButtonViewParams, ButtonViewReturn, ExtensionNameKeys } from '../../types'
 
 /** Represents the size types for bubble images or videos */
-type BubbleImageOrVideoSizeType = 'size-small' | 'size-medium' | 'size-large'
+export type BubbleImageOrVideoSizeType = 'size-small' | 'size-medium' | 'size-large'
 
 /** Represents the various types for bubble images */
 type BubbleImageType =

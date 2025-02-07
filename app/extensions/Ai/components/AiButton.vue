@@ -42,7 +42,7 @@ const handleOpen = () => {
     console.log('first if')
     toast.add({
       title: 'AI completions method is not set or is not a valid function',
-      color: 'red',
+      color: 'error',
     })
     return
   }
@@ -51,7 +51,7 @@ const handleOpen = () => {
     console.log('second if')
     toast.add({
       title: 'AI completions method must be an async function',
-      color: 'red',
+      color: 'error',
     })
     return
   }

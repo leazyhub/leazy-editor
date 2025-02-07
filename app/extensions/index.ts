@@ -1,5 +1,6 @@
 import { type AnyExtension, Extension } from '@tiptap/core'
-import { type BubbleOptions, defaultBubbleList, generateBubbleTypeMenu } from '../features/bubble'
+import { defaultBubbleList, generateBubbleTypeMenu } from '../features/bubble'
+import type { BubbleOptions } from '../features/bubble/types'
 import { NODE_TYPE_MENU } from '../constants'
 import OpenAI from 'openai'
 import { common, createLowlight } from 'lowlight'

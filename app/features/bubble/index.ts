@@ -3,7 +3,7 @@ import type { Editor } from '@tiptap/vue-3'
 import ActionButton from '../../components/ActionButton.vue'
 import { IMAGE_SIZE, VIDEO_SIZE } from '../../constants'
 import type { ButtonViewParams, ButtonViewReturn } from '../../types'
-import type { BubbleImageOrVideoSizeType, BubbleMenuItem } from './types'
+import type { BubbleImageOrVideoSizeType, BubbleMenuItem, BubbleTypeMenu, NodeTypeMenu, NodeTypeKey } from './types'
 
 const imageSizeMenus = (editor: Editor): BubbleMenuItem[] => {
   const types: BubbleImageOrVideoSizeType[] = ['size-small', 'size-medium', 'size-large']

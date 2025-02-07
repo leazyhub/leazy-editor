@@ -30,7 +30,6 @@
     "@tiptap-pro/extension-emoji": "^2.15.0",
     "@tiptap-pro/extension-export": "^2.15.0",
     "@tiptap-pro/extension-import": "^2.15.0",
-    "@tiptap-pro/extension-node-range": "^2.15.0",
     "@tiptap/core": "^2.10.2",
     "@tiptap/extension-blockquote": "^2.10.2",
     "@tiptap/extension-bold": "^2.10.2",

@@ -8,6 +8,10 @@
     //   @apply mx-auto max-w-2xl;
     // }
 
+    &-focused {
+      outline: none;
+    }
+
     /* Collaboration */
     /* Give a remote user a caret */
     .ProseMirror-yjs-cursor {

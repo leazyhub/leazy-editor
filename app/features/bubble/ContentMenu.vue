@@ -185,8 +185,8 @@ watch(
     >
       <UButton
         color="neutral"
-        icon="i-heroicons-plus"
-        size="2xs"
+        icon="i-lucide-plus"
+        size="xs"
         variant="ghost"
         @click="handleAdd"
       />
@@ -194,12 +194,11 @@ watch(
       <UPopover
         v-model:open="menuOpen"
         :popper="{ placement: 'top-start' }"
-        :ui="{ base: 'p-1' }"
       >
         <UButton
           color="neutral"
           icon="i-lucide-grip-vertical"
-          size="2xs"
+          size="xs"
           variant="ghost"
         />
         
@@ -208,7 +207,7 @@ watch(
             <UButton
               :disabled="!canMoveUp"
               color="neutral"
-              icon="i-heroicons-chevron-up"
+              icon="i-lucide-chevron-up"
               label="Remonter"
               size="xs"
               variant="ghost"
@@ -217,7 +216,7 @@ watch(
             <UButton
               :disabled="!canMoveDown"
               color="neutral"
-              icon="i-heroicons-chevron-down"
+              icon="i-lucide-chevron-down"
               label="Descendre"
               size="xs"
               variant="ghost"
@@ -240,7 +239,7 @@ watch(
             <UButton
               :label="$t('editor.copy')"
               color="neutral"
-              icon="i-heroicons-clipboard"
+              icon="i-lucide-clipboard"
               size="xs"
               variant="ghost"
               @click="copyNodeToClipboard"
@@ -262,7 +261,7 @@ watch(
             <UButton
               :label="$t('editor.remove')"
               color="error"
-              icon="i-heroicons-trash"
+              icon="i-lucide-trash-2"
               size="xs"
               variant="soft"
               @click="deleteNode"

@@ -1,7 +1,7 @@
 <template>
   <div
       v-if="items.length"
-      class="items z-50 flex flex-col h-auto max-h-[330px] w-28 overflow-y-auto rounded-md border border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700 p-1 gap-1 shadow-md transition-all">
+      class="items z-50 flex flex-col h-auto max-h-[330px] w-max overflow-y-auto rounded-md border border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700 p-1 gap-1 shadow-md transition-all">
     <UButton
         v-for="(item, index) in items"
         :key="index"
@@ -14,7 +14,7 @@
       <template #leading>
         <div
             class="flex items-center justify-center p-px font-medium border rounded-sm border-neutral-200 dark:border-neutral-700">
-          <img v-if="item.fallbackImage" :alt="item.name" :src="item.fallbackImage" align="absmiddle" class="w-4">
+          <img v-if="item.fallbackImage" :alt="item.name" :src="item.fallbackImage" align="absmiddle" class="w-4 min-w-4">
         </div>
       </template>
 

@@ -6,27 +6,27 @@ const props = defineProps(['node', 'editor', 'selected', 'updateAttributes'])
 const types = ref([
   {
     name: 'note',
-    icon: 'i-fluent-note-24-regular',
+    icon: 'i-lucide-sticky-note',
     color: 'primary',
   },
   {
     name: 'info',
-    icon: 'i-heroicons-information-circle',
+    icon: 'i-lucide-info',
     color: 'info',
   },
   {
     name: 'warning',
-    icon: 'i-heroicons-exclamation-triangle',
+    icon: 'i-lucide-triangle-alert',
     color: 'warning',
   },
   {
     name: 'danger',
-    icon: 'i-heroicons-x-circle',
+    icon: 'i-lucide-circle-x',
     color: 'error',
   },
   {
     name: 'success',
-    icon: 'i-heroicons-check-circle',
+    icon: 'i-lucide-circle-check',
     color: 'success',
   },
 ])

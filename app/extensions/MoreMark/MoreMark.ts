@@ -67,7 +67,7 @@ export const MoreMark = Extension.create<MoreMarkOptions>({
         return {
           component: ActionMoreButton,
           componentProps: {
-            icon: 'i-heroicons-ellipsis-vertical',
+            icon: 'i-lucide-ellipsis-vertical',
             tooltip: t('editor.moremark'),
             disabled: false,
             items,

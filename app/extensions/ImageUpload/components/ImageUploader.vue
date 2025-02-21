@@ -108,12 +108,12 @@ const tabs = [
             <UInput :loading="loading" v-model="searchQuery" placeholder="Rechercher un média" size="xs">
               <template #leading>
                 <Suspense>
-                  <UIcon name="i-heroicons-magnifying-glass" class="w-3.5 h-3.5 opacity-75" />
+                  <UIcon name="i-lucide-search" class="w-3.5 h-3.5 opacity-75" />
                 </Suspense>
               </template>
               <template v-if="searchQuery !== ''" #trailing>
                 <Suspense>
-                  <UIcon class="cursor-pointer pointer-events-auto" name="i-heroicons-x-mark" @click="searchQuery = ''" />
+                  <UIcon class="cursor-pointer pointer-events-auto" name="i-lucide-x" @click="searchQuery = ''" />
                 </Suspense>
               </template>
             </UInput>
@@ -137,7 +137,7 @@ const tabs = [
 
       <div class="w-full flex items-center gap-4">
         <div>
-          <UButton block size="xs" @click="handleClick" icon="i-heroicons-arrow-up-tray" :label="$t('editor.image.dialog.tab.upload')" />
+          <UButton block size="xs" @click="handleClick" icon="i-lucide-upload" :label="$t('editor.image.dialog.tab.upload')" />
           <input type="file" accept="image/*" ref="fileInput" multiple style="display: none" @change="handleFile" />
         </div>
 
@@ -145,7 +145,7 @@ const tabs = [
 
         <div class="relative flex items-center justify-start flex-1">
           <UInput :placeholder="$t('editor.image.dialog.placeholder')" size="xs" class="flex-1" :ui="{ padding: { sm: 'pr-24' } }" v-model="link"/>
-          <UButton type="submit" class="absolute right-0.5" size="2xs" @click="handleLink(link)" :label="$t('editor.image.dialog.button.apply')" />
+          <UButton type="submit" class="absolute right-0.5" size="xs" @click="handleLink(link)" :label="$t('editor.image.dialog.button.apply')" />
         </div>
       </div>
     </div>

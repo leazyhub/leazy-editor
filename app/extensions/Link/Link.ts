@@ -60,7 +60,7 @@ export const Link = TiptapLink.extend<LinkOptions>({
             id: 'link',
             isActive: () => editor.isActive('link') || false,
             disabled: !editor.can().setLink({ href: '' }),
-            icon: 'i-heroicons-link',
+            icon: 'i-lucide-link',
             tooltip: t('editor.link.tooltip'),
           },
         }

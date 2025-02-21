@@ -61,7 +61,7 @@ export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
     component: ActionButton,
     componentProps: {
       tooltip: 'editor.remove',
-      icon: 'i-heroicons-trash',
+      icon: 'i-lucide-trash-2',
       action: () => {
         const { state, dispatch } = editor.view
         deleteSelection(state, dispatch)

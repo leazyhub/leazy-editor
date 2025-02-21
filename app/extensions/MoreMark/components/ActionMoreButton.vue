@@ -58,7 +58,7 @@ const active = computed(() => {
     <ActionButton :icon="icon" :tooltip="tooltip">
       <template #icon>
         <Suspense>
-          <UIcon name="i-heroicons-chevron-down-20-solid" />
+          <UIcon name="i-lucide-chevron-down" />
         </Suspense>
       </template>
     </ActionButton>

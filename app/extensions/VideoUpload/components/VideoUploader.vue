@@ -70,7 +70,7 @@ function handleClick() {
             <span class="text-sm">{{ t('editor.video.dialog.title') }}</span>
           </div>
           <Suspense>
-            <UIcon class="text-red-500" name="i-heroicons-trash" @click.stop="handleDelete" />
+            <UIcon class="text-red-500" name="i-lucide-trash-2" @click.stop="handleDelete" />
           </Suspense>
         </div>
       </div>
@@ -78,7 +78,7 @@ function handleClick() {
       <template #content>
         <div>
           <UButton
-            :label="t('editor.video.dialog.tab.upload')" block icon="i-heroicons-arrow-up-tray" size="xs"
+            :label="t('editor.video.dialog.tab.upload')" block icon="i-lucide-upload" size="xs"
             @click="handleClick"
           />
           <input ref="fileInput" accept="video/*" multiple style="display: none" type="file" @change="handleFile" />

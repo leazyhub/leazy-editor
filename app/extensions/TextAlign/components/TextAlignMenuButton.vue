@@ -67,7 +67,7 @@ function togglePop() {
     <ActionButton :icon="icon" :tooltip="tooltip" dropdown enable-tooltip>
       <template #icon>
         <Suspense>
-          <UIcon name="i-heroicons-chevron-down-20-solid" />
+          <UIcon name="i-lucide-chevron-down" />
         </Suspense>
       </template>
     </ActionButton>

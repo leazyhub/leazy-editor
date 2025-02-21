@@ -112,7 +112,7 @@ const activeItem = computed(() => {
 <template>
   <UPopover :popper="{ placement: 'bottom-start' }">
     <UButton
-      :icon="activeItem?.iconName" color="neutral" size="xs" square trailing-icon="i-heroicons-chevron-down-20-solid"
+      :icon="activeItem?.iconName" color="neutral" size="xs" square trailing-icon="i-lucide-chevron-down"
       variant="ghost"
     />
     
@@ -124,7 +124,7 @@ const activeItem = computed(() => {
           :color="item.isActive?.() ? 'primary' : 'neutral'"
           :label="item.label"
           :variant="item.isActive?.() ? 'soft' : 'ghost'"
-          size="2xs"
+          size="xs"
           @click="item.action"
         >
           <template #leading>

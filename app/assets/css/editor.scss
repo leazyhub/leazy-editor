@@ -195,9 +195,6 @@
     }
 
     .selection,
-    *::selection {
-      @apply bg-black/10 dark:bg-white/20;
-    }
 
     .is-empty::before {
       content: attr(data-placeholder);

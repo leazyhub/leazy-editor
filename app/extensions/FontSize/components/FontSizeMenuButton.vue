@@ -7,7 +7,7 @@ export interface Item {
   title: string
   isActive: NonNullable<ButtonViewReturnComponentProps['isActive']>
   action?: ButtonViewReturnComponentProps['action']
-  style?: StyleValue
+  style?: CSSStyleValue
   disabled?: boolean
   divider?: boolean
   default?: boolean

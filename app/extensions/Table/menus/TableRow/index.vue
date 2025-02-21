@@ -111,7 +111,7 @@ function onDeleteRow() {
           side: 'right',
           sideOffset: 15,
         }"
-        icon="i-heroicons-trash"
+        icon="i-lucide-trash-2"
         tooltip="Delete Row"
       />
       <ActionButton

@@ -26,7 +26,7 @@ export const AI = Node.create<AIOptions>({
         component: ActionButton,
         componentProps: {
           editor,
-          icon: 'i-heroicons-sparkles',
+          icon: 'i-lucide-sparkles',
           tooltip: 'AI',
         },
       }),

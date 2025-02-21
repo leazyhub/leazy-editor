@@ -32,13 +32,13 @@ function handleSubmit() {
 </script>
 
 <template>
-  <UForm class="flex flex-col gap-2 p-2" @submit="handleSubmit">
+  <UForm class="flex flex-col gap-2 p-2" :state="form" @submit="handleSubmit">
     <UFormField :label="t('editor.link.dialog.text')">
-      <UInput v-model="form.text" :placeholder="t('editor.link.dialog.text')" required size="2xs" type="text" />
+      <UInput v-model="form.text" :placeholder="t('editor.link.dialog.text')" required size="xs" type="text" class="w-full" />
     </UFormField>
     
     <UFormField :label="t('editor.link.dialog.link')">
-      <UInput v-model="form.link" icon="i-heroicons-link" required size="2xs" type="url" />
+      <UInput v-model="form.link" icon="i-lucide-link" required size="xs" type="url" class="w-full" />
     </UFormField>
     
     <UFormField>

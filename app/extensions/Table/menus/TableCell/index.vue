@@ -100,7 +100,7 @@ const Selection = computed(() => {
         :tooltip-options="{
           sideOffset: 15,
         }"
-        icon="i-heroicons-trash"
+        icon="i-lucide-trash-2"
         tooltip="Delete Table"
       />
       

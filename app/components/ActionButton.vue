@@ -34,6 +34,7 @@ withDefaults(defineProps<Props>(), {
     square @click="action"
   >
     <slot />
+    
     <template #leading>
       <div v-if="loading">
         <Suspense>
@@ -42,7 +43,9 @@ withDefaults(defineProps<Props>(), {
       </div>
       <div v-else class="flex gap-1 items-center">
         <Suspense>
-          <UIcon v-if="icon" :name="icon" dynamic />
+          <UTooltip :text="tooltip">
+            <UIcon v-if="icon" :name="icon" dynamic />
+          </UTooltip>
         </Suspense>
         <slot name="icon" />
       </div>

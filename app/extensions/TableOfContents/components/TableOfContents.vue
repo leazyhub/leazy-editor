@@ -1,18 +1,28 @@
 <template>
   <NodeViewWrapper>
     <UAccordion
-      :default-open="true" :items="[{ label: 'Table des matières' }]" :ui="{ wrapper: 'lg:px-[calc((100%_-_(750px))_/_2)] mt-6 mb-2 px-4', item: { base: 'flex flex-col rounded-md ring-1 ring-inset ring-neutral-300 dark:ring-neutral-700', padding: ' py-2 px-3.5' } }" color="neutral"
+      :default-open="true"
+      :items="[{ label: 'Table des matières' }]"
+      color="neutral"
       variant="solid"
     >
-      <template v-if="headings.length" #item>
-        <a
-          v-for="(heading, index) in headings" :key="index" :class="`toc-item-${heading.level - 1}`"
-          :href="`#${heading.id}`"
-          class="inline truncate text-sm/6 text-neutral-500 dark:text-neutral-400 hover:text-primary hover:dark:text-primary"
-        >{{ heading.number }} - {{ heading.text }}</a>
-      </template>
-      <template v-else #item>
-        <p class="text-xs text-neutral-500 dark:text-neutral-400">Aucune table des matières</p>
+      <template #body>
+        <div
+          v-if="headings.length"
+          class="flex flex-col rounded-md ring-1 ring-inset ring-neutral-300 dark:ring-neutral-700 py-2 px-3.5"
+        >
+          <a
+            v-for="(heading, index) in headings" :key="index" :class="`toc-item-${heading.level - 1}`"
+            :href="`#${heading.id}`"
+            class="inline truncate text-sm/6 text-neutral-500 dark:text-neutral-400 hover:text-primary hover:dark:text-primary"
+          >{{ heading.number }} - {{ heading.text }}</a>
+        </div>
+        <p
+          v-else
+          class="text-xs text-neutral-500 dark:text-neutral-400"
+        >
+          Aucune table des matières
+        </p>
       </template>
     </UAccordion>
   </NodeViewWrapper>

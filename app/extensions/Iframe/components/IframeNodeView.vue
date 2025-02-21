@@ -25,7 +25,7 @@ function handleConfirm() {
   }
 }
 
-function handleExmaple() {
+function handleExample() {
   const url = getExampleUrl(props.node.attrs.service)
   if (url) {
     let result = getServiceSrc(props.node.attrs.service, url)
@@ -43,7 +43,7 @@ onMounted(() => {
     <div v-if="!src" class="flex flex-row relative items-center gap-2">
       <UInput v-model:model-value="originalLink" autofocus class="flex-1" placeholder="Saisir le lien" type="url"/>
       <div class="flex gap-2">
-        <UButton variant="outline" @click="handleExmaple">Exemple</UButton>
+        <UButton variant="outline" @click="handleExample">Exemple</UButton>
         <UButton @click="handleConfirm">Confirmer</UButton>
       </div>
     </div>

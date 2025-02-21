@@ -7,14 +7,9 @@ export default defineAppConfig({
       primary: 'indigo',
       neutral: 'zinc',
     },
-    variables: {
-      header: {
-        height: '3rem'
-      }
-    },
-    tooltip: {
-      default: {
-        openDelay: 250
+    button: {
+      slots: {
+        base: 'cursor-pointer'
       }
     }
   }

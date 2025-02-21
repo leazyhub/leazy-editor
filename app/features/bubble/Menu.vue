@@ -39,7 +39,7 @@ const handleClick = (item: MenuItem) => {
       <UButton :label="item.label" class="w-full" color="neutral" size="xs" variant="ghost">
         <template v-if="item.children" #trailing>
           <Suspense>
-            <UIcon class="ml-auto" name="i-heroicons-chevron-right-20-solid" />
+            <UIcon class="ml-auto" name="i-lucide-chevron-right" />
           </Suspense>
         </template>
       </UButton>

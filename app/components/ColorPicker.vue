@@ -62,7 +62,7 @@ const triggerHtml5Color = () => {
 }
 </script>
 <template>
-  <UPopover :ui="{ container: 'z-100' }">
+  <UPopover :ui="{ content: 'z-100' }">
     <slot />
     
     <template #content>

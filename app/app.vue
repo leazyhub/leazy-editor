@@ -4,7 +4,7 @@ const editor = useTemplateRef('editor')
 </script>
 
 <template>
-  <UApp>
+  <UApp :toaster="{ expand: false }" :tooltip="{ delayDuration: 50 }">
     <div>
       <UPopover>
         <UButton label="Open" color="neutral" variant="subtle" />
@@ -21,8 +21,4 @@ const editor = useTemplateRef('editor')
 <style>
 @import "tailwindcss";
 @import "@nuxt/ui";
-
-.dark {
-  --ui-bg: var(--color-neutral-800);
-}
 </style>

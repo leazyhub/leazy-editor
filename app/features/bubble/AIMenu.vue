@@ -158,7 +158,7 @@ const shortcutMenus = computed(() => {
             v-model="prompt"
             :loading="status === 'generating'"
             class="w-full"
-            icon="i-heroicons-sparkles"
+            icon="i-lucide-sparkles"
             placeholder="Demandez à l'IA..."
             size="md"
             variant="none"
@@ -180,7 +180,7 @@ const shortcutMenus = computed(() => {
                 @click="handleGenerate"
               >
                 <Suspense>
-                  <UIcon name="i-heroicons-chevron-right" />
+                  <UIcon name="i-lucide-chevron-right" />
                 </Suspense>
               </UButton>
             </template>

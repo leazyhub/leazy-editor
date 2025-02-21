@@ -128,7 +128,7 @@ async function importWord() {
           handleResult(data.html)
         })
         .catch(error => {
-          toast.add({ icon: 'i-heroicons-x-circle', title: 'Erreur lors de l\'importation', color: 'error' })
+          toast.add({ icon: 'i-lucide-x', title: 'Erreur lors de l\'importation', color: 'error' })
           console.error('Error:', error)
           loading.value = false
         })
@@ -140,7 +140,7 @@ async function handleResult(htmlResult: string) {
   console.log(html)
   props.editor.chain().setContent(html, true).run()
   loading.value = false
-  toast.add({ icon: 'i-heroicons-check-circle', title: 'Importation réussie', color: 'success' })
+  toast.add({ icon: 'i-lucide-circle-check', title: 'Importation réussie', color: 'success' })
 }
 </script>
 

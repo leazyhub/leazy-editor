@@ -29,7 +29,7 @@ withDefaults(defineProps<Props>(), {
   <UPopover>
     <ActionButton :disabled="disabled" :icon="icon" :tooltip="tooltip">
       <Suspense>
-        <UIcon name="i-heroicons-chevron-down-20-solid" />
+        <UIcon name="i-lucide-chevron-down" />
       </Suspense>
     </ActionButton>
     

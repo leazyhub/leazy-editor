@@ -61,24 +61,21 @@ const onColumnTwo = () => {
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.SidebarLeft })"
           :tooltip-options="{ sideOffset: 15 }"
           icon="i-lucide-panel-left"
-          title="ok"
-          tooltip="Panel Left"
+          tooltip="30/70"
         />
         <ActionButton
           :action="onColumnTwo"
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.TwoColumn })"
           :tooltip-options="{ sideOffset: 15 }"
           icon="i-lucide-columns-2"
-          title="ok"
-          tooltip="Two Columns"
+          tooltip="50/50"
         />
         <ActionButton
           :action="onColumnRight"
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.SidebarRight })"
           :tooltip-options="{ sideOffset: 15 }"
           icon="i-lucide-panel-right"
-          title="ok"
-          tooltip="Panel Right"
+          tooltip="70/30"
         />
       </div>
     </div>

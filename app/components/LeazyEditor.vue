@@ -97,6 +97,12 @@ const sortExtensions = computed(() => {
       ai: false,
       collaboration: false,
       collaborationCursor: false,
+      speechRecognition: false,
+      speechSynthesis: false,
+      import: false,
+      importWord: false,
+      export: false,
+      comment: false,
       // collaboration: {
       //   document: ydoc
       // },

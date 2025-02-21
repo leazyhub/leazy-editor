@@ -95,7 +95,7 @@
     "yjs": "^13.6.23"
   },
   "devDependencies": {
-    "@nuxt/eslint": "0.7.1",
+    "@nuxt/eslint": "1.1.0",
     "eslint": "^9.20.1",
     "vue-tsc": "^2.2.2"
   },

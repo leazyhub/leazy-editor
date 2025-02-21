@@ -78,7 +78,7 @@ export const Alert = Node.create<AlertOptions>({
           component: ActionAlertButton,
           componentProps: {
             editor,
-            icon: 'i-fluent-note-24-regular',
+            icon: 'i-lucide-sticky-note',
             tooltip: t('editor.alert.tooltip'),
           },
         }

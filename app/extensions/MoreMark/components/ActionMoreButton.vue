@@ -58,15 +58,15 @@ const active = computed(() => {
     <ActionButton :icon="icon" :tooltip="tooltip">
       <template #icon>
         <Suspense>
-          <UIcon name="i-heroicons-chevron-down-20-solid" />
+          <UIcon name="i-lucide-chevron-down" />
         </Suspense>
       </template>
     </ActionButton>
     
-    <template #panel>
+    <template #content>
       <div class="flex flex-col min-w-24">
         <UButton
-          v-for="(item, index) in props.items" :key="index" :color="active.title === item.title ? 'primary' : 'gray'" :disabled="disabled" :variant="active.title === item.title ? 'soft' : 'ghost'"
+          v-for="(item, index) in props.items" :key="index" :color="active.title === item.title ? 'primary' : 'neutral'" :disabled="disabled" :variant="active.title === item.title ? 'soft' : 'ghost'"
           size="xs"
           @click="item.action"
         >

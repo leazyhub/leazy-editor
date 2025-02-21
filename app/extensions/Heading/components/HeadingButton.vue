@@ -56,10 +56,10 @@ const active = computed(() => {
   <UPopover>
     <ActionMenuButton :title="active.title" :tooltip="tooltip"/>
 
-    <template #panel>
+    <template #content>
       <div class="flex flex-col">
         <UButton v-for="(item, index) in props.items" :key="index"
-                 :color="active.title === item.title ? 'primary' : 'gray'"
+                 :color="active.title === item.title ? 'primary' : 'neutral'"
                  :variant="active.title === item.title ? 'soft' : 'ghost'" @click="item.action">
           <div :class="`heading-` + item.level" class="ml-1 h-full">{{ item.title }}</div>
           <UKbd :value="item.shortcuts?.map(item => getShortcutKey(item)).join(' ')" class="ml-auto"/>

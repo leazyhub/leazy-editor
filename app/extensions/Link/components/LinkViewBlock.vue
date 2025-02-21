@@ -35,7 +35,7 @@ function onEdit() {
         })
       }}
     </a>
-    <UDivider v-if="link" class="h-4" orientation="vertical" />
+    <USeparator v-if="link" class="h-4" orientation="vertical" />
     <div class="flex flex-nowrap">
       <ActionButton
         :action="onEdit"

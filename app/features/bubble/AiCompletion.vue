@@ -40,20 +40,20 @@ const handleClose = () => {
 
 <template>
   <div
-    class="mt-2 overflow-auto p-1 flex flex-col shadow-md rounded-md border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 max-w-fit"
+    class="mt-2 overflow-auto p-1 flex flex-col shadow-md rounded-md border border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700 max-w-fit"
   >
     <UButton
-      color="white" label="Remplacer" leading-icon="i-lucide-replace" size="xs" variant="ghost" @click="handleReplace"
+      color="neutral" label="Remplacer" leading-icon="i-lucide-replace" size="xs" variant="ghost" @click="handleReplace"
     />
     <UButton
-      color="white" label="Insérer" leading-icon="i-lucide-list-plus" size="xs" variant="ghost" @click="handleInsert"
+      color="neutral" label="Insérer" leading-icon="i-lucide-list-plus" size="xs" variant="ghost" @click="handleInsert"
     />
     
-    <UDivider orientation="horizontal" />
+    <USeparator orientation="horizontal" />
     
     <UButton
-      color="white" label="Regénerer" leading-icon="i-lucide-redo-2" size="xs" variant="ghost" @click="handleGenerate"
+      color="neutral" label="Regénerer" leading-icon="i-lucide-redo-2" size="xs" variant="ghost" @click="handleGenerate"
     />
-    <UButton color="white" label="Fermer" leading-icon="i-lucide-x" size="xs" variant="ghost" @click="handleClose" />
+    <UButton color="neutral" label="Fermer" leading-icon="i-lucide-x" size="xs" variant="ghost" @click="handleClose" />
   </div>
 </template>

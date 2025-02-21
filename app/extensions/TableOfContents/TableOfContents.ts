@@ -17,7 +17,7 @@ export const TableOfContents = Node.create({
           action: () => editor.commands.setTableOfContents(),
           isActive: () => editor.isActive('tableOfContents') || false,
           disabled: !editor.can().setTableOfContents(),
-          icon: 'i-heroicons-bookmark-square',
+          icon: 'i-lucide-book-marked',
           tooltip: t('editor.tableOfContents.tooltip'),
         }
       })

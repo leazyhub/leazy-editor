@@ -42,40 +42,40 @@ const getReferenceClientRect = () => {
       :updateDelay="0"
       pluginKey="alert"
   >
-    <div class="bg-white rounded-lg dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700">
+    <div class="bg-white rounded-lg dark:bg-neutral-800 shadow-sm border border-neutral-200 dark:border-neutral-700">
       <div class="flex gap-1 items-center">
         <ActionButton
             :isActive="() => editor.isActive('alert', { type: 'note' })"
             :tooltip="$t('editor.alert.note')"
-            icon="i-fluent-note-24-regular"
+            icon="i-lucide-sticky-note"
             title="Note"
             @click="editor.chain().focus().setAlertType('note').run()"
         />
         <ActionButton
             :isActive="() => editor.isActive('alert', { type: 'info' })"
             :tooltip="$t('editor.alert.info')"
-            icon="i-heroicons-information-circle"
+            icon="i-lucide-info"
             title="Info"
             @click="editor.chain().focus().setAlertType('info').run()"
         />
         <ActionButton
             :isActive="() => editor.isActive('alert', { type: 'warning' })"
             :tooltip="$t('editor.alert.warning')"
-            icon="i-heroicons-exclamation-triangle"
+            icon="i-lucide-triangle-alert"
             title="Warning"
             @click="editor.chain().focus().setAlertType('warning').run()"
         />
         <ActionButton
             :isActive="() => editor.isActive('alert', { type: 'danger' })"
             :tooltip="$t('editor.alert.danger')"
-            icon="i-heroicons-x-circle"
+            icon="i-lucide-circle-x"
             title="Danger"
             @click="editor.chain().focus().setAlertType('danger').run()"
         />
         <ActionButton
             :isActive="() => editor.isActive('alert', { type: 'success' })"
             :tooltip="$t('editor.alert.success')"
-            icon="i-heroicons-check-circle"
+            icon="i-lucide-circle-check"
             title="Success"
             @click="editor.chain().focus().setAlertType('success').run()"
         />
@@ -83,10 +83,10 @@ const getReferenceClientRect = () => {
           <UButton
               :active="() => editor.isActive('alert')"
               :tooltip="$t('editor.alert.remove')"
-              color="red"
-              icon="i-heroicons-trash"
+              color="error"
+              icon="i-lucide-trash-2"
               size="xs"
-              title="Remove"
+              title="Supprimer"
               variant="ghost"
               @click="editor.chain().focus().deleteNode('alert').run()"
           />

@@ -29,16 +29,16 @@ withDefaults(defineProps<Props>(), {
   <UPopover>
     <ActionButton :disabled="disabled" :icon="icon" :tooltip="tooltip">
       <Suspense>
-        <UIcon name="i-heroicons-chevron-down-20-solid" />
+        <UIcon name="i-lucide-chevron-down" />
       </Suspense>
     </ActionButton>
     
-    <template #panel>
+    <template #content>
       <div class="flex flex-col min-w-24">
         <UButton
           v-for="(item, index) in items"
           :key="index"
-          color="gray"
+          color="neutral"
           variant="ghost"
           size="xs"
           :label="item.label"

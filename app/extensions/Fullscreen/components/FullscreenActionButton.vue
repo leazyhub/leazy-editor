@@ -38,8 +38,7 @@ const text = computed(() => {
 })
 
 const icon = computed(() => {
-  const _icon = isFullscreen.value ? 'i-lucide-minimize' : 'i-lucide-maximize'
-  return _icon
+  return isFullscreen.value ? 'i-lucide-minimize' : 'i-lucide-maximize'
 })
 
 function onAction(_useWindow: boolean = false) {

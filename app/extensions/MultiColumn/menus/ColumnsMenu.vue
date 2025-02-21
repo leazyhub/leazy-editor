@@ -54,31 +54,28 @@ const onColumnTwo = () => {
     :updateDelay="0"
     pluginKey="columns"
   >
-    <div class="bg-white rounded-lg dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700">
+    <div class="bg-white rounded-lg dark:bg-neutral-800 shadow-sm border border-neutral-200 dark:border-neutral-700">
       <div class="flex gap-1 items-center">
         <ActionButton
           :action="onColumnLeft"
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.SidebarLeft })"
           :tooltip-options="{ sideOffset: 15 }"
           icon="i-lucide-panel-left"
-          title="ok"
-          tooltip="Panel Left"
+          tooltip="30/70"
         />
         <ActionButton
           :action="onColumnTwo"
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.TwoColumn })"
           :tooltip-options="{ sideOffset: 15 }"
           icon="i-lucide-columns-2"
-          title="ok"
-          tooltip="Two Columns"
+          tooltip="50/50"
         />
         <ActionButton
           :action="onColumnRight"
           :isActive="() => editor.isActive('columns', { layout: ColumnLayout.SidebarRight })"
           :tooltip-options="{ sideOffset: 15 }"
           icon="i-lucide-panel-right"
-          title="ok"
-          tooltip="Panel Right"
+          tooltip="70/30"
         />
       </div>
     </div>

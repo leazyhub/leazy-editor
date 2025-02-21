@@ -6,28 +6,28 @@ const props = defineProps(['node', 'editor', 'selected', 'updateAttributes'])
 const types = ref([
   {
     name: 'note',
-    icon: 'i-fluent-note-24-regular',
+    icon: 'i-lucide-sticky-note',
     color: 'primary',
   },
   {
     name: 'info',
-    icon: 'i-heroicons-information-circle',
-    color: 'gray',
+    icon: 'i-lucide-info',
+    color: 'info',
   },
   {
     name: 'warning',
-    icon: 'i-heroicons-exclamation-triangle',
-    color: 'orange',
+    icon: 'i-lucide-triangle-alert',
+    color: 'warning',
   },
   {
     name: 'danger',
-    icon: 'i-heroicons-x-circle',
-    color: 'red',
+    icon: 'i-lucide-circle-x',
+    color: 'error',
   },
   {
     name: 'success',
-    icon: 'i-heroicons-check-circle',
-    color: 'green',
+    icon: 'i-lucide-circle-check',
+    color: 'success',
   },
 ])
 
@@ -36,23 +36,23 @@ const currentAlert = computed(() => types.value.find(type => type.name === props
 
 <template>
   <NodeViewWrapper
-      class="alert"
-      data-type="alert"
+    class="alert"
+    data-type="alert"
   >
     <UAlert
-        :color="currentAlert.color"
-        :icon="currentAlert.icon"
-        variant="subtle"
+      :color="currentAlert.color"
+      :icon="currentAlert.icon"
+      variant="subtle"
     >
       <template #icon>
         <Suspense>
-          <UIcon :name="currentAlert.icon" dynamic/>
+          <UIcon :name="currentAlert.icon" dynamic />
         </Suspense>
       </template>
       <template #description>
         <NodeViewContent
-            as="p"
-            class="text-sm font-medium"
+          as="p"
+          class="text-sm font-medium"
         />
       </template>
     </UAlert>

@@ -70,7 +70,7 @@ const handleCompletion = async (context: string, prompt_: string) => {
   } catch (error: any) {
     toast.add({
       title: error.message,
-      color: 'red',
+      color: 'error',
     })
     handleClose()
   }
@@ -143,14 +143,14 @@ const shortcutMenus = computed(() => {
       <div :class="{ 'shake-animation': isShaking }" class="relative w-[450px] z-[99]">
         <div
           v-show="(status === 'generating' || status === 'completed') && result"
-          class="shadow-md rounded-md border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700"
+          class="shadow-md rounded-md border border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700"
         >
           <div ref="resultContainer" class="p-4 line-height-none block overflow-y-auto" style="max-height: 270px;">
             <div class="text-sm text-foreground line-height-snug" v-html="result" />
           </div>
         </div>
         <form
-          class="relative w-full items-center flex mt-3 shadow-md rounded-md border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700"
+          class="relative w-full items-center flex mt-3 shadow-md rounded-md border border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700"
           @submit="handleGenerate"
         >
           <UInput
@@ -158,7 +158,7 @@ const shortcutMenus = computed(() => {
             v-model="prompt"
             :loading="status === 'generating'"
             class="w-full"
-            icon="i-heroicons-sparkles"
+            icon="i-lucide-sparkles"
             placeholder="Demandez à l'IA..."
             size="md"
             variant="none"
@@ -180,7 +180,7 @@ const shortcutMenus = computed(() => {
                 @click="handleGenerate"
               >
                 <Suspense>
-                  <UIcon name="i-heroicons-chevron-right" />
+                  <UIcon name="i-lucide-chevron-right" />
                 </Suspense>
               </UButton>
             </template>

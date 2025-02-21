@@ -84,7 +84,7 @@ function onDeleteColumn() {
     pluginKey="tableColumnMenu"
   >
     <div
-      class="min-w-32 flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-border border-gray-200 dark:border-gray-700"
+      class="min-w-32 flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-border border-neutral-200 dark:border-neutral-700"
     >
       <ActionButton
         :action="onAddColumnBefore"
@@ -92,7 +92,7 @@ function onDeleteColumn() {
           sideOffset: 15,
         }"
         icon="i-lucide-between-horizontal-end"
-        tooltip="Insert Column Before"
+        tooltip="Insérer une colonne avant"
       />
       <ActionButton
         :action="onAddColumnAfter"
@@ -100,7 +100,7 @@ function onDeleteColumn() {
           sideOffset: 15,
         }"
         icon="i-lucide-between-horizontal-start"
-        tooltip="Insert Column After"
+        tooltip="Insérer une colonne après"
       />
       
       <ActionButton
@@ -108,8 +108,8 @@ function onDeleteColumn() {
         :tooltip-options="{
           sideOffset: 15,
         }"
-        icon="i-heroicons-trash"
-        tooltip="Delete Column"
+        icon="i-lucide-trash-2"
+        tooltip="Supprimer la colonne"
       />
       <ActionButton
         v-if="Selection?.cellCount! > 1"
@@ -118,7 +118,7 @@ function onDeleteColumn() {
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-merge"
-        tooltip="Merge Cells"
+        tooltip="Fusionner les cellules"
       />
       <ActionButton
         v-if="Selection?.mergedCellCount! > 0"
@@ -127,7 +127,7 @@ function onDeleteColumn() {
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-split"
-        tooltip="Split Cell"
+        tooltip="Séparer les cellules"
       />
       <HighlightActionButton
         :action="color => emits('setCellBackground', color as string)"
@@ -135,7 +135,7 @@ function onDeleteColumn() {
         :tooltip-options="{
           sideOffset: 15,
         }"
-        tooltip="Set Cell Background"
+        tooltip="Couleur de fond"
       />
     </div>
   </BubbleMenu>

@@ -114,7 +114,7 @@ export function renderGroups(editor: Editor) {
         {
           name: 'tableOfContents',
           label: 'editor.tableOfContents.tooltip',
-          iconName: 'i-heroicons-bookmark-square',
+          iconName: 'i-lucide-book-marked',
           description: 'Insert a table of contents',
           aliases: ['toc', 'tableofcontents', 'sommaire'],
           shouldBeHidden: editor => editor.isActive('columns'),
@@ -174,9 +174,9 @@ export function renderGroups(editor: Editor) {
         {
           name: 'alert',
           label: 'editor.alert.tooltip',
-          iconName: 'i-fluent-note-24-regular',
+          iconName: 'i-lucide-sticky-note',
           description: 'Insert a alert',
-          aliases: ['alert', 'alerte'],
+          aliases: ['note', 'alert', 'alerte'],
           shouldBeHidden: editor => editor.isActive('columns'),
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setAlert().run()

@@ -3,7 +3,7 @@ import type { Editor } from '@tiptap/vue-3'
 import ActionButton from '../../components/ActionButton.vue'
 import { IMAGE_SIZE, VIDEO_SIZE } from '../../constants'
 import type { ButtonViewParams, ButtonViewReturn } from '../../types'
-import type { BubbleImageOrVideoSizeType, BubbleMenuItem } from './types'
+import type { BubbleImageOrVideoSizeType, BubbleMenuItem, BubbleTypeMenu, NodeTypeMenu, NodeTypeKey } from './types'
 
 const imageSizeMenus = (editor: Editor): BubbleMenuItem[] => {
   const types: BubbleImageOrVideoSizeType[] = ['size-small', 'size-medium', 'size-large']
@@ -61,7 +61,7 @@ export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
     component: ActionButton,
     componentProps: {
       tooltip: 'editor.remove',
-      icon: 'i-heroicons-trash',
+      icon: 'i-lucide-trash-2',
       action: () => {
         const { state, dispatch } = editor.view
         deleteSelection(state, dispatch)

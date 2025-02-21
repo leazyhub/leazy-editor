@@ -66,11 +66,11 @@ function resetTableGridSize(): void {
 
 <template>
   <UPopover>
-    <UButton :disabled="disabled" :padded="false" color="gray" variant="ghost">
+    <UButton :disabled="disabled" :padded="false" color="neutral" variant="ghost">
       <slot name="trigger" />
     </UButton>
     
-    <template #panel>
+    <template #content>
       <div class="table-grid-size-editor p-2">
         <div class="flex flex-col flex-wrap gap-1 justify-between">
           <div v-for="row in tableGridSize.rows" :key="'r' + row" class="flex gap-1">
@@ -78,7 +78,7 @@ function resetTableGridSize(): void {
               v-for="col in tableGridSize.cols"
               :key="'c' + col"
               :class="[
-                col <= selectedTableGridSize.cols && row <= selectedTableGridSize.rows && 'bg-gray-700 dark:bg-white border-border',
+                col <= selectedTableGridSize.cols && row <= selectedTableGridSize.rows && 'bg-neutral-700 dark:bg-white border-border',
                 'cursor-pointer',
               ]"
               class="pa-1"

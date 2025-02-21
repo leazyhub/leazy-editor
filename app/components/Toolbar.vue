@@ -59,10 +59,10 @@ const items = computed(() => {
 <template>
   <div v-if="editor" v-bind="$attrs">
     <div
-      class="flex flex-wrap items-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg"
+      class="flex flex-wrap items-center bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg"
     >
       <template v-for="(item, key) in items" :key="key">
-        <UDivider v-if="item.spacer" class="h-[16px] mx-[10px]" orientation="vertical" />
+        <USeparator v-if="item.spacer" class="h-[16px] mx-[10px]" orientation="vertical" />
         <component
           :is="item.button.component"
           :disabled="disabled || item.button.componentProps?.disabled"
@@ -73,7 +73,7 @@ const items = computed(() => {
             <component :is="element" v-bind="values?.props" />
           </template>
         </component>
-        <UDivider v-if="item.divider" class="h-auto mx-2" orientation="vertical" />
+        <USeparator v-if="item.divider" class="h-auto mx-2" orientation="vertical" />
       </template>
     </div>
   </div>

@@ -58,19 +58,19 @@ function toggleLightheight(key: string) {
 
 <template>
   <UPopover>
-    <ActionButton :tooltip="tooltip" custom-class="w-12" icon="i-fluent-text-line-spacing-24-regular">
+    <ActionButton :tooltip="tooltip" custom-class="w-12" icon="i-lucide-list-plus">
       <Suspense>
-        <UIcon name="i-heroicons-chevron-down-20-solid" />
+        <UIcon name="i-lucide-chevron-down" />
       </Suspense>
     </ActionButton>
     
-    <template #panel>
+    <template #content>
       <div class="flex flex-col min-w-24">
         <UButton
           v-for="(item, index) in LineHeights"
           :key="index"
           :class="{ 'bg-zinc-100': item.value === value }"
-          :color="item.value === value ? 'primary' : 'gray'"
+          :color="item.value === value ? 'primary' : 'neutral'"
           :label="item.label"
           :variant="item.value === value ? 'soft' : 'ghost'"
           @click="toggleLightheight(item.value)"

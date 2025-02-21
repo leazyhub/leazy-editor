@@ -97,6 +97,12 @@ const sortExtensions = computed(() => {
       ai: false,
       collaboration: false,
       collaborationCursor: false,
+      speechRecognition: false,
+      speechSynthesis: false,
+      import: false,
+      importWord: false,
+      export: false,
+      comment: false,
       // collaboration: {
       //   document: ydoc
       // },
@@ -116,7 +122,6 @@ const sortExtensions = computed(() => {
 })
 
 const debouncedOnUpdate = useDebounceFn(({ editor }) => {
-  console.log('debouncedOnUpdate')
   const output = getOutput(editor, props.output as any)
   emit('update:modelValue', output)
   emit('change', { editor, output })
@@ -209,7 +214,7 @@ defineExpose({ editor })
     >
       <Toolbar
         v-if="!hideToolbar && !disabled" :editor="editor" :style="contentDynamicStyles"
-        class="z-10 px-[25px] sticky top-4 left-0"
+        class="z-10 sticky top-4 left-0"
       />
       <EditorContent
         :class="contentClass" :editor="editor" :style="contentDynamicStyles" class="flex-1 w-full"

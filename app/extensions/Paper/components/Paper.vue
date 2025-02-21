@@ -3,10 +3,10 @@
     <div class="flex items-center justify-end gap-2 pb-2">
       <input
         v-model="color"
-        class="relative block disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 form-input rounded-md placeholder-gray-400 dark:placeholder-gray-500 text-xs px-2.5 py-1.5 shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring-1 ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400" type="color"
+        class="relative block disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 form-input rounded-md placeholder-neutral-400 dark:placeholder-neutral-500 text-xs px-2.5 py-1.5 shadow-sm bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white ring-1 ring-neutral-300 dark:ring-neutral-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400" type="color"
       />
       <UInput v-model="size" max="10" min="1" size="xs" type="number" />
-      <UButton color="red" label="Effacer" size="xs" variant="soft" @click="clear" />
+      <UButton color="error" label="Effacer" size="xs" variant="soft" @click="clear" />
     </div>
     <svg ref="canvas" viewBox="0 0 500 250">
       <template v-for="item in node.attrs.lines">

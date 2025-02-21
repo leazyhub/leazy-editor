@@ -3,16 +3,13 @@ export default defineAppConfig({
     name: 'Hello from Leazy Editor layer'
   },
   ui: {
-    variables: {
-      header: {
-        height: '3rem'
-      }
+    colors: {
+      primary: 'indigo',
+      neutral: 'zinc',
     },
-    primary: 'indigo',
-    gray: 'stone',
-    tooltip: {
-      default: {
-        openDelay: 250
+    button: {
+      slots: {
+        base: 'cursor-pointer'
       }
     }
   }

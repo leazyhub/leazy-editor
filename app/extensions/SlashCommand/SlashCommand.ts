@@ -1,6 +1,6 @@
 import { Editor, Extension, type Range } from '@tiptap/core'
 import { VueRenderer } from '@tiptap/vue-3'
-import { Suggestion, type SuggestionProps, type SuggestionKeyDownProps } from '@tiptap/suggestion'
+import { Suggestion, type SuggestionKeyDownProps, type SuggestionProps } from '@tiptap/suggestion'
 import { PluginKey } from '@tiptap/pm/state'
 import tippy from 'tippy.js'
 import { renderGroups } from './groups'
@@ -83,21 +83,15 @@ export const SlashCommand = Extension.create({
           }))
           // Remove empty groups
           const withoutEmptyGroups = withFilteredCommands.filter(group => {
-            if (group.commands.length > 0) {
-              return true
-            }
-
-            return false
+            return group.commands.length > 0;
           })
-          const withEnabledSettings = withoutEmptyGroups.map(group => ({
+          return withoutEmptyGroups.map(group => ({
             ...group,
             commands: group.commands.map(command => ({
               ...command,
               isEnabled: true,
             })),
           }))
-
-          return withEnabledSettings
         },
         render: () => {
           let component: any

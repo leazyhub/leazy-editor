@@ -88,36 +88,36 @@ watch(
 <template>
   <div class="p-2">
     <div class="flex gap-2">
-      <UFormGroup label="Chercher" size="2xs">
+      <UFormField label="Chercher" size="xs">
         <UInput
           v-model="searchTerm" padded placeholder="Chercher..." variant="outline"
           @keydown.enter.prevent="updateSearchReplace"
         />
-      </UFormGroup>
-      <UFormGroup label="Remplacer par" size="2xs">
+      </UFormField>
+      <UFormField label="Remplacer par" size="xs">
         <UInput
           v-model="replaceTerm" padded placeholder="Remplacer par..." variant="outline" @keydown.enter.prevent="replace"
         />
-      </UFormGroup>
+      </UFormField>
     </div>
     
-    <UCheckbox v-model="caseSensitive" :ui="{ base: 'w-3 h-3', inner: 'ms-2' }" class="my-2">
+    <UCheckbox v-model="caseSensitive" :ui="{ base: 'w-3 h-3' }" class="my-2">
       <template #label>
-        <label class="text-xs font-medium text-gray-700 dark:text-gray-300">Sensible à la casse</label>
+        <label class="text-xs font-medium text-neutral-700 dark:text-neutral-300">Sensible à la casse</label>
       </template>
     </UCheckbox>
     
     <div class="flex items-center gap-1">
-      <UButton color="red" icon="i-heroicons-x-mark" size="2xs" variant="soft" @click="clear" />
-      <UButton color="gray" icon="i-heroicons-chevron-left-20-solid" size="2xs" variant="soft" @click="previous" />
-      <p class="text-[11px] font-medium text-gray-700">
+      <UButton color="error" icon="i-lucide-x" size="xs" variant="soft" @click="clear" />
+      <UButton color="neutral" icon="i-lucide-chevron-left" size="xs" variant="soft" @click="previous" />
+      <p class="text-[11px] font-medium text-neutral-700">
         {{
           editor?.storage?.searchAndReplace?.resultIndex + (editor?.storage?.searchAndReplace?.results.length ? 1 : 0)
         }} / {{ editor?.storage?.searchAndReplace?.results.length }}
       </p>
-      <UButton color="gray" icon="i-heroicons-chevron-right-20-solid" size="2xs" variant="soft" @click="next" />
-      <UButton label="Remplacer" size="2xs" variant="soft" @click="replace" />
-      <UButton label="Tout remplacer" size="2xs" variant="soft" @click="replaceAll" />
+      <UButton color="neutral" icon="i-lucide-chevron-right" size="xs" variant="soft" @click="next" />
+      <UButton label="Remplacer" size="xs" variant="soft" @click="replace" />
+      <UButton label="Tout remplacer" size="xs" variant="soft" @click="replaceAll" />
     </div>
   </div>
 </template>

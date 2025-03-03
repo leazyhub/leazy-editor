@@ -17,8 +17,3 @@ const editor = useTemplateRef('editor')
     </div>
   </UApp>
 </template>
-
-<style>
-@import "tailwindcss";
-@import "@nuxt/ui";
-</style>

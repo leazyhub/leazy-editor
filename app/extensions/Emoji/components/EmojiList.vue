@@ -1,7 +1,7 @@
 <template>
   <div
       v-if="items.length"
-      class="items z-50 flex flex-col h-auto max-h-[330px] w-max overflow-y-auto rounded-md border border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700 p-1 gap-1 shadow-md transition-all">
+      class="items z-50 flex flex-col h-auto max-h-80 w-max overflow-y-auto rounded-md border border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700 p-1 gap-1 shadow-md transition-all">
     <UButton
         v-for="(item, index) in items"
         :key="index"

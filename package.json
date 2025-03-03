@@ -5,7 +5,7 @@
   "main": "./nuxt.config.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "nuxi dev .playground",
+    "dev": "nuxi dev",
     "dev:prepare": "nuxt prepare .playground",
     "build": "nuxt build .playground",
     "generate": "nuxt generate .playground",
@@ -14,19 +14,19 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.26",
-    "@iconify-json/simple-icons": "^1.2.25",
+    "@iconify-json/lucide": "^1.2.28",
+    "@iconify-json/simple-icons": "^1.2.27",
     "@nuxt/icon": "^1.10.3",
     "@nuxt/image": "^1.9.0",
-    "@nuxt/ui": "^3.0.0-alpha.13",
+    "@nuxt/ui": "^3.0.0-beta.2",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/i18n": "^9.2.1",
-    "@tiptap-pro/extension-details": "^2.17.4",
-    "@tiptap-pro/extension-details-content": "^2.17.4",
-    "@tiptap-pro/extension-details-summary": "^2.17.4",
-    "@tiptap-pro/extension-emoji": "^2.17.4",
-    "@tiptap-pro/extension-export": "^2.17.4",
-    "@tiptap-pro/extension-import": "^2.17.4",
+    "@tiptap-pro/extension-details": "^2.17.5",
+    "@tiptap-pro/extension-details-content": "^2.17.5",
+    "@tiptap-pro/extension-details-summary": "^2.17.5",
+    "@tiptap-pro/extension-emoji": "^2.17.5",
+    "@tiptap-pro/extension-export": "^2.17.5",
+    "@tiptap-pro/extension-import": "^2.17.5",
     "@tiptap/core": "^2.11.5",
     "@tiptap/extension-blockquote": "^2.11.5",
     "@tiptap/extension-bold": "^2.11.5",
@@ -83,19 +83,19 @@
     "lodash-unified": "^1.0.3",
     "lowlight": "^3.3.0",
     "nuxt": "^3.15.4",
-    "openai": "^4.85.3",
-    "sass": "^1.85.0",
+    "openai": "^4.86.1",
+    "sass": "^1.85.1",
     "tippy.js": "^6.3.7",
     "uuid": "^11.1.0",
     "y-crossws": "^0.0.2",
-    "y-prosemirror": "^1.2.15",
+    "y-prosemirror": "^1.2.16",
     "y-websocket": "^2.1.0",
     "yjs": "^13.6.23"
   },
   "devDependencies": {
     "@nuxt/eslint": "0.7.1",
-    "eslint": "^9.20.1",
-    "vue-tsc": "^2.2.2"
+    "eslint": "^9.21.0",
+    "vue-tsc": "^2.2.8"
   },
   "packageManager": "bun@1.1.29"
 }

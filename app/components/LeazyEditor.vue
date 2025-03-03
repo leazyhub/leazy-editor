@@ -224,6 +224,11 @@ defineExpose({ editor })
   </div>
 </template>
 
+<style lang="css">
+@import "tailwindcss" theme(static);
+@import "@nuxt/ui";
+</style>
+
 <style lang="scss">
 @use '../assets/css/index';
 </style>

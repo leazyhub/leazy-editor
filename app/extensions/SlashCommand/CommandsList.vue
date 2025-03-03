@@ -117,7 +117,7 @@ defineExpose({ onKeyDown })
   <div
     v-if="items?.length"
     ref="commandListContainer"
-    class="flex flex-col z-50 h-full max-h-[330px] w-60 overflow-y-auto rounded-md border border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700 p-1 gap-1 shadow-md transition-all"
+    class="flex flex-col z-50 h-full max-h-80 w-60 overflow-y-auto rounded-md border border-neutral-200 bg-white dark:bg-neutral-800 dark:border-neutral-700 p-1 gap-1 shadow-md transition-all"
   >
     <div v-for="(group, groupIndex) in items" :key="group.title" class="flex flex-col">
       <div

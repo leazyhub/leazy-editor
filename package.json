@@ -1,7 +1,7 @@
 {
   "name": "@leazyhub/editor",
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "./nuxt.config.ts",
   "license": "MIT",
   "scripts": {
@@ -10,6 +10,7 @@
     "build": "nuxt build .playground",
     "generate": "nuxt generate .playground",
     "preview": "nuxt preview .playground",
+    "release": "bumpp && npm publish",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck"
   },
@@ -75,6 +76,7 @@
     "@tiptap/suggestion": "^2.11.5",
     "@tiptap/vue-3": "^2.11.5",
     "@vueuse/core": "11.3.0",
+    "bumpp": "^10.0.3",
     "d3": "^7.9.0",
     "evaluatex": "^2.2.0",
     "highlight.js": "^11.11.1",

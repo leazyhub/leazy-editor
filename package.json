@@ -84,7 +84,7 @@
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
     "lowlight": "^3.3.0",
-    "nuxt": "^3.15.4",
+    "nuxt": "^3.16.2",
     "openai": "^4.86.1",
     "sass": "^1.85.1",
     "tippy.js": "^6.3.7",
@@ -99,5 +99,5 @@
     "eslint": "^9.21.0",
     "vue-tsc": "^2.2.8"
   },
-  "packageManager": "bun@1.1.29"
+  "packageManager": "bun@1.1.38"
 }

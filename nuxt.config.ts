@@ -19,9 +19,7 @@ export default defineNuxtConfig({
       JWT_CONVERT_TOKEN: process.env.NUXT_JWT_CONVERT_TOKEN
     }
   },
-  css: ['~/assets/css/main.css'],
   modules: [
-    '@nuxt/ui',
     '@nuxtjs/i18n',
     '@nuxt/image',
   ],

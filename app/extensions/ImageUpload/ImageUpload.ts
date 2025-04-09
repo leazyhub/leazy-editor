@@ -1,6 +1,6 @@
 import { Node, VueNodeViewRenderer } from '@tiptap/vue-3'
 import ImageUploaderView from './components/ImageUploader.vue'
-import { insertImages, ImageNodeAttributes } from '../../utils/image'
+import { insertImages, type ImageNodeAttributes } from '../../utils/image'
 import { Plugin } from '@tiptap/pm/state'
 import ActionButton from '../../components/ActionButton.vue'
 

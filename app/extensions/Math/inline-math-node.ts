@@ -7,7 +7,7 @@ import type {
 } from './latex-evaluation/evaluate-expression'
 import { generateID } from './util/generate-id'
 import { updateEvaluation } from './latex-evaluation/update-evaluation'
-import { DEFAULT_OPTIONS, MathExtensionOption as MathExtensionOptions } from './util/options'
+import { DEFAULT_OPTIONS, type MathOptions as MathExtensionOptions } from './util/options'
 
 export const InlineMathNode = Node.create<MathExtensionOptions>({
   name: "inlineMath",

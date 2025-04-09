@@ -1,6 +1,6 @@
 import { Node } from '@tiptap/core'
 import { Column } from './Column'
-import { GeneralOptions } from '../../types'
+import type { GeneralOptions } from '../../types'
 
 export enum ColumnLayout {
   SidebarLeft = 'sidebar-left',

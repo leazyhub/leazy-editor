@@ -1,4 +1,4 @@
-import { Extension, Range, type Dispatch } from '@tiptap/core'
+import { Extension, type Range, type Dispatch } from '@tiptap/core'
 import { Decoration, DecorationSet } from '@tiptap/pm/view'
 import {
   Plugin,
@@ -7,7 +7,7 @@ import {
   type Transaction,
 } from '@tiptap/pm/state'
 import { Node as PMNode } from '@tiptap/pm/model'
-import type { GeneralOptions } from '@/types'
+import type { GeneralOptions } from '../../types'
 import SearchAndReplacePopover from './components/SearchAndReplacePopover.vue'
 
 declare module "@tiptap/core" {

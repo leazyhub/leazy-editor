@@ -74,10 +74,7 @@
 
   h1,
   h2,
-  h3 {
-    margin-top: 2rem;
-  }
-
+  h3,
   h4,
   h5,
   h6 {
@@ -127,8 +124,6 @@
   }
 
   [data-type='horizontalRule'] {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
 
@@ -162,8 +157,8 @@
   [data-type='columns'] {
     display: grid;
     gap: 1rem;
-    margin-top: 3.5rem;
-    margin-bottom: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
     &.layout-sidebar-left {
       grid-template-columns: 40fr 60fr;
@@ -200,8 +195,8 @@
     background-color: #404040;
     color: #ffffff;
     border-radius: 0.25rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding: 1rem;
     border: 1px solid #000000;
 
@@ -286,8 +281,8 @@
   ul,
   ol {
     padding: 0 2rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
     &:first-child {
       margin-top: 0;
@@ -312,8 +307,8 @@
 
   & > ul,
   & > ol {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
     &:first-child {
       margin-top: 0;

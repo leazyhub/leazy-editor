@@ -187,7 +187,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.horizontalrule.tooltip',
           iconName: 'i-lucide-minus',
           description: 'Insert a horizontal divider',
-          aliases: ['hr', 'fgx', 'fg'],
+          aliases: ['règle', 'regle', 'ligne', 'trait', 'horizontal', 'horizontale', 'hr', 'fgx', 'fg'],
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setHorizontalRule().run()
           },
@@ -202,7 +202,7 @@ export function renderGroups(editor: Editor) {
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setVideoUpload().run()
           },
-        },
+        }/*,
         {
           name: 'Twitter',
           label: 'Twitter',
@@ -213,12 +213,13 @@ export function renderGroups(editor: Editor) {
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setTwitterUpload().run()
           },
-        },
+        },*/
       ],
     },
   ]
   const hasAI = hasExtension(editor, 'Ai')
-  const hasIframes = hasExtension(editor, 'iframes')
+  // const hasIframes = hasExtension(editor, 'iframes')
+  const hasIframes = false
   if (hasAI) {
     groups.unshift({
       name: 'ai',

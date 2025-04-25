@@ -42,7 +42,7 @@ function handleSubmit() {
     </UFormField>
     
     <UFormField>
-      <UCheckbox v-model="openInNewTab" :label="t('editor.link.dialog.openInNewTab')" name="target" />
+      <UCheckbox v-model="openInNewTab" :label="t('editor.link.dialog.openInNewTab')" name="target" size="sm" />
     </UFormField>
     <UButton :label="t('editor.link.dialog.button.apply')" block class="mt-2" size="xs" type="submit" />
   </UForm>

@@ -59,9 +59,7 @@ function toggleLightheight(key: string) {
 <template>
   <UPopover>
     <ActionButton :tooltip="tooltip" custom-class="w-12" icon="i-lucide-list-plus">
-      <Suspense>
-        <UIcon name="i-lucide-chevron-down" />
-      </Suspense>
+      <UIcon name="i-lucide-chevron-down" />
     </ActionButton>
     
     <template #content>
@@ -72,6 +70,7 @@ function toggleLightheight(key: string) {
           :class="{ 'bg-zinc-100': item.value === value }"
           :color="item.value === value ? 'primary' : 'neutral'"
           :label="item.label"
+          size="sm"
           :variant="item.value === value ? 'soft' : 'ghost'"
           @click="toggleLightheight(item.value)"
         />

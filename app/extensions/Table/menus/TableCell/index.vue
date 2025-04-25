@@ -46,7 +46,7 @@ const shouldShow = ({ view, state, from }: ShouldShowProps) => {
   })
 }
 
-const Selection = computed(() => {
+const selection = computed(() => {
   const NodeSelection = props.editor.state.selection as NodeSelection
   const isCell = NodeSelection instanceof CellSelection
   if (isCell) {
@@ -73,26 +73,26 @@ const Selection = computed(() => {
     pluginKey="tableCellMenu"
   >
     <div
-      class="flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-border border-neutral-200 dark:border-neutral-700"
+      class="flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-border border-(--ui-border)"
     >
       <ActionButton
-        v-if="Selection?.cellCount! > 1"
+        v-if="selection?.cellCount! > 1"
         :action="() => emits('onMergeCell')"
         :tooltip-options="{
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-merge"
-        tooltip="Merge Cells"
+        tooltip="Fusionner les cellules"
       />
       
       <ActionButton
-        v-if="Selection?.mergedCellCount! > 0"
+        v-if="selection?.mergedCellCount! > 0"
         :action="() => emits('onSplitCell')"
         :tooltip-options="{
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-split"
-        tooltip="Split Cell"
+        tooltip="Séparer les cellules"
       />
       <ActionButton
         v-if="isTableSelected(props.editor.state.selection)"
@@ -101,7 +101,7 @@ const Selection = computed(() => {
           sideOffset: 15,
         }"
         icon="i-lucide-trash-2"
-        tooltip="Delete Table"
+        tooltip="Supprimer le tableau"
       />
       
       <HighlightActionButton
@@ -110,7 +110,7 @@ const Selection = computed(() => {
         :tooltip-options="{
           sideOffset: 15,
         }"
-        tooltip="Set Cell Background"
+        tooltip="Couleur de fond de la cellule"
       />
     </div>
   </BubbleMenu>

@@ -110,9 +110,9 @@ const activeItem = computed(() => {
 </script>
 
 <template>
-  <UPopover :popper="{ placement: 'bottom-start' }">
+  <UPopover>
     <UButton
-      :icon="activeItem?.iconName" color="neutral" size="xs" square trailing-icon="i-lucide-chevron-down"
+      :icon="activeItem?.iconName" color="neutral" size="xs" trailing-icon="i-lucide-chevron-down"
       variant="ghost"
     />
     
@@ -131,9 +131,7 @@ const activeItem = computed(() => {
             <div
               class="flex items-center justify-center p-px font-medium border rounded-sm border-neutral-200 dark:border-neutral-700"
             >
-              <Suspense>
-                <UIcon :name="item.iconName" class="w-4 h-4" dynamic />
-              </Suspense>
+              <UIcon :name="item.iconName" class="size-4" dynamic />
             </div>
           </template>
         </UButton>

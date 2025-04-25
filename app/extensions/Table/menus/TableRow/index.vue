@@ -84,7 +84,7 @@ function onDeleteRow() {
     pluginKey="tableRowMenu"
   >
     <div
-      class="flex flex-col h-full leading-none gap-0.5 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-border border-neutral-200 dark:border-neutral-700"
+      class="flex flex-col h-full leading-none gap-0.5 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-border border-(--ui-border)"
     >
       <ActionButton
         :action="onAddRowBefore"
@@ -93,7 +93,7 @@ function onDeleteRow() {
           side: 'right',
         }"
         icon="i-lucide-between-vertical-start"
-        tooltip="Insert Row Above"
+        tooltip="Insérer une ligne au-dessus"
       />
       
       <ActionButton
@@ -103,7 +103,7 @@ function onDeleteRow() {
           sideOffset: 15,
         }"
         icon="i-lucide-between-vertical-end"
-        tooltip="Insert Row Below"
+        tooltip="Insérer une ligne en-dessous"
       />
       <ActionButton
         :action="onDeleteRow"
@@ -112,7 +112,7 @@ function onDeleteRow() {
           sideOffset: 15,
         }"
         icon="i-lucide-trash-2"
-        tooltip="Delete Row"
+        tooltip="Supprimer la ligne"
       />
       <ActionButton
         v-if="Selection?.cellCount! > 1"
@@ -122,7 +122,7 @@ function onDeleteRow() {
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-merge"
-        tooltip="Merge Cells"
+        tooltip="Fusionner les cellules"
       />
       <ActionButton
         v-if="Selection?.mergedCellCount! > 0"
@@ -132,7 +132,7 @@ function onDeleteRow() {
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-split"
-        tooltip="Split Cells"
+        tooltip="Séparer les cellules"
       />
       
       <HighlightActionButton
@@ -142,7 +142,7 @@ function onDeleteRow() {
           side: 'right',
           sideOffset: 15,
         }"
-        tooltip="Set Cell Background"
+        tooltip="Couleur de fond de la cellule"
       />
     </div>
   </BubbleMenu>

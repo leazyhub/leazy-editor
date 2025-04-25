@@ -13,7 +13,7 @@ export function renderGroups(editor: Editor) {
           name: 'paragraph',
           label: 'Texte',
           description: 'Ajouter un texte',
-          aliases: ['p', 'paragraph', 'texte'],
+          aliases: ['p', 'paragraph', 'texte', 'text', 'para'],
           iconName: 'i-lucide-case-sensitive',
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).toggleNode('paragraph', 'paragraph').run()
@@ -22,7 +22,7 @@ export function renderGroups(editor: Editor) {
         {
           name: 'heading1',
           label: 'editor.heading.h1.tooltip',
-          aliases: ['h1', 'bt', 'bt1'],
+          aliases: ['h1', 'bt', 'bt1', 'titre1', 'heading1', 'title1'],
           iconName: 'i-lucide-heading-1',
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setHeading({ level: 1 }).run()
@@ -31,7 +31,7 @@ export function renderGroups(editor: Editor) {
         {
           name: 'heading2',
           label: 'editor.heading.h2.tooltip',
-          aliases: ['h2', 'bt', 'bt2'],
+          aliases: ['h2', 'bt2', 'titre2', 'heading2', 'title2'],
           iconName: 'i-lucide-heading-2',
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setNode('heading', { level: 2 }).run()
@@ -40,7 +40,7 @@ export function renderGroups(editor: Editor) {
         {
           name: 'heading3',
           label: 'editor.heading.h3.tooltip',
-          aliases: ['h3', 'bt', 'bt3'],
+          aliases: ['h3', 'bt3', 'titre3', 'heading3', 'title3'],
           iconName: 'i-lucide-heading-3',
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setNode('heading', { level: 3 }).run()
@@ -49,7 +49,7 @@ export function renderGroups(editor: Editor) {
         {
           name: 'bulletList',
           label: 'editor.bulletlist.tooltip',
-          aliases: ['ul', 'yxlb'],
+          aliases: ['ul', 'liste', 'listepuce', 'bullet', 'bulletlist', 'unordered'],
           iconName: 'i-lucide-list',
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).toggleBulletList().run()
@@ -58,7 +58,7 @@ export function renderGroups(editor: Editor) {
         {
           name: 'numberedList',
           label: 'editor.orderedlist.tooltip',
-          aliases: ['ol', 'yxlb'],
+          aliases: ['ol', 'liste', 'listeordonnée', 'numbered', 'numberedlist', 'ordered'],
           iconName: 'i-lucide-list-ordered',
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).toggleOrderedList().run()
@@ -69,7 +69,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.tasklist.tooltip',
           iconName: 'i-lucide-list-todo',
           description: 'Task list with todo items',
-          aliases: ['todo'],
+          aliases: ['todo', 'todolist', 'listeàfaire', 'tâches'],
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).toggleTaskList().run()
           },
@@ -78,7 +78,7 @@ export function renderGroups(editor: Editor) {
           name: 'blockquote',
           label: 'editor.blockquote.tooltip',
           description: 'Blockquote with citation',
-          aliases: ['yr'],
+          aliases: ['citation', 'quote', 'blockquote'],
           iconName: 'i-lucide-text-quote',
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setBlockquote().run()
@@ -89,6 +89,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.codeblock.tooltip',
           iconName: 'i-lucide-code-xml',
           description: 'Code block with syntax highlighting',
+          aliases: ['code', 'codeblock', 'bloccode', 'bloc de code'],
           shouldBeHidden: editor => editor.isActive('columns'),
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setCodeBlock().run()
@@ -105,8 +106,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.image.tooltip',
           iconName: 'i-lucide-image-up',
           description: 'Insert a image',
-          aliases: ['image', 'tp', 'tupian'],
-          shouldBeHidden: editor => editor.isActive('columns'),
+          aliases: ['image', 'photo', 'pic', 'img', 'tupian', 'illustration'],
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setImageUpload().run()
           },
@@ -116,7 +116,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.tableOfContents.tooltip',
           iconName: 'i-lucide-book-marked',
           description: 'Insert a table of contents',
-          aliases: ['toc', 'tableofcontents', 'sommaire'],
+          aliases: ['toc', 'tableofcontents', 'sommaire', 'contenu'],
           shouldBeHidden: editor => editor.isActive('columns'),
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setTableOfContents().run()
@@ -127,7 +127,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.table.tooltip',
           iconName: 'i-lucide-table',
           description: 'Insert a table',
-          aliases: ['table', 'bg', 'biaoge', 'biao'],
+          aliases: ['table', 'tableau', 'bg', 'biaoge', 'grille'],
           shouldBeHidden: editor => editor.isActive('columns'),
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).insertTable({ rows: 3, cols: 3, withHeaderRow: false }).run()
@@ -138,7 +138,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.columns.tooltip',
           iconName: 'i-lucide-columns-2',
           description: 'Add two column content',
-          aliases: ['columns', 'cols', '2cols'],
+          aliases: ['columns', 'cols', '2cols', 'colonnes', 'deuxcolonnes'],
           shouldBeHidden: editor => editor.isActive('columns'),
           action: ({ editor, range }) => {
             editor
@@ -154,7 +154,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.paper.tooltip',
           iconName: 'i-lucide-brush',
           description: 'Insert a paper',
-          aliases: ['paper', 'zhi', 'dessiner', 'brush', 'draw'],
+          aliases: ['paper', 'note', 'dessin', 'brush', 'draw', 'esquisse'],
           shouldBeHidden: editor => editor.isActive('columns'),
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setPaper().run()
@@ -165,7 +165,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.details.tooltip',
           iconName: 'i-lucide-list-collapse',
           description: 'Insert a details',
-          aliases: ['details'],
+          aliases: ['details', 'détails', 'collapse', 'spoiler', 'accordeon'],
           shouldBeHidden: editor => editor.isActive('columns'),
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setDetails().run()
@@ -176,7 +176,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.alert.tooltip',
           iconName: 'i-lucide-sticky-note',
           description: 'Insert a alert',
-          aliases: ['note', 'alert', 'alerte'],
+          aliases: ['note', 'alert', 'alerte', 'notification', 'remarque'],
           shouldBeHidden: editor => editor.isActive('columns'),
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setAlert().run()
@@ -187,7 +187,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.horizontalrule.tooltip',
           iconName: 'i-lucide-minus',
           description: 'Insert a horizontal divider',
-          aliases: ['règle', 'regle', 'ligne', 'trait', 'horizontal', 'horizontale', 'hr', 'fgx', 'fg'],
+          aliases: ['règle', 'regle', 'ligne', 'trait', 'horizontal', 'horizontale', 'hr', 'divider', 'séparateur'],
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setHorizontalRule().run()
           },
@@ -197,7 +197,7 @@ export function renderGroups(editor: Editor) {
           label: 'editor.video.tooltip',
           iconName: 'i-lucide-video',
           description: 'Insert a video',
-          aliases: ['video', 'sp', 'shipin'],
+          aliases: ['video', 'vidéo', 'sp', 'shipin', 'media'],
           shouldBeHidden: editor => editor.isActive('columns'),
           action: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).setVideoUpload().run()

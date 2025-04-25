@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import type { ButtonViewReturnComponentProps } from '../types'
 
+type IconType = string | (() => string)
+
 interface Props {
-  icon?: string
+  icon?: IconType
   title?: string
   tooltip?: string
   disabled?: boolean
@@ -14,7 +16,7 @@ interface Props {
   isActive?: ButtonViewReturnComponentProps['isActive']
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   icon: undefined,
   title: undefined,
   tooltip: undefined,
@@ -25,6 +27,10 @@ withDefaults(defineProps<Props>(), {
   shortcuts: undefined,
   action: undefined,
   isActive: undefined,
+})
+
+const resolvedIcon = computed(() => {
+  return typeof props.icon === 'function' ? props.icon() : props.icon
 })
 </script>
 
@@ -44,7 +50,7 @@ withDefaults(defineProps<Props>(), {
       <div v-else class="flex gap-1 items-center">
         <Suspense>
           <UTooltip :text="tooltip">
-            <UIcon v-if="icon" :name="icon" dynamic />
+            <UIcon v-if="resolvedIcon" :name="resolvedIcon" dynamic />
           </UTooltip>
         </Suspense>
         <slot name="icon" />

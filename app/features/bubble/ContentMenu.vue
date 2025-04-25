@@ -204,68 +204,69 @@ watch(
         
         <template #content>
           <div class="w-max flex flex-col">
-            <UButton
-              :disabled="!canMoveUp"
-              color="neutral"
-              icon="i-lucide-chevron-up"
-              label="Remonter"
-              size="xs"
-              variant="ghost"
-              @click="moveNode('UP')"
-            />
-            <UButton
-              :disabled="!canMoveDown"
-              color="neutral"
-              icon="i-lucide-chevron-down"
-              label="Descendre"
-              size="xs"
-              variant="ghost"
-              @click="moveNode('DOWN')"
-            />
+            <div class="flex flex-col p-1">
+              <UButton
+                :disabled="!canMoveUp"
+                color="neutral"
+                icon="i-lucide-chevron-up"
+                label="Remonter"
+                size="xs"
+                variant="ghost"
+                @click="moveNode('UP')"
+              />
+              <UButton
+                :disabled="!canMoveDown"
+                color="neutral"
+                icon="i-lucide-chevron-down"
+                label="Descendre"
+                size="xs"
+                variant="ghost"
+                @click="moveNode('DOWN')"
+              />
+            </div>
             
-            <USeparator
-              class="my-1"
-              orientation="horizontal"
-            />
+            <USeparator orientation="horizontal" />
             
-            <UButton
-              :label="$t('editor.clear.tooltip')"
-              color="neutral"
-              icon="i-lucide-paint-roller"
-              size="xs"
-              variant="ghost"
-              @click="resetTextFormatting"
-            />
-            <UButton
-              :label="$t('editor.copy')"
-              color="neutral"
-              icon="i-lucide-clipboard"
-              size="xs"
-              variant="ghost"
-              @click="copyNodeToClipboard"
-            />
-            <UButton
-              :label="$t('editor.duplicate')"
-              color="neutral"
-              icon="i-lucide-copy"
-              size="xs"
-              variant="ghost"
-              @click="duplicateNode"
-            />
+            <div class="flex flex-col p-1">
+              <UButton
+                :label="$t('editor.clear.tooltip')"
+                color="neutral"
+                icon="i-lucide-paint-roller"
+                size="xs"
+                variant="ghost"
+                @click="resetTextFormatting"
+              />
+              <UButton
+                :label="$t('editor.copy')"
+                color="neutral"
+                icon="i-lucide-clipboard"
+                size="xs"
+                variant="ghost"
+                @click="copyNodeToClipboard"
+              />
+              <UButton
+                v-if="false"
+                :label="$t('editor.duplicate')"
+                color="neutral"
+                icon="i-lucide-copy"
+                size="xs"
+                variant="ghost"
+                @click="duplicateNode"
+              />
+            </div>
             
-            <USeparator
-              class="my-1"
-              orientation="horizontal"
-            />
+            <USeparator orientation="horizontal" />
             
-            <UButton
-              :label="$t('editor.remove')"
-              color="error"
-              icon="i-lucide-trash-2"
-              size="xs"
-              variant="soft"
-              @click="deleteNode"
-            />
+            <div class="flex flex-col p-1">
+              <UButton
+                :label="$t('editor.remove')"
+                color="error"
+                icon="i-lucide-trash-2"
+                size="xs"
+                variant="soft"
+                @click="deleteNode"
+              />
+            </div>
           </div>
         </template>
       </UPopover>

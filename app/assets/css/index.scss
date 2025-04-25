@@ -1,2 +1,8 @@
 @use './editor';
 @use './ProseMirror';
+
+@page {
+  margin: 0;
+  padding: 30px;
+  size: auto;
+}

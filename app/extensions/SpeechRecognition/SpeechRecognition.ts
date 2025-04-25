@@ -5,6 +5,12 @@ export interface SpeechRecognitionOptions {
   lang: string
 }
 
+// État global
+const speechStore = {
+  recognition: null as SpeechRecognition | null,
+  isStarted: false,
+}
+
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     SpeechRecognition: {
@@ -15,44 +21,36 @@ declare module '@tiptap/core' {
   }
 }
 
-class SR_Node<O = any, S = any> extends Node<O, S> {
-  protected constructor() {
-    super();
-  }
-
-  recognition: typeof SpeechRecognition | undefined;
-  readonly isStarted: boolean = false;
-
-  static override create<O = any, S = any>(config?: any) {
-    return Node.create(config) as SR_Node<O, S>;
-  }
-}
-
-export const SpeechRecognition = SR_Node.create<SpeechRecognitionOptions>({
+export const SpeechRecognition = Node.create<SpeechRecognitionOptions>({
   name: 'SpeechRecognition',
 
   addOptions() {
     return {
-      ...this.parent?.(),
       lang: 'fr-FR',
-      button: ({ editor, t }) => ({
+      button: ({ editor }) => ({
         component: ActionButton,
         componentProps: {
-          action: () => editor.commands.startSpeechRecognition(),
-          isActive: () => this.isStarted,
+          action: () => {
+            if (speechStore.isStarted) {
+              editor.commands.stopSpeechRecognition()
+            } else {
+              editor.commands.startSpeechRecognition()
+            }
+          },
+          isActive: () => speechStore.isStarted,
           disabled: false,
-          icon: 'i-lucide-speech',
-          tooltip: 'SpeechRecognition',
+          icon: () => speechStore.isStarted
+            ? 'i-lucide-mic-off'
+            : 'i-lucide-speech',
+          tooltip: 'Reconnaissance vocale',
         },
       }),
-    };
+    }
   },
 
   onCreate() {
-    if (
-      !('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)
-    ) {
-      console.warn('SpeechRecognition API is not supported by your browser');
+    if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
+      console.warn('SpeechRecognition API is not supported by your browser')
     }
   },
 
@@ -60,58 +58,49 @@ export const SpeechRecognition = SR_Node.create<SpeechRecognitionOptions>({
     return {
       startSpeechRecognition:
         () =>
-          ({ commands }) => {
-            const SpeechRecognition =
-              window.SpeechRecognition || window.webkitSpeechRecognition;
-            this.recognition = new SpeechRecognition();
+          ({ commands, editor }) => {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            speechStore.recognition = new SR();
 
-            this.recognition.lang = this.options.lang;
-            this.recognition.interimResults = true;
-            this.recognition.maxAlternatives = 1;
-            this.recognition.continuous = true;
+            speechStore.recognition.lang = this.options.lang;
+            speechStore.recognition.interimResults = true;
+            speechStore.recognition.maxAlternatives = 1;
+            speechStore.recognition.continuous = true;
 
-            this.recognition.start();
+            speechStore.recognition.start();
 
-            // Memoize initial caret positions
-            let { from, to } = this.editor.state.selection;
+            let { from, to } = editor.state.selection;
 
-            this.recognition.onresult = (event: SpeechRecognitionEvent) => {
+            speechStore.recognition.onresult = (event: SpeechRecognitionEvent) => {
               let currentResult = '';
 
-              // Add to the currentResult variable the content of the last recognized sentence
               for (let i = event.resultIndex; i < event.results.length; i++) {
                 currentResult += event.results[i][0].transcript;
               }
 
-              // Is this the final recognition ?
               const isFinal = event.results[event.results.length - 1].isFinal;
 
-              // Replace selection by the last recognized sentence (+ style and select, if not final)
-              this.editor.commands.deleteRange({ from, to });
-              this.editor.commands.insertContentAt(
+              editor.commands.deleteRange({ from, to });
+              editor.commands.insertContentAt(
                 from,
                 isFinal ? currentResult : `<code>${currentResult}</code>`,
                 { updateSelection: !isFinal }
               );
-              to = this.editor.state.selection.to;
+              to = editor.state.selection.to;
 
-              if (isFinal) {
-                // Next content will go after last insertion
-                from = to;
-              }
+              if (isFinal) from = to;
             };
 
-            this.recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
-              // TODO create a "feedback" tiptap extension, to display user friendly error messages ?
+            speechStore.recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
               console.log('Speech recognition error:', event.error);
             };
 
-            this.recognition.onstart = () => {
-              this.isStarted = true;
+            speechStore.recognition.onstart = () => {
+              speechStore.isStarted = true;
             };
 
-            this.recognition.onend = () => {
-              this.isStarted = false;
+            speechStore.recognition.onend = () => {
+              speechStore.isStarted = false;
             };
 
             return commands;
@@ -119,13 +108,13 @@ export const SpeechRecognition = SR_Node.create<SpeechRecognitionOptions>({
 
       stopSpeechRecognition:
         () =>
-          ({ commands }) => {
-            this.recognition.stop();
-            this.editor.commands.focus();
+          ({ commands, editor }) => {
+            speechStore.recognition?.stop();
+            editor.commands.focus();
             return commands;
           },
 
-      isSpeechRecognitionStarted: () => () => this.isStarted,
+      isSpeechRecognitionStarted: () => () => speechStore.isStarted,
     };
   },
 });

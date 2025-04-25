@@ -1,4 +1,6 @@
 .ProseMirror {
+  padding-inline: 25px;
+
   /* Typography */
   p {
     line-height: 1.625;
@@ -384,27 +386,19 @@
 
   table {
     border-collapse: collapse;
-    border-color: rgba(0, 0, 0, 0.1);
+    border-color: var(--ui-border);
     border-radius: 0.25rem;
     box-sizing: border-box;
     width: 100%;
 
-    @media (prefers-color-scheme: dark) {
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
     td,
     th {
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--ui-border);
       min-width: 100px;
       padding: 0.5rem;
       position: relative;
       text-align: left;
       vertical-align: top;
-
-      @media (prefers-color-scheme: dark) {
-        border-color: rgba(255, 255, 255, 0.2);
-      }
 
       &:first-of-type:not(a) {
         margin-top: 0;

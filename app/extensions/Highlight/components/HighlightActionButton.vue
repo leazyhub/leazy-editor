@@ -29,10 +29,6 @@ function onChange(color: string | undefined) {
   props.action?.(color)
 }
 
-function toggleColor(e: any) {
-  props.action?.(selectedColor.value)
-}
-
 watchEffect(() => {
   const { color: highlightValue } = props.editor.getAttributes('highlight')
   state.highlight = highlightValue
@@ -42,7 +38,7 @@ watchEffect(() => {
 <template>
   <div class="flex items-center">
     <ColorPicker v-model="selectedColor" highlight @change="onChange">
-      <ActionButton :action="toggleColor" :disabled="disabled" :tooltip="tooltip" :tooltip-options="tooltipOptions">
+      <ActionButton :disabled="disabled" :tooltip="tooltip" :tooltip-options="tooltipOptions">
         <template #icon>
           <span class="text-xs flex items-center justify-center"
           ><svg height="12px" version="1.1" viewBox="0 0 256 256" width="12px" xmlns="http://www.w3.org/2000/svg">

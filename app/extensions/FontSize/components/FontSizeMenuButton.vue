@@ -49,13 +49,18 @@ const active = computed(() => {
 
 <template>
   <UPopover>
-    <ActionMenuButton :title="active.title" :tooltip="tooltip"/>
+    <ActionMenuButton :title="active.title" size="sm" :tooltip="tooltip"/>
 
     <template #content>
       <div class="flex flex-col overflow-y-auto max-h-96">
         <template v-for="(item, index) in props.items" :key="index">
-          <UButton :color="active.title === item.title ? 'primary' : 'neutral'" :label="item.title" :variant="active.title === item.title ? 'soft' : 'ghost'"
-                   @click="item.action"/>
+          <UButton
+            size="sm"
+            :color="active.title === item.title ? 'primary' : 'neutral'"
+            :label="item.title"
+            :variant="active.title === item.title ? 'soft' : 'ghost'"
+            @click="item.action"
+          />
         </template>
       </div>
     </template>

@@ -97,10 +97,8 @@ const sortExtensions = computed(() => {
       ai: false,
       collaboration: false,
       collaborationCursor: false,
-      speechRecognition: false,
-      speechSynthesis: false,
       import: false,
-      importWord: false,
+      // importWord: false,
       export: false,
       comment: false,
       // collaboration: {
@@ -214,10 +212,10 @@ defineExpose({ editor })
     >
       <Toolbar
         v-if="!hideToolbar && !disabled" :editor="editor" :style="contentDynamicStyles"
-        class="z-10 sticky top-4 left-0"
+        class="z-10 sticky top-4 left-0 px-[25px]"
       />
       <EditorContent
-        :class="contentClass" :draggable="editable" :editor="editor" :style="contentDynamicStyles" class="flex-1 w-full"
+        :class="contentClass" :draggable="!disabled" :editor="editor" :style="contentDynamicStyles" class="flex-1 w-full"
         suppressContentEditableWarning
       />
     </div>

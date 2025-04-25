@@ -954,7 +954,7 @@ export const BaseKit = Extension.create<BaseKitOptions>({
             if (node?.type?.name === 'heading') {
               return `${t(`editor.heading.h${node.attrs.level}.tooltip`)}`
             }
-            if (node?.type?.name === 'codeBlock' || node?.type?.name === 'alert' || node?.type?.name === 'columns') {
+            if (node?.type?.name === 'codeBlock' || node?.type?.name === 'alert' || node?.type?.name === 'columns' || node?.type?.name === 'table') {
               return null
             }
             if (pos === 0) {

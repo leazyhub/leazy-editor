@@ -66,9 +66,7 @@ function resetTableGridSize(): void {
 
 <template>
   <UPopover>
-    <UButton :disabled="disabled" :padded="false" color="neutral" variant="ghost">
-      <slot name="trigger" />
-    </UButton>
+    <slot name="trigger" />
     
     <template #content>
       <div class="table-grid-size-editor p-2">

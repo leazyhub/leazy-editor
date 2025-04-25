@@ -15,13 +15,13 @@ import type { TableOptions } from './table'
 
 export {
   Table,
-  TableOptions,
+  type TableOptions,
   TableCell,
-  TableCellOptions,
+  type TableCellOptions,
   TableRow,
-  TableRowOptions,
+  type TableRowOptions,
   TableHeader,
-  TableHeaderOptions,
+  type TableHeaderOptions,
   TableCellBackground,
-  TableCellBackgroundOptions,
+  type TableCellBackgroundOptions
 }

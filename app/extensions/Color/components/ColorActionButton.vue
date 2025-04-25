@@ -26,14 +26,10 @@ const selectedColor = ref<string | undefined>(undefined)
 function onChange(color: string | undefined) {
   props.action?.(color)
 }
-
-function toggleColor(e: any) {
-  props.action?.(selectedColor.value)
-}
 </script>
 <template>
   <ColorPicker v-model="selectedColor" @change="onChange">
-    <ActionButton :action="toggleColor" :disabled="disabled" :tooltip="tooltip">
+    <ActionButton :disabled="disabled" :tooltip="tooltip">
       <template #icon>
         <span class="text-xs flex justify-center items-center">
           <svg height="12px" version="1.1" viewBox="0 0 240 240" width="12px" xmlns="http://www.w3.org/2000/svg">

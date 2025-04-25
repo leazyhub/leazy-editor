@@ -16,7 +16,11 @@ export default defineNuxtConfig({
       WEBSOCKET_URL: process.env.NUXT_WEBSOCKET_URL,
       OPENAI_API_KEY: process.env.NUXT_OPENAI_API_KEY,
       CONVERT_APP_ID: process.env.NUXT_CONVERT_APP_ID,
-      JWT_CONVERT_TOKEN: process.env.NUXT_JWT_CONVERT_TOKEN
+      JWT_CONVERT_TOKEN: process.env.NUXT_JWT_CONVERT_TOKEN,
+      UNSPLASH_API_KEY: process.env.NUXT_UNSPLASH_API_KEY,
+      PIXABAY_API_KEY: process.env.NUXT_PIXABAY_API_KEY,
+      PEXELS_API_KEY: process.env.NUXT_PEXELS_API_KEY,
+      GIPHY_API_KEY: process.env.NUXT_GIPHY_API_KEY
     }
   },
   css: ['~/assets/css/main.css'],

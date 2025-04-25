@@ -73,7 +73,7 @@ const selection = computed(() => {
     pluginKey="tableCellMenu"
   >
     <div
-      class="flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-border border-(--ui-border)"
+      class="flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-border border-default"
     >
       <ActionButton
         v-if="selection?.cellCount! > 1"

@@ -46,7 +46,7 @@ function handleClick() {
             <UIcon class="w-6 h-6" name="i-lucide-video" />
             <span class="text-sm">{{ t('editor.video.dialog.title') }}</span>
           </div>
-          <UIcon class="text-(--ui-error)" name="i-lucide-trash-2" @click.stop="handleDelete" />
+          <UIcon class="text-error" name="i-lucide-trash-2" @click.stop="handleDelete" />
         </div>
       </div>
       

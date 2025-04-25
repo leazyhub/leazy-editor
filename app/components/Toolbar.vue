@@ -59,7 +59,7 @@ const items = computed(() => {
 <template>
   <div v-if="editor" v-bind="$attrs">
     <div
-      class="flex flex-wrap items-center bg-white dark:bg-neutral-800 border border-(--ui-border) rounded-lg p-1"
+      class="flex flex-wrap items-center bg-white dark:bg-neutral-800 border border-default rounded-lg p-1"
     >
       <template v-for="(item, key) in items" :key="key">
         <USeparator v-if="item.spacer" class="h-[16px] mx-[10px]" orientation="vertical" />

@@ -84,7 +84,7 @@ function onDeleteColumn() {
     pluginKey="tableColumnMenu"
   >
     <div
-      class="min-w-32 flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-border border-(--ui-border)"
+      class="min-w-32 flex flex-row h-full leading-none gap-0.5 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-border border-default"
     >
       <ActionButton
         :action="onAddColumnBefore"

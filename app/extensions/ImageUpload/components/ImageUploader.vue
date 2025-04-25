@@ -95,7 +95,7 @@ const tabs = [
             <div @click="item.click()" class="flex items-center gap-2 relative truncate">
               <span class="truncate">{{ item.label }}</span>
 
-              <span v-if="selected" class="absolute -right-4 w-2 h-2 rounded-full bg-(--ui-primary)" />
+              <span v-if="selected" class="absolute -right-4 w-2 h-2 rounded-full bg-primary" />
             </div>
           </template>
         </UTabs>

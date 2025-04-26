@@ -135,7 +135,7 @@ const triggerHtml5Color = () => {
           </div>
         </div>
         
-        <div class="relative">
+        <div class="relative mt-2">
           <UButton
             block
             variant="subtle"

@@ -124,6 +124,7 @@ export const Video = Node.create<VideoOptions>({
       ...HTMLAttributes,
       width: '100%',
       height: '100%',
+      class: 'aspect-video'
     }
 
     const responsiveStyle = `position: relative;overflow: hidden;display: flex;flex: 1;max-width: ${width};`

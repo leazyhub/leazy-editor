@@ -90,18 +90,10 @@ const tabs = [
       class="w-full"
     >
       <div class="flex flex-col h-[350px] -p-1 overflow-hidden w-full">
-        <UTabs :items="tabs" size="xs">
-          <template #default="{ item, selected }">
-            <div @click="item.click()" class="flex items-center gap-2 relative truncate">
-              <span class="truncate">{{ item.label }}</span>
-
-              <span v-if="selected" class="absolute -right-4 w-2 h-2 rounded-full bg-primary" />
-            </div>
-          </template>
-        </UTabs>
+        <UTabs v-model="currentProvider" :items="tabs" :content="false" size="xs" />
 
         <div class="flex-1 p-1 max-h-full flex flex-col overflow-hidden">
-          <UInput :loading="loading" v-model="searchQuery" icon="i-lucide-search" placeholder="Rechercher un média" size="sm">
+          <UInput :loading="loading" v-model="searchQuery" icon="i-lucide-search" placeholder="Rechercher un média" size="sm" autofocus>
             <template v-if="searchQuery !== ''" #trailing>
               <UIcon class="cursor-pointer pointer-events-auto" name="i-lucide-x" @click="searchQuery = ''" />
             </template>
@@ -139,7 +131,7 @@ const tabs = [
               class="flex justify-center my-4"
             >
               <UIcon
-                name="i-lucide-folder"
+                name="i-lucide-loader"
                 class="animate-spin size-6"
               />
             </div>

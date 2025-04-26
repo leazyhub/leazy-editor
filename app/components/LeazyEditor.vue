@@ -98,7 +98,7 @@ const sortExtensions = computed(() => {
       collaboration: false,
       collaborationCursor: false,
       import: false,
-      // importWord: false,
+      importWord: false,
       export: false,
       comment: false,
       // collaboration: {

@@ -11,6 +11,8 @@ const speechStore = {
   isStarted: false,
 }
 
+const isSpeechRecognitionSupported = typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window);
+
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     SpeechRecognition: {
@@ -31,6 +33,8 @@ export const SpeechRecognition = Node.create<SpeechRecognitionOptions>({
         component: ActionButton,
         componentProps: {
           action: () => {
+            if (!isSpeechRecognitionSupported) return;
+
             if (speechStore.isStarted) {
               editor.commands.stopSpeechRecognition()
             } else {
@@ -38,20 +42,20 @@ export const SpeechRecognition = Node.create<SpeechRecognitionOptions>({
             }
           },
           isActive: () => speechStore.isStarted,
-          disabled: false,
+          disabled: !isSpeechRecognitionSupported,
           icon: () => speechStore.isStarted
             ? 'i-lucide-mic-off'
             : 'i-lucide-speech',
-          tooltip: 'Reconnaissance vocale',
+          tooltip: isSpeechRecognitionSupported
+            ? 'Reconnaissance vocale'
+            : 'Navigateur non compatible',
         },
       }),
     }
   },
 
   onCreate() {
-    if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
-      console.warn('SpeechRecognition API is not supported by your browser')
-    }
+    if (!isSpeechRecognitionSupported) console.warn('La reconnaissance vocale n\'est pas supportée par ce navigateur');
   },
 
   addCommands() {
@@ -59,8 +63,13 @@ export const SpeechRecognition = Node.create<SpeechRecognitionOptions>({
       startSpeechRecognition:
         () =>
           ({ commands, editor }) => {
-            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-            speechStore.recognition = new SR();
+            const SpeechRecognitionConstructor = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognitionConstructor) {
+              console.warn('La reconnaissance vocale n\'est pas supportée par ce navigateur');
+              return commands;
+            }
+
+            speechStore.recognition = new SpeechRecognitionConstructor();
 
             speechStore.recognition.lang = this.options.lang;
             speechStore.recognition.interimResults = true;

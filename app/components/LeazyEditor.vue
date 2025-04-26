@@ -90,6 +90,9 @@ const { state, isFullscreen } = useProvideTiptapStore()
 // };
 // provider?.on("status", statusHandler);
 
+const initialContent = ref(props.modelValue)
+const isInitialized = ref(false)
+
 const sortExtensions = computed(() => {
   const baseExtensions = [
     ...props.extensions,
@@ -121,11 +124,18 @@ const sortExtensions = computed(() => {
 
 const debouncedOnUpdate = useDebounceFn(({ editor }) => {
   const output = getOutput(editor, props.output as any)
-  emit('update:modelValue', output)
-  emit('change', { editor, output })
+  
+  if (isInitialized.value && output !== initialContent.value) {
+    emit('update:modelValue', output)
+    emit('change', { editor, output })
+  }
+  
+  if (!isInitialized.value) {
+    isInitialized.value = true
+    initialContent.value = output
+  }
 }, props.debounce ? props.debounceDelay : 0)
 
-// Utilisation de `useEditor` pour initialiser l'éditeur
 const editor = useEditor({
   content: props.modelValue,
   extensions: sortExtensions.value,

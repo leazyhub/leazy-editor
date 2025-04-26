@@ -50,7 +50,6 @@ export const SpeechSynthesis = Node.create<SpeechSynthesisOptions>({
               ? 'i-lucide-pause'
               : 'i-lucide-audio-lines',
           tooltip: 'Lire le texte sélectionné',
-          // ✅ Vue trackera ce ref, et le composant ActionButton se mettra à jour
           update: () => synthesisStore.isSpeaking.value,
         },
       }),

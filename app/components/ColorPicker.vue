@@ -68,54 +68,45 @@ const triggerHtml5Color = () => {
     <template #content>
       <div class="flex flex-col p-2 w-full h-full">
         <!-- Hightlight -->
-        <div
-          v-if="highlight" class="flex items-center p-1 rd-1 cursor-pointer hover:bg-neutral-100 hover:dark:bg-neutral-700 rounded-md"
+        <UButton
+          block
+          variant="subtle"
+          color="neutral"
+          size="sm"
+          :label="$t('editor.default')"
+          class="mb-2"
           @click="setColor(undefined)"
         >
-          <span
-            class="w-6 h-6 p-0.5 inline-block rounded-sm border cursor-pointer hover:border-border hover:shadow-sm relative after:border-b-2 after:border-b-red-500 after:top-[10px] after:h-0 after:left-0 after:w-6 after:absolute after:block after:rotate-[45deg]"
-          >
-            <span style="background-color: transparent">
-              <svg style="fill: rgba(0, 0, 0, 0.4); display: none" viewBox="0 0 18 18">
-                <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path>
-              </svg>
-            </span>
-          </span>
-          <span class="text-sm ml-1">{{ $t('editor.nofill') }}</span>
-        </div>
-        
-        <!-- Color -->
-        <div v-else class="flex items-center p-1 rd-1 cursor-pointer hover:bg-accent" @click="setColor(undefined)">
-          <span class="w-6 h-6 p-0.5 inline-block rounded-sm border border-transparent cursor-pointer">
-            <span
-              :style="{ backgroundColor: DEFAULT_COLOR }"
-              class="relative w-[18px] h-[18px] block rounded-[2px] border-transparent"
+          <template #leading>
+            <div
+              class="relative size-4 inline-block rounded-sm border cursor-pointer"
+              :class="{ 'after:border-b after:border-b-error after:top-1.5 after:h-0 after:-left-0.5 after:w-4.5 after:absolute after:block after:rotate-45': highlight }"
+              :style="{ backgroundColor: highlight ? '' : DEFAULT_COLOR }"
             >
               <svg style="fill: rgb(255, 255, 255); display: none" viewBox="0 0 18 18">
                 <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path>
               </svg>
-            </span>
-          </span>
-          <span class="text-sm ml-1">{{ $t('editor.default') }}</span>
-        </div>
-        
+            </div>
+          </template>
+        </UButton>
+
         <span v-for="(items, index) in chunkedColors" :key="index" class="flex p-0 w-full h-auto relative last:pb-2">
           <span
             v-for="(item, index) in items"
             :key="index"
-            class="w-6 h-6 p-0.5 inline-block rounded-sm border border-transparent flex-[0 0 auto] cursor-pointer hover:border-border hover:shadow-sm"
+            class="w-6 h-6 p-0.5 inline-block rounded-sm border border-transparent flex-[0 0 auto] cursor-pointer hover:border-primary"
             @click="setColor(item)"
           >
             <span
               :style="{ backgroundColor: item }"
-              class="relative w-[18px] h-[18px] block rounded-[2px] border-transparent"
+              class="relative size-4.5 block rounded-sm border-transparent"
             >
-              <svg v-if="item !== modelValue" style="fill: rgb(255, 255, 255); display: none" viewBox="0 0 18 18">
+              <svg v-if="item !== modelValue" style="fill: rgb(255, 255, 255); display: none" viewBox="0 0 20 20">
                 <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path>
               </svg>
               <svg
-                v-else class="absolute top-[-1px] left-[1px] w-3 h-3" style="fill: rgb(255, 255, 255); display: block"
-                viewBox="0 0 18 18"
+                v-else class="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 size-3" style="fill: rgb(255, 255, 255); display: block"
+                viewBox="0 0 20 20"
               >
                 <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path>
               </svg>
@@ -125,32 +116,35 @@ const triggerHtml5Color = () => {
         
         <div>
           <div class="text-sm my-1">{{ $t('editor.recent') }}</div>
-          <span class="flex p-0 w-full h-auto relative last:pb-2">
-            <span
+          <div class="flex p-0 w-full h-auto relative last:pb-2">
+            <div
               v-for="(item, index) in recentColorsStore"
               :key="index"
-              class="w-6 h-6 p-0.5 inline-block rounded-sm border border-transparent flex-[0 0 auto] cursor-pointer hover:border-border hover:shadow-sm"
+              class="w-6 h-6 p-0.5 inline-block rounded-sm border border-transparent flex-[0 0 auto] cursor-pointer hover:border-primary"
               @click="setColor(item)"
             >
               <span
                 :style="{ backgroundColor: item }"
-                class="relative w-[18px] h-[18px] block rounded-[2px] border-transparent"
+                class="relative size-4.5 block rounded-sm border-transparent"
               >
-                <svg style="fill: rgb(255, 255, 255); display: none" viewBox="0 0 18 18">
+                <svg style="fill: rgb(255, 255, 255); display: none" viewBox="0 0 20 20">
                   <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path>
                 </svg>
               </span>
-            </span>
-          </span>
+            </div>
+          </div>
         </div>
         
         <div class="relative">
-          <div
-            class="text-sm hover:cursor-pointer hover:bg-neutral-100 hover:dark:bg-neutral-700 rounded-md py-1.5 px-1.5"
+          <UButton
+            block
+            variant="subtle"
+            color="neutral"
+            size="sm"
+            icon="i-lucide-plus"
+            :label="$t('editor.color.more')"
             @click="triggerHtml5Color"
-          >
-            {{ $t('editor.color.more') }}...
-          </div>
+          />
           <input
             ref="html5Color"
             class="absolute left-0 top-4"

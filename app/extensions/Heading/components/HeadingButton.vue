@@ -64,7 +64,7 @@ const active = computed(() => {
           :variant="active.title === item.title ? 'soft' : 'ghost'"
           @click="item.action"
         >
-          <div :class="`heading-` + item.level" class="ml-1 h-full">{{ item.title }}</div>
+          <div :class="`heading-` + item.level" class="ml-2 h-full">{{ item.title }}</div>
           <UKbd :value="item.shortcuts?.map(item => getShortcutKey(item)).join(' ')" class="ml-auto"/>
         </UButton>
       </div>

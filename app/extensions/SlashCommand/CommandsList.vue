@@ -121,7 +121,7 @@ defineExpose({ onKeyDown })
   >
     <div v-for="(group, groupIndex) in items" :key="group.title" class="flex flex-col">
       <div
-        class="text-neutral-500 text-[0.65rem] col-[1/-1] mx-2 mt-2 font-semibold tracking-wider pointer-events-none select-none uppercase first:mt-0.5"
+        class="text-neutral-500 text-xs col-[1/-1] mx-2 mt-2 font-semibold tracking-wider pointer-events-none select-none uppercase first:mt-0.5"
       >{{ $t(group.title) }}
       </div>
       <UButton

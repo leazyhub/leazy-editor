@@ -215,7 +215,7 @@ defineExpose({ editor })
         class="z-10 sticky top-4 left-0 px-[25px]"
       />
       <EditorContent
-        :class="contentClass" :draggable="!disabled" :editor="editor" :style="contentDynamicStyles" class="flex-1 w-full"
+        :class="contentClass" :editor="editor" :style="contentDynamicStyles" class="flex-1 w-full"
         suppressContentEditableWarning
       />
     </div>

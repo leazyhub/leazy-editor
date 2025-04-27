@@ -1,7 +1,7 @@
 {
   "name": "@leazyhub/editor",
   "type": "module",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "main": "./nuxt.config.ts",
   "license": "MIT",
   "scripts": {

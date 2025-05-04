@@ -49,7 +49,7 @@ const resolvedIcon = computed(() => {
       <div v-if="loading">
         <UIcon class="animate-spin" name="i-lucide-loader-circle" />
       </div>
-      <UTooltip v-else :text="tooltip">
+      <UTooltip v-else :text="$t(tooltip)">
         <div class="flex gap-1 items-center">
           <UIcon v-if="resolvedIcon" :name="resolvedIcon" dynamic />
           <slot name="icon" />

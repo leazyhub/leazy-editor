@@ -47,8 +47,8 @@ export const SpeechRecognition = Node.create<SpeechRecognitionOptions>({
             ? 'i-lucide-mic-off'
             : 'i-lucide-speech',
           tooltip: isSpeechRecognitionSupported
-            ? 'Reconnaissance vocale'
-            : 'Navigateur non compatible',
+            ? 'editor.speechRecognition.tooltip'
+            : 'editor.speechRecognition.notSupported',
         },
       }),
     }

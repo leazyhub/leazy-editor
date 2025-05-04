@@ -66,9 +66,7 @@ function togglePop() {
   <UPopover :popper="{ placement: 'bottom' }">
     <ActionButton :icon="icon" :tooltip="tooltip" dropdown enable-tooltip>
       <template #icon>
-        <Suspense>
-          <UIcon name="i-lucide-chevron-down" />
-        </Suspense>
+        <UIcon name="i-lucide-chevron-down" />
       </template>
     </ActionButton>
     

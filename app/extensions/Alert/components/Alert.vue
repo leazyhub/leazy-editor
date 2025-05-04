@@ -45,9 +45,7 @@ const currentAlert = computed(() => types.value.find(type => type.name === props
       variant="subtle"
     >
       <template #icon>
-        <Suspense>
-          <UIcon :name="currentAlert.icon" dynamic />
-        </Suspense>
+        <UIcon :name="currentAlert.icon" dynamic />
       </template>
       <template #description>
         <NodeViewContent

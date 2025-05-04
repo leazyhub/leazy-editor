@@ -39,7 +39,6 @@ const toast = useToast()
 const handleOpen = () => {
   const completionsFunc = props.editor.extensionManager.extensions.find(e => e.name === 'Ai')?.options?.completions
   if (typeof completionsFunc !== 'function') {
-    console.log('first if')
     toast.add({
       title: 'AI completions method is not set or is not a valid function',
       color: 'error',
@@ -48,7 +47,6 @@ const handleOpen = () => {
   }
 
   if (completionsFunc.constructor.name !== 'AsyncFunction') {
-    console.log('second if')
     toast.add({
       title: 'AI completions method must be an async function',
       color: 'error',

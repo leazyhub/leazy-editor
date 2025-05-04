@@ -57,9 +57,7 @@ const active = computed(() => {
   <UPopover :popper="{ placement: 'bottom' }">
     <ActionButton :icon="icon" :tooltip="tooltip">
       <template #icon>
-        <Suspense>
-          <UIcon name="i-lucide-chevron-down" />
-        </Suspense>
+        <UIcon name="i-lucide-chevron-down" />
       </template>
     </ActionButton>
     
@@ -71,9 +69,7 @@ const active = computed(() => {
           @click="item.action"
         >
           <div class="flex items-center justify-between gap-2">
-            <Suspense>
-              <UIcon v-if="item.icon" :name="item.icon" dynamic />
-            </Suspense>
+            <UIcon v-if="item.icon" :name="item.icon" dynamic />
             <template v-if="item.shortcuts">
               <UKbd v-for="shortcut in getShortcutKeys(item.shortcuts)" :value="shortcut" size="xs" />
             </template>

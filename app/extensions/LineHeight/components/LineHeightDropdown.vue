@@ -46,7 +46,7 @@ const props = withDefaults(defineProps<Props>(), {
   isActive: undefined,
 })
 
-function toggleLightheight(key: string) {
+function toggleLineHeight(key: string) {
   if (key === 'default') {
     props.editor.commands.unsetLineHeight()
   } else {
@@ -72,7 +72,7 @@ function toggleLightheight(key: string) {
           :label="item.label"
           size="sm"
           :variant="item.value === value ? 'soft' : 'ghost'"
-          @click="toggleLightheight(item.value)"
+          @click="toggleLineHeight(item.value)"
         />
       </div>
     </template>

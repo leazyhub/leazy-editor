@@ -82,7 +82,7 @@ const selection = computed(() => {
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-merge"
-        tooltip="Fusionner les cellules"
+        :tooltip="$t('editor.table.menu.merge_cells')"
       />
       
       <ActionButton
@@ -92,7 +92,7 @@ const selection = computed(() => {
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-split"
-        tooltip="Séparer les cellules"
+        :tooltip="$t('editor.table.menu.split_cells')"
       />
       <ActionButton
         v-if="isTableSelected(props.editor.state.selection)"
@@ -101,7 +101,7 @@ const selection = computed(() => {
           sideOffset: 15,
         }"
         icon="i-lucide-trash-2"
-        tooltip="Supprimer le tableau"
+        :tooltip="$t('editor.table.menu.delete_table')"
       />
       
       <HighlightActionButton
@@ -110,7 +110,7 @@ const selection = computed(() => {
         :tooltip-options="{
           sideOffset: 15,
         }"
-        tooltip="Couleur de fond de la cellule"
+        :tooltip="$t('editor.table.menu.cell_background_color')"
       />
     </div>
   </BubbleMenu>

@@ -28,9 +28,7 @@ withDefaults(defineProps<Props>(), {
 <template>
   <UPopover>
     <ActionButton :disabled="disabled" :icon="icon" :tooltip="tooltip">
-      <Suspense>
-        <UIcon name="i-lucide-chevron-down" />
-      </Suspense>
+      <UIcon name="i-lucide-chevron-down" />
     </ActionButton>
     
     <template #content>

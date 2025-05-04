@@ -49,7 +49,7 @@ export const SpeechSynthesis = Node.create<SpeechSynthesisOptions>({
             synthesisStore.isSpeaking.value
               ? 'i-lucide-pause'
               : 'i-lucide-audio-lines',
-          tooltip: 'Lire le texte sélectionné',
+          tooltip: 'editor.speechSynthesis.tooltip',
           update: () => synthesisStore.isSpeaking.value,
         },
       }),

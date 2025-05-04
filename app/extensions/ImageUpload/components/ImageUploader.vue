@@ -107,7 +107,7 @@ const tabs = [
               v-if="searchQuery === '' && !loading && results.length === 0"
               class="text-center text-sm !mt-4"
             >
-              Tape un mot clé pour rechercher un média
+              {{ $t('editor.image.imageUploader.placeholder') }}
             </p>
             <div
               v-if="results.length > 0"

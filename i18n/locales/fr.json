@@ -2,8 +2,11 @@
   "editor": {
     "remove": "Supprimer",
     "replace": "Remplacer",
+    "search": "Rechercher",
     "duplicate": "Dupliquer",
-    "import": "Importer",
+    "replaceBy": "Remplacer par",
+    "replaceAll": "Tout remplacer",
+    "caseSensitive": "Sensible à la casse",
     "copy": "Copier",
     "words": "Mots",
     "characters": "Caractères",
@@ -18,16 +21,29 @@
       "tooltip": "Importer Word"
     },
     "paper": {
-      "tooltip": "Dessiner"
+      "tooltip": "Dessiner",
+      "description": "Dessiner sur le document"
     },
     "details": {
-      "tooltip": "Détails"
+      "tooltip": "Détails",
+      "description": "Afficher les détails du document"
     },
     "print": {
       "tooltip": "Imprimer"
     },
+    "speechRecognition": {
+      "tooltip": "Reconnaissance vocale",
+      "description": "Reconnaissance vocale",
+      "notSupported": "Navigateur non compatible"
+    },
+    "speechSynthesis": {
+      "tooltip": "Lire le texte sélectionné",
+      "description": "Synthèse vocale",
+      "notSupported": "Navigateur non compatible"
+    },
     "alert": {
       "tooltip": "Alerte",
+      "description": "Ajouter une alerte",
       "note": "Note",
       "info": "Info",
       "warning": "Avertissement",
@@ -42,7 +58,9 @@
       "text": "Appuyez sur '/' pour les commandes"
     },
     "tableOfContents": {
-      "tooltip": "Table des matières"
+      "tooltip": "Table des matières",
+      "description": "Ajouter une table des matières",
+      "empty": "Aucun contenu"
     },
     "content": "Veuillez saisir du contenu",
     "moremark": "Plus de styles de texte",
@@ -101,7 +119,20 @@
       }
     },
     "paragraph": {
-      "tooltip": "Paragraphe"
+      "tooltip": "Paragraphe",
+      "description": "Ajouter du texte"
+    },
+    "comments": {
+      "tooltip": "Commentaires"
+    },
+    "export": {
+      "tooltip": "Exporter"
+    },
+    "import": {
+      "tooltip": "Importer"
+    },
+    "searchAndReplace": {
+      "tooltip": "Rechercher et remplacer"
     },
     "textalign": {
       "tooltip": "Alignement",
@@ -148,10 +179,12 @@
       "tooltip": "Liste ordonnée"
     },
     "tasklist": {
-      "tooltip": "Liste de tâches"
+      "tooltip": "Liste de tâches",
+      "description": "Ajouter une liste de tâches"
     },
     "columns": {
-      "tooltip": "Colonnes"
+      "tooltip": "Colonnes",
+      "description": "Ajouter des colonnes"
     },
     "link": {
       "tooltip": "Lien",
@@ -165,7 +198,7 @@
         "tooltip": "Modifier le lien"
       },
       "dialog": {
-        "title": "Insérer un lien",
+        "title": "Ajouter un lien",
         "link": "Lien",
         "text": "Texte",
         "openInNewTab": "Ouvrir dans un nouvel onglet",
@@ -178,6 +211,10 @@
     },
     "image": {
       "tooltip": "Image",
+      "description": "Ajouter une image",
+      "imageUploader": {
+        "placeholder": "Tape un mot clé pour rechercher un média"
+      },
       "dragger": {
         "tooltip": "Cliquez ou faites glisser l'image dans la zone pour télécharger"
       },
@@ -214,6 +251,7 @@
     },
     "video": {
       "tooltip": "Vidéo",
+      "description": "Ajouter une vidéo",
       "dialog": {
         "tab": {
           "upload": "Télécharger"
@@ -229,8 +267,9 @@
     },
     "table": {
       "tooltip": "Tableau",
+      "description": "Ajouter un tableau",
       "menu": {
-        "insert_table": "Insérer un tableau",
+        "insert_table": "Ajouter un tableau",
         "insert_table.with_header_row": "Avec ligne d'en-tête",
         "add_column_before": "Ajouter une colonne avant",
         "add_column_after": "Ajouter une colonne après",
@@ -238,21 +277,26 @@
         "add_row_before": "Ajouter une ligne avant",
         "add_row_after": "Ajouter une ligne après",
         "delete_row": "Supprimer la ligne",
-        "merge_or_split_cells": "Fusionner ou scinder les cellules",
+        "merge_cells": "Fusionner les cellules",
+        "split_cells": "Séparer les cellules",
+        "cell_background_color": "Couleur de fond de la cellule",
         "delete_table": "Supprimer le tableau"
       }
     },
     "blockquote": {
-      "tooltip": "Bloc de citation"
+      "tooltip": "Bloc de citation",
+      "description": "Ajouter une citation"
     },
     "horizontalrule": {
-      "tooltip": "Règle horizontale"
+      "tooltip": "Règle horizontale",
+      "description": "Ajouter une règle horizontale"
     },
     "code": {
       "tooltip": "Code"
     },
     "codeblock": {
-      "tooltip": "Bloc de code"
+      "tooltip": "Bloc de code",
+      "description": "Ajouter un bloc de code"
     },
     "clear": {
       "tooltip": "Effacer le format"

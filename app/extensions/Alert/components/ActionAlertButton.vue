@@ -18,47 +18,45 @@ const props = withDefaults(defineProps<Props>(), {
   <UPopover>
     <ActionButton :icon="icon" :tooltip="tooltip">
       <template #icon>
-        <Suspense>
-          <UIcon name="i-lucide-chevron-down"/>
-        </Suspense>
+        <UIcon name="i-lucide-chevron-down"/>
       </template>
     </ActionButton>
 
     <template #content>
       <ActionButton
-          :isActive="() => editor.isActive('alert', { type: 'note' })"
-          :tooltip="$t('editor.alert.note')"
-          icon="i-lucide-sticky-note"
-          title="Note"
-          @click="props.editor.chain().focus().setAlert({ type: 'note' }).run()"
+        :is-active="() => editor.isActive('alert', { type: 'note' })"
+        :tooltip="$t('editor.alert.note')"
+        icon="i-lucide-sticky-note"
+        :title="$t('editor.alert.note')"
+        @click="props.editor.chain().focus().setAlert({ type: 'note' }).run()"
       />
       <ActionButton
-          :isActive="() => editor.isActive('alert', { type: 'info' })"
-          :tooltip="$t('editor.alert.info')"
-          icon="i-lucide-info"
-          title="Info"
-          @click="props.editor.chain().focus().setAlert({ type: 'info' }).run()"
+        :is-active="() => editor.isActive('alert', { type: 'info' })"
+        :tooltip="$t('editor.alert.info')"
+        icon="i-lucide-info"
+        :title="$t('editor.alert.info')"
+        @click="props.editor.chain().focus().setAlert({ type: 'info' }).run()"
       />
       <ActionButton
-          :isActive="() => editor.isActive('alert', { type: 'warning' })"
-          :tooltip="$t('editor.alert.warning')"
-          icon="i-lucide-triangle-alert"
-          title="Warning"
-          @click="props.editor.chain().focus().setAlert({ type: 'warning' }).run()"
+        :is-active="() => editor.isActive('alert', { type: 'warning' })"
+        :tooltip="$t('editor.alert.warning')"
+        icon="i-lucide-triangle-alert"
+        :title="$t('editor.alert.warning')"
+        @click="props.editor.chain().focus().setAlert({ type: 'warning' }).run()"
       />
       <ActionButton
-          :isActive="() => editor.isActive('alert', { type: 'danger' })"
-          :tooltip="$t('editor.alert.danger')"
-          icon="i-lucide-circle-x"
-          title="Danger"
-          @click="props.editor.chain().focus().setAlert({ type: 'danger' }).run()"
+        :is-active="() => editor.isActive('alert', { type: 'danger' })"
+        :tooltip="$t('editor.alert.danger')"
+        icon="i-lucide-circle-x"
+        :title="$t('editor.alert.danger')"
+        @click="props.editor.chain().focus().setAlert({ type: 'danger' }).run()"
       />
       <ActionButton
-          :isActive="() => editor.isActive('alert', { type: 'success' })"
-          :tooltip="$t('editor.alert.success')"
-          icon="i-lucide-circle-check"
-          title="Success"
-          @click="props.editor.chain().focus().setAlert({ type: 'success' }).run()"
+        :is-active="() => editor.isActive('alert', { type: 'success' })"
+        :tooltip="$t('editor.alert.success')"
+        icon="i-lucide-circle-check"
+        :title="$t('editor.alert.success')"
+        @click="props.editor.chain().focus().setAlert({ type: 'success' }).run()"
       />
     </template>
   </UPopover>

@@ -251,7 +251,7 @@ export const SearchAndReplace = Extension.create<
         component: SearchAndReplacePopover,
         componentProps: {
           icon: 'i-lucide-replace-all',
-          tooltip: 'Chercher et remplacer',
+          tooltip: t('editor.searchAndReplace.tooltip'),
         }
       })
     };

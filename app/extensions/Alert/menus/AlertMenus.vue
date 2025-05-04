@@ -45,50 +45,50 @@ const getReferenceClientRect = () => {
     <div class="bg-white rounded-lg dark:bg-neutral-800 shadow-sm border border-neutral-200 dark:border-neutral-700">
       <div class="flex gap-1 items-center">
         <ActionButton
-            :isActive="() => editor.isActive('alert', { type: 'note' })"
+            :is-active="() => editor.isActive('alert', { type: 'note' })"
             :tooltip="$t('editor.alert.note')"
             icon="i-lucide-sticky-note"
-            title="Note"
+            :title="$t('editor.alert.note')"
             @click="editor.chain().focus().setAlertType('note').run()"
         />
         <ActionButton
-            :isActive="() => editor.isActive('alert', { type: 'info' })"
+            :is-active="() => editor.isActive('alert', { type: 'info' })"
             :tooltip="$t('editor.alert.info')"
             icon="i-lucide-info"
-            title="Info"
+            :title="$t('editor.alert.info')"
             @click="editor.chain().focus().setAlertType('info').run()"
         />
         <ActionButton
-            :isActive="() => editor.isActive('alert', { type: 'warning' })"
+            :is-active="() => editor.isActive('alert', { type: 'warning' })"
             :tooltip="$t('editor.alert.warning')"
             icon="i-lucide-triangle-alert"
-            title="Warning"
+            :title="$t('editor.alert.warning')"
             @click="editor.chain().focus().setAlertType('warning').run()"
         />
         <ActionButton
-            :isActive="() => editor.isActive('alert', { type: 'danger' })"
+            :is-active="() => editor.isActive('alert', { type: 'danger' })"
             :tooltip="$t('editor.alert.danger')"
             icon="i-lucide-circle-x"
-            title="Danger"
+            :title="$t('editor.alert.danger')"
             @click="editor.chain().focus().setAlertType('danger').run()"
         />
         <ActionButton
-            :isActive="() => editor.isActive('alert', { type: 'success' })"
+            :is-active="() => editor.isActive('alert', { type: 'success' })"
             :tooltip="$t('editor.alert.success')"
             icon="i-lucide-circle-check"
-            title="Success"
+            :title="$t('editor.alert.success')"
             @click="editor.chain().focus().setAlertType('success').run()"
         />
-        <UTooltip :popper="{ placement: 'bottom' }" :text="$t('editor.remove')">
+        <UTooltip :text="$t('editor.remove')">
           <UButton
-              :active="() => editor.isActive('alert')"
-              :tooltip="$t('editor.alert.remove')"
-              color="error"
-              icon="i-lucide-trash-2"
-              size="xs"
-              title="Supprimer"
-              variant="ghost"
-              @click="editor.chain().focus().deleteNode('alert').run()"
+            :active="() => editor.isActive('alert')"
+            :tooltip="$t('editor.remove')"
+            color="error"
+            icon="i-lucide-trash-2"
+            size="xs"
+            :title="$t('editor.remove')"
+            variant="ghost"
+            @click="editor.chain().focus().deleteNode('alert').run()"
           />
         </UTooltip>
       </div>

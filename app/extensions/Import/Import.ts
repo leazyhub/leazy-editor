@@ -13,7 +13,7 @@ export const Import = TiptapImport.extend<ImportOptions>({
         componentProps: {
           icon: 'i-lucide-file-down',
           disabled: !editor.can().import,
-          tooltip: 'Importer'
+          tooltip: t('editor.import.tooltip'),
         }
       })
     }

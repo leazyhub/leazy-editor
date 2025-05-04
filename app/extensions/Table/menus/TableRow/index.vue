@@ -93,7 +93,7 @@ function onDeleteRow() {
           side: 'right',
         }"
         icon="i-lucide-between-vertical-start"
-        tooltip="Insérer une ligne au-dessus"
+        :tooltip="$t('editor.table.menu.add_row_before')"
       />
       
       <ActionButton
@@ -103,7 +103,7 @@ function onDeleteRow() {
           sideOffset: 15,
         }"
         icon="i-lucide-between-vertical-end"
-        tooltip="Insérer une ligne en-dessous"
+        :tooltip="$t('editor.table.menu.add_row_after')"
       />
       <ActionButton
         :action="onDeleteRow"
@@ -112,7 +112,7 @@ function onDeleteRow() {
           sideOffset: 15,
         }"
         icon="i-lucide-trash-2"
-        tooltip="Supprimer la ligne"
+        :tooltip="$t('editor.table.menu.delete_row')"
       />
       <ActionButton
         v-if="Selection?.cellCount! > 1"
@@ -122,7 +122,7 @@ function onDeleteRow() {
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-merge"
-        tooltip="Fusionner les cellules"
+        :tooltip="$t('editor.table.menu.merge_cells')"
       />
       <ActionButton
         v-if="Selection?.mergedCellCount! > 0"
@@ -132,7 +132,7 @@ function onDeleteRow() {
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-split"
-        tooltip="Séparer les cellules"
+        :tooltip="$t('editor.table.menu.split_cells')"
       />
       
       <HighlightActionButton
@@ -142,7 +142,7 @@ function onDeleteRow() {
           side: 'right',
           sideOffset: 15,
         }"
-        tooltip="Couleur de fond de la cellule"
+        :tooltip="$t('editor.table.menu.cell_background_color')"
       />
     </div>
   </BubbleMenu>

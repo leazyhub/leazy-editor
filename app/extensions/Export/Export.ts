@@ -17,7 +17,7 @@ export const Export = TiptapExport.extend<ExportOptions>({
         componentProps: {
           icon: 'i-lucide-file-up',
           disabled: !editor.can().export,
-          tooltip: 'Exporter',
+          tooltip: t('editor.export.tooltip'),
           items: [
             {
               action: () => {

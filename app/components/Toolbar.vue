@@ -62,7 +62,7 @@ const items = computed(() => {
       class="flex flex-wrap items-center bg-white dark:bg-neutral-800 border border-default rounded-lg p-1"
     >
       <template v-for="(item, key) in items" :key="key">
-        <USeparator v-if="item.spacer" class="h-[16px] mx-[10px]" orientation="vertical" />
+        <USeparator v-if="item.spacer" class="h-[16px] mx-[10px]" :ui="{ border: 'border-accented' }" orientation="vertical" />
         <component
           :is="item.button.component"
           :disabled="disabled || item.button.componentProps?.disabled"

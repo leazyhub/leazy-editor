@@ -58,21 +58,21 @@ const onColumnTwo = () => {
       <div class="flex gap-1 items-center">
         <ActionButton
           :action="onColumnLeft"
-          :isActive="() => editor.isActive('columns', { layout: ColumnLayout.SidebarLeft })"
+          :is-active="() => editor.isActive('columns', { layout: ColumnLayout.SidebarLeft })"
           :tooltip-options="{ sideOffset: 15 }"
           icon="i-lucide-panel-left"
           tooltip="30/70"
         />
         <ActionButton
           :action="onColumnTwo"
-          :isActive="() => editor.isActive('columns', { layout: ColumnLayout.TwoColumn })"
+          :is-active="() => editor.isActive('columns', { layout: ColumnLayout.TwoColumn })"
           :tooltip-options="{ sideOffset: 15 }"
           icon="i-lucide-columns-2"
           tooltip="50/50"
         />
         <ActionButton
           :action="onColumnRight"
-          :isActive="() => editor.isActive('columns', { layout: ColumnLayout.SidebarRight })"
+          :is-active="() => editor.isActive('columns', { layout: ColumnLayout.SidebarRight })"
           :tooltip-options="{ sideOffset: 15 }"
           icon="i-lucide-panel-right"
           tooltip="70/30"

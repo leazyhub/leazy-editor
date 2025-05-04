@@ -49,7 +49,9 @@ const active = computed(() => {
 
 <template>
   <UPopover>
-    <ActionMenuButton :title="active.title" size="sm" :tooltip="tooltip"/>
+    <UTooltip :text="tooltip">
+      <ActionMenuButton :title="active.title" size="sm"/>
+    </UTooltip>
 
     <template #content>
       <div class="flex flex-col overflow-y-auto max-h-96">

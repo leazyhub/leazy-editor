@@ -2,7 +2,7 @@
   <NodeViewWrapper>
     <UAccordion
       :default-open="true"
-      :items="[{ label: 'Table des matières' }]"
+      :items="[{ label: $t('editor.tableOfContents.tooltip') }]"
       color="neutral"
       variant="solid"
     >
@@ -21,7 +21,7 @@
           v-else
           class="text-xs text-neutral-500 dark:text-neutral-400"
         >
-          Aucune table des matières
+          {{ $t('editor.tableOfContents.empty') }}
         </p>
       </template>
     </UAccordion>

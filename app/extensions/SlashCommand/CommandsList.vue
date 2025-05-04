@@ -137,9 +137,7 @@ defineExpose({ onKeyDown })
           <div
             class="flex items-center justify-center p-px font-medium border rounded-sm border-neutral-200 dark:border-neutral-700"
           >
-            <Suspense>
-              <UIcon :name="command.iconName" class="w-3.5 h-3.5 text-lg" dynamic />
-            </Suspense>
+            <UIcon :name="command.iconName" class="w-3.5 h-3.5 text-lg" dynamic />
           </div>
         </template>
         

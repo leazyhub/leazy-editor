@@ -88,22 +88,24 @@ watch(
 <template>
   <div class="p-2">
     <div class="flex gap-2">
-      <UFormField label="Chercher" size="xs">
+      <UFormField :label="$t('editor.search')" size="xs">
         <UInput
-          v-model="searchTerm" padded placeholder="Chercher..." variant="outline"
+          v-model="searchTerm" padded :placeholder="$t('editor.search')" variant="outline"
           @keydown.enter.prevent="updateSearchReplace"
         />
       </UFormField>
-      <UFormField label="Remplacer par" size="xs">
+      <UFormField :label="$t('editor.replaceBy')" size="xs">
         <UInput
-          v-model="replaceTerm" padded placeholder="Remplacer par..." variant="outline" @keydown.enter.prevent="replace"
+          v-model="replaceTerm" padded :placeholder="$t('editor.replaceBy')" variant="outline" @keydown.enter.prevent="replace"
         />
       </UFormField>
     </div>
     
     <UCheckbox v-model="caseSensitive" :ui="{ base: 'w-3 h-3' }" class="my-2">
       <template #label>
-        <label class="text-xs font-medium text-neutral-700 dark:text-neutral-300">Sensible à la casse</label>
+        <label class="text-xs font-medium text-neutral-700 dark:text-neutral-300">
+          {{ $t('editor.caseSensitive') }}
+        </label>
       </template>
     </UCheckbox>
     
@@ -116,8 +118,8 @@ watch(
         }} / {{ editor?.storage?.searchAndReplace?.results.length }}
       </p>
       <UButton color="neutral" icon="i-lucide-chevron-right" size="xs" variant="soft" @click="next" />
-      <UButton label="Remplacer" size="xs" variant="soft" @click="replace" />
-      <UButton label="Tout remplacer" size="xs" variant="soft" @click="replaceAll" />
+      <UButton :label="$t('editor.replace')" size="xs" variant="soft" @click="replace" />
+      <UButton :label="$t('editor.replaceAll')" size="xs" variant="soft" @click="replaceAll" />
     </div>
   </div>
 </template>

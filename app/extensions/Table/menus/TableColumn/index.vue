@@ -92,7 +92,7 @@ function onDeleteColumn() {
           sideOffset: 15,
         }"
         icon="i-lucide-between-horizontal-end"
-        tooltip="Insérer une colonne avant"
+        :tooltip="$t('editor.table.menu.add_column_before')"
       />
       <ActionButton
         :action="onAddColumnAfter"
@@ -100,7 +100,7 @@ function onDeleteColumn() {
           sideOffset: 15,
         }"
         icon="i-lucide-between-horizontal-start"
-        tooltip="Insérer une colonne après"
+        :tooltip="$t('editor.table.menu.add_column_after')"
       />
       
       <ActionButton
@@ -109,7 +109,7 @@ function onDeleteColumn() {
           sideOffset: 15,
         }"
         icon="i-lucide-trash-2"
-        tooltip="Supprimer la colonne"
+        :tooltip="$t('editor.table.menu.delete_column')"
       />
       <ActionButton
         v-if="Selection?.cellCount! > 1"
@@ -118,7 +118,7 @@ function onDeleteColumn() {
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-merge"
-        tooltip="Fusionner les cellules"
+        :tooltip="$t('editor.table.menu.merge_cells')"
       />
       <ActionButton
         v-if="Selection?.mergedCellCount! > 0"
@@ -127,7 +127,7 @@ function onDeleteColumn() {
           sideOffset: 15,
         }"
         icon="i-lucide-table-cells-split"
-        tooltip="Séparer les cellules"
+        :tooltip="$t('editor.table.menu.split_cells')"
       />
       <HighlightActionButton
         :action="color => emits('setCellBackground', color as string)"
@@ -135,7 +135,7 @@ function onDeleteColumn() {
         :tooltip-options="{
           sideOffset: 15,
         }"
-        tooltip="Couleur de fond"
+        :tooltip="$t('editor.table.menu.cell_background_color')"
       />
     </div>
   </BubbleMenu>

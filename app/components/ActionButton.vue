@@ -36,25 +36,25 @@ const resolvedIcon = computed(() => {
 
 <template>
   <UButton
-    :class="customClass" :color="isActive?.() ? 'primary' : 'neutral'" :disabled="disabled" :variant="isActive?.() ? 'soft' : 'ghost'"
+    :label="title"
+    :class="customClass"
+    :color="isActive?.() ? 'primary' : 'neutral'"
+    :disabled="disabled"
+    :variant="isActive?.() ? 'soft' : 'ghost'"
     square @click="action"
   >
     <slot />
     
     <template #leading>
       <div v-if="loading">
-        <Suspense>
-          <UIcon class="animate-spin" name="i-lucide-loader-circle" />
-        </Suspense>
+        <UIcon class="animate-spin" name="i-lucide-loader-circle" />
       </div>
-      <div v-else class="flex gap-1 items-center">
-        <Suspense>
-          <UTooltip :text="tooltip">
-            <UIcon v-if="resolvedIcon" :name="resolvedIcon" dynamic />
-          </UTooltip>
-        </Suspense>
-        <slot name="icon" />
-      </div>
+      <UTooltip v-else :text="tooltip">
+        <div class="flex gap-1 items-center">
+          <UIcon v-if="resolvedIcon" :name="resolvedIcon" dynamic />
+          <slot name="icon" />
+        </div>
+      </UTooltip>
     </template>
   </UButton>
 </template>

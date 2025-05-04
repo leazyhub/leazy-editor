@@ -8,6 +8,7 @@ interface Props {
   disabled?: boolean
   shortcuts?: string[]
   color?: string
+  loading?: boolean
   action?: ButtonViewReturnComponentProps['action'],
   isActive?: ButtonViewReturnComponentProps['isActive']
 }
@@ -18,6 +19,7 @@ withDefaults(defineProps<Props>(), {
   tooltip: undefined,
   disabled: false,
   color: undefined,
+  loading: false,
   shortcuts: undefined,
   action: undefined,
   isActive: undefined,
@@ -32,16 +34,14 @@ withDefaults(defineProps<Props>(), {
     <slot />
     <template #leading>
       <div v-if="loading">
-        <Suspense>
-          <UIcon class="animate-spin" name="i-lucide-loader-circle" />
-        </Suspense>
+        <UIcon class="animate-spin" name="i-lucide-loader-circle" />
       </div>
-      <div v-else class="flex gap-1 items-center">
-        <Suspense>
+      <UTooltip v-else :text="tooltip">
+        <div class="flex gap-1 items-center">
           <UIcon v-if="icon" :name="icon" dynamic />
-        </Suspense>
-        <slot name="icon" />
-      </div>
+          <slot name="icon" />
+        </div>
+      </UTooltip>
     </template>
   </UButton>
 </template>

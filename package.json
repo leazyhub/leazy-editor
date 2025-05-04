@@ -84,7 +84,7 @@
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
     "lowlight": "^3.3.0",
-    "nuxt": "^3.17.0",
+    "nuxt": "^3.17.1",
     "openai": "^4.86.1",
     "sass": "^1.85.1",
     "tippy.js": "^6.3.7",

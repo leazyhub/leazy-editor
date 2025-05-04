@@ -64,7 +64,7 @@ export const Comment = Mark.create<CommentOptions, CommentStorage>({
           },
           isActive: () => !!editor.storage.activeCommentId,
           icon: 'i-lucide-message-square-plus',
-          tooltip: 'Commenter'
+          tooltip: t('editor.comments.tooltip')
         },
       })
     }

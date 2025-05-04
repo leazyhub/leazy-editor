@@ -2,32 +2,48 @@
   "editor": {
     "remove": "Remove",
     "replace": "Replace",
+    "search": "Search",
     "duplicate": "Duplicate",
-    "import": "Import",
+    "replaceBy": "Replace with",
+    "replaceAll": "Replace all",
+    "caseSensitive": "Case sensitive",
     "copy": "Copy",
-    "words": "WORDS",
-    "characters": "CHARACTERS",
+    "words": "Words",
+    "characters": "Characters",
     "default": "Default",
-    "recent": "Recently Used",
-    "nofill": "No Fill",
+    "recent": "Recently used",
+    "nofill": "No fill",
     "format": "Format Painter",
     "draghandle": {
-      "tooltip": "Click And Drag"
+      "tooltip": "Click and drag"
     },
     "importWord": {
       "tooltip": "Import Word"
     },
     "paper": {
-      "tooltip": "Draw"
+      "tooltip": "Draw",
+      "description": "Draw on the document"
     },
     "details": {
-      "tooltip": "Details"
+      "tooltip": "Details",
+      "description": "Show document details"
     },
     "print": {
       "tooltip": "Print"
     },
+    "speechRecognition": {
+      "tooltip": "Speech recognition",
+      "description": "Speech recognition",
+      "notSupported": "Browser not supported"
+    },
+    "speechSynthesis": {
+      "tooltip": "Read selected text",
+      "description": "Text-to-speech",
+      "notSupported": "Browser not supported"
+    },
     "alert": {
       "tooltip": "Alert",
+      "description": "Add an alert",
       "note": "Note",
       "info": "Info",
       "warning": "Warning",
@@ -35,17 +51,19 @@
       "success": "Success"
     },
     "slash": {
-      "empty": "No Result",
+      "empty": "No results",
       "format": "Format",
       "insert": "Insert",
-      "embed": "Embed Services",
+      "embed": "Embed services",
       "text": "Press '/' for commands"
     },
     "tableOfContents": {
-      "tooltip": "Table Of Contents"
+      "tooltip": "Table of contents",
+      "description": "Add a table of contents",
+      "empty": "No content"
     },
-    "content": "Please input content",
-    "moremark": "More Text Styles",
+    "content": "Please enter content",
+    "moremark": "More text styles",
     "size": {
       "small": {
         "tooltip": "Small"
@@ -67,17 +85,17 @@
       "tooltip": "Underline"
     },
     "strike": {
-      "tooltip": "Strike"
+      "tooltip": "Strikethrough"
     },
     "color": {
       "tooltip": "Color",
-      "more": "More Colors"
+      "more": "More colors"
     },
     "highlight": {
       "tooltip": "Highlight"
     },
     "lineheight": {
-      "tooltip": "Line Height"
+      "tooltip": "Line height"
     },
     "heading": {
       "tooltip": "Headings",
@@ -101,10 +119,23 @@
       }
     },
     "paragraph": {
-      "tooltip": "Paragraph"
+      "tooltip": "Paragraph",
+      "description": "Add text"
+    },
+    "comments": {
+      "tooltip": "Comments"
+    },
+    "export": {
+      "tooltip": "Export"
+    },
+    "import": {
+      "tooltip": "Import"
+    },
+    "searchAndReplace": {
+      "tooltip": "Search and replace"
     },
     "textalign": {
-      "tooltip": "Align",
+      "tooltip": "Alignment",
       "left": {
         "tooltip": "Left"
       },
@@ -119,12 +150,12 @@
       }
     },
     "indent": {
-      "tooltip": "Indent",
-      "indent": "Increase Indent"
+      "tooltip": "Indentation",
+      "indent": "Increase indent"
     },
     "outdent": {
-      "tooltip": "Outdent",
-      "outdent": "Decrease Indent"
+      "tooltip": "Indentation",
+      "outdent": "Decrease indent"
     },
     "fontFamily": {
       "tooltip": "Font family"
@@ -142,35 +173,37 @@
       "tooltip": "Subscript"
     },
     "bulletlist": {
-      "tooltip": "Bullet List"
+      "tooltip": "Bullet list"
     },
     "orderedlist": {
-      "tooltip": "Ordered List"
+      "tooltip": "Ordered list"
     },
     "tasklist": {
-      "tooltip": "Task List"
+      "tooltip": "Task list",
+      "description": "Add a task list"
     },
     "columns": {
-      "tooltip": "Columns"
+      "tooltip": "Columns",
+      "description": "Add columns"
     },
     "link": {
       "tooltip": "Link",
       "unlink": {
-        "tooltip": "UnLink"
+        "tooltip": "Unlink"
       },
       "open": {
-        "tooltip": "Open Link"
+        "tooltip": "Open link"
       },
       "edit": {
-        "tooltip": "Edit Link"
+        "tooltip": "Edit link"
       },
       "dialog": {
-        "title": "Insert Link",
+        "title": "Add a link",
         "link": "Link",
         "text": "Text",
-        "openInNewTab": "Open In New Tab",
-        "link.placeholder": "Link Address",
-        "text.placeholder": "Add Description",
+        "openInNewTab": "Open in a new tab",
+        "link.placeholder": "Link address",
+        "text.placeholder": "Add a description",
         "button": {
           "apply": "Apply"
         }
@@ -178,15 +211,19 @@
     },
     "image": {
       "tooltip": "Image",
+      "description": "Add an image",
+      "imageUploader": {
+        "placeholder": "Type a keyword to search for media"
+      },
       "dragger": {
-        "tooltip": "Click or drag the image to the area to upload"
+        "tooltip": "Click or drag an image into the area to upload"
       },
       "float": {
         "left": {
           "tooltip": "Float left"
         },
         "none": {
-          "tooltip": "Float none"
+          "tooltip": "No float"
         },
         "right": {
           "tooltip": "Float right"
@@ -194,68 +231,75 @@
       },
       "dialog": {
         "title": "Add an image",
-        "placeholder": "Paste the image URL here",
+        "placeholder": "Image URL",
         "tab": {
-          "url": "Url",
+          "url": "URL",
           "upload": "Upload"
         },
         "uploading": "Uploading",
         "form": {
           "link": "Link",
           "placeholder": "Link",
-          "alt": "Alt",
+          "alt": "Alt text",
           "aspectRatio": "Lock original aspect ratio",
           "file": "File"
         },
         "button": {
-          "apply": "apply"
+          "apply": "Apply"
         }
       }
     },
     "video": {
       "tooltip": "Video",
+      "description": "Add a video",
       "dialog": {
         "tab": {
           "upload": "Upload"
         },
         "uploading": "Uploading",
         "title": "Embed or upload a video",
-        "link": "link",
-        "placeholder": "Paste the video URL here",
+        "link": "Link",
+        "placeholder": "Video URL",
         "button": {
-          "apply": "apply"
+          "apply": "Apply"
         }
       }
     },
     "table": {
       "tooltip": "Table",
+      "description": "Add a table",
       "menu": {
-        "insert_table": "Insert Table",
+        "insert_table": "Insert table",
         "insert_table.with_header_row": "With header row",
-        "add_column_before": "Add Column Before",
-        "add_column_after": "Add Column After",
-        "delete_column": "Delete Column",
-        "add_row_before": "Add Row Before",
-        "add_row_after": "Add Row After",
-        "delete_row": "Delete Row",
-        "merge_or_split_cells": "Merge Or Split Cells",
-        "delete_table": "Delete Table"
+        "add_column_before": "Add column before",
+        "add_column_after": "Add column after",
+        "delete_column": "Delete column",
+        "add_row_before": "Add row before",
+        "add_row_after": "Add row after",
+        "delete_row": "Delete row",
+        "merge_cells": "Merge cells",
+        "split_cells": "Split cells",
+        "cell_background_color": "Cell background color",
+        "delete_table": "Delete table"
       }
     },
     "blockquote": {
-      "tooltip": "Blockquote"
+      "tooltip": "Blockquote",
+      "description": "Add a quote"
     },
     "horizontalrule": {
-      "tooltip": "Horizontal Rule"
+      "tooltip": "Horizontal rule",
+      "description": "Add a horizontal rule"
     },
     "code": {
       "tooltip": "Code"
     },
     "codeblock": {
-      "tooltip": "Code Block"
+      "tooltip": "Code block",
+      "description": "Add a code block"
     },
     "clear": {
-      "tooltip": "Clear Format"
+      "tooltip": "Clear formatting"
     },
     "undo": {
       "tooltip": "Undo"
@@ -266,7 +310,7 @@
     "fullscreen": {
       "tooltip": {
         "fullscreen": "Fullscreen",
-        "exit": "Fullscreen Exit"
+        "exit": "Exit fullscreen"
       }
     }
   }

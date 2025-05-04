@@ -9,11 +9,7 @@ interface Props {
   tooltip?: string
 }
 
-const { editor } = withDefaults(defineProps<Props>(), {
-  disabled: false,
-  icon: undefined,
-  tooltip: ''
-})
+const { editor, disabled = false, icon, tooltip = '' } = defineProps<Props>()
 
 const input = ref<HTMLInputElement | null>(null)
 

@@ -14,15 +14,8 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  icon: undefined,
-  title: undefined,
-  tooltip: undefined,
   disabled: false,
-  color: undefined,
-  loading: false,
-  shortcuts: undefined,
-  action: undefined,
-  isActive: undefined,
+  loading: false
 })
 </script>
 

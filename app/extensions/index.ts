@@ -1,3 +1,18 @@
+import { TextStyle, TextStyleOptions } from "@tiptap/extension-text-style";
+import { ListItem, ListItemOptions } from "@tiptap/extension-list";
+
+import {
+  CharacterCount,
+  CharacterCountOptions,
+  Dropcursor,
+  DropcursorOptions,
+  Focus,
+  FocusOptions,
+  Gapcursor,
+  Placeholder,
+  PlaceholderOptions,
+} from "@tiptap/extensions";
+
 import { type AnyExtension, Extension } from '@tiptap/core'
 import { defaultBubbleList, generateBubbleTypeMenu } from '../features/bubble'
 import type { BubbleOptions } from '../features/bubble/types'
@@ -10,7 +25,6 @@ import { Alert, type AlertOptions } from './Alert'
 import { Blockquote, type BlockquoteOptions } from './Blockquote'
 import { Bold, type BoldOptions } from './Bold'
 import { BulletList, type BulletListOptions } from './BulletList'
-import { CharacterCount, type CharacterCountOptions } from '@tiptap/extension-character-count'
 import { Clear, type ClearOptions } from './Clear'
 import { Code, type CodeOptions } from './Code'
 import { CodeBlock, type CodeBlockOptions } from './CodeBlock'
@@ -21,15 +35,12 @@ import { Columns, type ColumnsOptions } from './MultiColumn'
 import { Comment, type CommentOptions } from './Comment'
 import { Details, type DetailsOptions } from './Details'
 import { Document } from './Document'
-import { Dropcursor, type DropcursorOptions } from '@tiptap/extension-dropcursor'
 import Emoji, { type EmojiOptions, gitHubEmojis } from '@tiptap-pro/extension-emoji'
 import EmojiSuggestion from './Emoji'
 import { Export, type ExportOptions } from './Export'
-import Focus, { type FocusOptions } from '@tiptap/extension-focus'
 import { FormatPainter, type FormatPainterOptions } from './FormatPainter'
 import { FontSize, type FontSizeOptions } from './FontSize'
 import { Fullscreen, type FullscreenOptions } from './Fullscreen'
-import { Gapcursor } from '@tiptap/extension-gapcursor'
 import { HardBreak, type HardBreakOptions } from '@tiptap/extension-hard-break'
 import { Heading, type HeadingOptions } from './Heading'
 import { Highlight, type HighlightOptions } from './Highlight'
@@ -44,13 +55,11 @@ import { Indent, type IndentOptions } from './Indent'
 import { Italic, type ItalicOptions } from './Italic'
 import { LineHeight, type LineHeightOptions } from './LineHeight'
 import { Link, type LinkOptions } from './Link'
-import { ListItem, type ListItemOptions } from '@tiptap/extension-list-item'
 import { Math, type MathOptions } from './Math'
 import { MoreMark, type MoreMarkOptions } from './MoreMark'
 import { OrderedList, type OrderedListOptions } from './OrderedList'
 import { Paper } from './Paper'
 import { Paragraph, type ParagraphOptions } from '@tiptap/extension-paragraph'
-import { Placeholder, type PlaceholderOptions } from '@tiptap/extension-placeholder'
 import { Print } from './Print'
 import { SearchAndReplace } from './SearchAndReplace'
 import { Selection } from './Selection'
@@ -65,7 +74,6 @@ import { TaskList, type TaskListOptions } from './TaskList'
 import { Text } from '@tiptap/extension-text'
 import { TextAlign, type TextAlignOptions } from './TextAlign'
 import { TextBubble, type TextBubbleOptions } from './TextBubble'
-import { TextStyle, type TextStyleOptions } from '@tiptap/extension-text-style'
 import { TrailingNode, type TrailingNodeOptions } from './TrailingNode'
 import { Underline, type UnderlineOptions } from './UnderLine'
 import { UniqueId, type UniqueIdOptions } from './UniqueId'

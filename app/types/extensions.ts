@@ -1,13 +1,10 @@
-import type { CharacterCountOptions } from '@tiptap/extension-character-count'
-import type { DropcursorOptions } from '@tiptap/extension-dropcursor'
+import { TextStyleOptions } from "@tiptap/extension-text-style";
+import { ListItemOptions } from "@tiptap/extension-list";
+import { CharacterCountOptions, DropcursorOptions, FocusOptions, PlaceholderOptions } from "@tiptap/extensions";
 import type { EmojiOptions } from '@tiptap-pro/extension-emoji'
 import type { ExportOptions } from '../extensions/Export'
-import type { FocusOptions } from '@tiptap/extension-focus'
 import type { HardBreakOptions } from '@tiptap/extension-hard-break'
-import type { ListItemOptions } from '@tiptap/extension-list-item'
 import type { ParagraphOptions } from '@tiptap/extension-paragraph'
-import type { PlaceholderOptions } from '@tiptap/extension-placeholder'
-import type { TextStyleOptions } from '@tiptap/extension-text-style'
 import type { YoutubeOptions } from '@tiptap/extension-youtube'
 import type { BlockquoteOptions } from '../extensions/Blockquote'
 import type { BoldOptions } from '../extensions/Bold'

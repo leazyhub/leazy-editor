@@ -1,4 +1,4 @@
-import { Details as DetailsTiptap, type DetailsOptions } from '@tiptap-pro/extension-details'
+import { Details as DetailsTiptap, type DetailsOptions as TiptapDetailsOptions } from '@tiptap-pro/extension-details'
 import { DetailsSummary, type DetailsSummaryOptions } from '@tiptap-pro/extension-details-summary'
 import { DetailsContent, type DetailsContentOptions } from '@tiptap-pro/extension-details-content'
 import type { GeneralOptions } from '../../types'
@@ -7,7 +7,7 @@ import ActionButton from '../../components/ActionButton.vue'
 /**
  * Represents the interface for details options, extending DetailsOptions and GeneralOptions.
  */
-export interface DetailsOptions extends DetailsOptions, GeneralOptions<DetailsOptions> {
+export interface DetailsOptions extends TiptapDetailsOptions, GeneralOptions<DetailsOptions> {
   /** options for details summary */
   detailsSummary: Partial<DetailsSummaryOptions>
   /** options for details content */

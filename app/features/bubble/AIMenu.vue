@@ -138,7 +138,7 @@ const shortcutMenus = computed(() => {
 <template>
   <div v-show="shouldShow" class="absolute left-0 right-0 top-0 bottom-0 z-[98]" @click="handleOverlayClick">
     <BubbleMenu
-      v-show="shouldShow" :editor="editor" :tippy-options="tippyOptions" :update-delay="0" plugin-key="AIMenu"
+      v-show="shouldShow" :editor="editor" :update-delay="0" plugin-key="AIMenu"
     >
       <div :class="{ 'shake-animation': isShaking }" class="relative w-[450px] z-[99]">
         <div

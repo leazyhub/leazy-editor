@@ -1,4 +1,4 @@
-import { History as TiptapHistory, type HistoryOptions as TiptapHistoryOptions } from '@tiptap/extension-history'
+import { History as TiptapHistory, HistoryOptions as TiptapHistoryOptions } from "@tiptap/extensions";
 import type { GeneralOptions } from '../../types'
 import ActionButton from '../../components/ActionButton.vue'
 

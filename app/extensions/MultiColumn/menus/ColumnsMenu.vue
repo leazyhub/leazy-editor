@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { sticky } from 'tippy.js'
 import { BubbleMenu, type Editor, isActive } from '@tiptap/vue-3'
+import { offset } from '@floating-ui/dom'
 import ActionButton from '../../../components/ActionButton.vue'
 import { ColumnLayout } from '../Columns'
 import { getRenderContainer } from '../../../utils/get-render-container'
@@ -42,14 +42,8 @@ const onColumnTwo = () => {
   <BubbleMenu
     :editor="editor"
     :shouldShow="shouldShow"
-    :tippy-options="{
-      offset: [0, 8],
-      popperOptions: {
-        modifiers: [{ name: 'flip', enabled: false }],
-      },
-      getReferenceClientRect,
-      plugins: [sticky],
-      sticky: 'popper',
+    :option="{
+      middleware: [offset(8)]
     }"
     :updateDelay="0"
     pluginKey="columns"

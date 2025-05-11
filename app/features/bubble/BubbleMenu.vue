@@ -5,6 +5,7 @@ import { BubbleMenu } from '@tiptap/vue-3'
 import { CellSelection } from '@tiptap/pm/tables'
 import type { BaseKitOptions } from '../../extensions'
 import type { BubbleTypeMenu } from './types'
+import { offset } from '@floating-ui/dom'
 
 interface Props {
   editor: Editor
@@ -17,12 +18,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const store = useTiptapStore()
 const { t } = useI18n()
-const tippyOptions = reactive<Record<string, unknown>>({
-  maxWidth: 'auto',
-  zIndex: 99,
-  appendTo: 'parent',
-  moveTransition: 'transform 0.15s ease-out',
-})
 
 const nodeType = computed(() => {
   const selection = props.editor.state.selection as NodeSelection
@@ -67,7 +62,11 @@ const items = computed(() => {
 </script>
 <template>
   <BubbleMenu
-    v-show="items.length > 0 && !store?.state.AIMenu" :editor="editor" :tippy-options="tippyOptions"
+    v-show="items.length > 0 && !store?.state.AIMenu"
+    :editor="editor"
+    :options="{
+      middleware: [offset(8)]
+    }"
     class="flex items-center flex-nowrap whitespace-nowrap gap-0.5 p-1 w-max overflow-hidden focus:outline-none relative bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg shadow-lg"
   >
     <template v-for="(item, key) in items" :key="key">

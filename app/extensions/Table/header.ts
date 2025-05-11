@@ -1,4 +1,4 @@
-import TiptapTableHeader from '@tiptap/extension-table-header'
+import { TableHeader as TiptapTableHeader } from "@tiptap/extension-table";
 import { Plugin } from '@tiptap/pm/state'
 import { Decoration, DecorationSet } from '@tiptap/pm/view'
 

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { BubbleMenu, type Editor } from '@tiptap/vue-3'
+import { offset } from '@floating-ui/dom'
 import { Editor as CoreEditor } from '@tiptap/core'
 import { EditorState, type NodeSelection } from '@tiptap/pm/state'
 import { EditorView } from '@tiptap/pm/view'
@@ -62,12 +63,8 @@ const selection = computed(() => {
   <BubbleMenu
     :editor="editor"
     :should-show="shouldShow"
-    :tippy-options="{
-      appendTo: 'parent',
-      offset: [0, 15],
-      popperOptions: {
-        modifiers: [{ name: 'flip', enabled: false }],
-      },
+    :options="{
+      middleware: [offset(15)]
     }"
     :updateDelay="0"
     pluginKey="tableCellMenu"

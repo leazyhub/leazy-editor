@@ -222,7 +222,7 @@ defineExpose({ editor })
     >
       <Toolbar
         v-if="!hideToolbar && !disabled" :editor="editor" :style="contentDynamicStyles"
-        class="z-10 sticky top-4 left-0 px-[25px]"
+        class="z-10 sticky top-4 left-0 px-4"
       />
       <EditorContent
         :class="contentClass" :editor="editor" :style="contentDynamicStyles" class="flex-1 w-full"

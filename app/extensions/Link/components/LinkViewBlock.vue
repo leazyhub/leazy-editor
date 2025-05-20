@@ -25,7 +25,7 @@ function onEdit() {
 
 <template>
   <div
-    class="flex items-center gap-2 p-2 rounded-lg bg-elevated/50 shadow-sm border border-default"
+    class="flex items-center gap-2 p-2 rounded-lg bg-white dark:bg-neutral-800 shadow-sm border border-default"
   >
     <a :href="link" class="text-sm underline break-all" rel="noopener noreferrer" target="_blank">
       {{

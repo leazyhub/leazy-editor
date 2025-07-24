@@ -75,7 +75,7 @@
     "@tiptap/pm": "^2.11.9",
     "@tiptap/suggestion": "^2.11.9",
     "@tiptap/vue-3": "^2.11.9",
-    "@vueuse/core": "11.3.0",
+    "@vueuse/core": "13.5.0",
     "bumpp": "^10.1.0",
     "d3": "^7.9.0",
     "evaluatex": "^2.2.0",

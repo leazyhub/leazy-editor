@@ -21,7 +21,7 @@
     "@nuxt/image": "^1.10.0",
     "@nuxt/ui": "^3.3.0",
     "@nuxtjs/color-mode": "^3.5.2",
-    "@nuxtjs/i18n": "^9.5.4",
+    "@nuxtjs/i18n": "^10.0.0",
     "@tiptap-pro/extension-details": "^2.18.0",
     "@tiptap-pro/extension-details-content": "^2.18.0",
     "@tiptap-pro/extension-details-summary": "^2.18.0",

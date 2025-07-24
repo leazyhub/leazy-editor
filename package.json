@@ -85,7 +85,7 @@
     "lodash-unified": "^1.0.3",
     "lowlight": "^3.3.0",
     "nuxt": "^4.0.1",
-    "openai": "^4.97.0",
+    "openai": "^5.0.0",
     "sass": "^1.87.0",
     "tippy.js": "^6.3.7",
     "uuid": "^11.1.0",

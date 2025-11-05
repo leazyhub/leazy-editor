@@ -209,13 +209,15 @@ defineExpose({ editor })
 
 <template>
   <div v-if="editor" :class="[editorClass, dense ? 'dense' : '']" class="leazy-editor flex flex-col z-0">
-    <ContentMenu :editor="editor" />
-    <LinkBubbleMenu :editor="editor" />
-    <ColumnsMenu :editor="editor" />
-    <AlertMenu :editor="editor" />
-    <AIMenu :editor="editor" />
-    <TableBubbleMenu :editor="editor" />
-    <BubbleMenu v-if="!hideBubble" :disabled="disableBubble" :editor="editor" />
+    <template v-if="!disabled">
+      <ContentMenu :editor="editor" />
+      <LinkBubbleMenu :editor="editor" />
+      <ColumnsMenu :editor="editor" />
+      <AlertMenu :editor="editor" />
+      <AIMenu :editor="editor" />
+      <TableBubbleMenu :editor="editor" />
+      <BubbleMenu v-if="!hideBubble" :disabled="disableBubble" :editor="editor" />
+    </template>
     <div
       :class="[isFullscreen && 'fixed bg-background inset-0 z-[200] w-full h-full m-0 rounded-none']"
       class="flex flex-col w-full flex-1"

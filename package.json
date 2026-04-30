@@ -96,7 +96,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "0.7.1",
-    "eslint": "^9.26.0",
+    "eslint": "^10.0.0",
     "vue-tsc": "^2.2.10"
   },
   "packageManager": "bun@1.1.38"

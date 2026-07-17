@@ -80,7 +80,7 @@
     "d3": "^7.9.0",
     "evaluatex": "^2.2.0",
     "highlight.js": "^11.11.1",
-    "katex": "^0.16.22",
+    "katex": "^0.18.0",
     "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
     "lowlight": "^3.3.0",
